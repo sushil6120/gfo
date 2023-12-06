@@ -10,6 +10,7 @@ import 'viewmodel/indesViewModel.dart';
 void main() {
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -25,9 +26,8 @@ class MyApp extends StatelessWidget {
         builder: (BuildContext context) {
           final themeManager = Provider.of<ThemeManager>(context);
           return MaterialApp(
-          
             useInheritedMediaQuery: true,
-            
+
             themeMode: themeManager.themeMode,
             theme: MyThemes.lightTheme,
             darkTheme: MyThemes.darkTheme,
