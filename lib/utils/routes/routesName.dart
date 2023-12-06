@@ -4,4 +4,6 @@ class RoutesName {
   static const String loginOtpVerify = 'LoginOtpVerify';
   static const String signUpScreen = 'SignUpScreen';
   static const String singUpVerifyOtp = 'SingUpVerifyOtp';
+  static const String rolesScreen = 'RolesScreen';
+  static const String customerHomeScreen = 'CustomerHomeScreen';
 }

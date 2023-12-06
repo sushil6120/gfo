@@ -4,6 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gfo/utils/responsive.dart';
+import 'package:gfo/utils/routes/routesName.dart';
 
 import '../../utils/colors.dart';
 import '../../utils/valueConstants.dart';
@@ -39,56 +40,88 @@ class _LoginScreenState extends State<CustomerLoginScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+
+            Padding(
+              padding: const EdgeInsets.only(top: verticalSpaceLarge, left: 14, right: verticalSpaceLarge),
+              child: Text(
+                      "Verify your\n phone number",
+                      style: Theme.of(context)
+                .textTheme
+                .titleMedium!
+                .copyWith(fontSize: 32, fontWeight: FontWeight.w700),
+                    ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: verticalSpaceSmall, left: 18, right: 18),
+              child: Text(
+                      "We have send you an One Time Password(OTP) on this mobile number.",
+                      style: Theme.of(context)
+                .textTheme
+                .titleMedium!
+                .copyWith(fontSize: 14, fontWeight: FontWeight.w400),
+                    ),
+            ),
             SizedBox(
-              height: verticalSpaceLarge,
+              height: context.deviceHeight*.08,
             ),
           
-            SizedBox(
-              height: verticalSpaceMedium,
+            Padding(
+              padding: const EdgeInsets.only(top: verticalSpaceLarge, left: 18, right: 18, bottom: 10),
+              child: Text(
+                      "Enter mobile no.*",
+                      style: Theme.of(context)
+                .textTheme
+                .titleMedium!
+                .copyWith(fontSize: 14, fontWeight: FontWeight.w400),
+                    ),
             ),
-            CountryCodePicker(
-              hideMainText: true,
-              showDropDownButton: true,
-              textStyle: Theme.of(context)
-                  .textTheme
-                  .titleMedium!
-                  .copyWith(fontSize: 15, fontWeight: FontWeight.w400),
-              onChanged: (value) {
-                countryCode = value.dialCode.toString();
-                setState(() {});
-              },
-              initialSelection: 'IN',
-              favorite: ['+91', 'IN'],
-              showCountryOnly: true,
-              showOnlyCountryWhenClosed: false,
-              alignLeft: false,
-            ),
-            Container(
-              width: context.deviceWidth,
-              height: context.deviceHeight * .062,
-              margin: EdgeInsets.symmetric(horizontal: 18),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  border: Border.all(color: primaryColor, width: 1)),
+        
+            Padding(
+              padding: const EdgeInsets.only(left: 10, right: 18,),
               child: Row(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Text(
-                      countryCode,
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleMedium!
-                          .copyWith(fontSize: 16, fontWeight: FontWeight.w500),
-                    ),
+                  Container(
+                    width: context.deviceWidth*.22,
+                    height: context.deviceHeight * .057,
+                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        border: Border.all(color: colorDark3.withOpacity(.4), width: .8)),
+                   child :    CountryCodePicker(
+                showFlag: false,
+                hideMainText: false,
+                
+                showDropDownButton: true,
+                textStyle: Theme.of(context)
+                    .textTheme
+                    .titleMedium!
+                    .copyWith(fontSize: 15, fontWeight: FontWeight.w400),
+                onChanged: (value) {
+                  countryCode = value.dialCode.toString();
+                  setState(() {});
+                },
+                initialSelection: 'IN',
+                favorite: ['+91', 'IN'],
+                showCountryOnly: true,
+                showOnlyCountryWhenClosed: false,
+                alignLeft: false,
+              ),
+            
                   ),
-                  Expanded(
-                      child: SearchFields(
-                        lengthLimitingTextInputFormatter: [LengthLimitingTextInputFormatter(10)],
-                        textInpuType: TextInputType.phone,
-                    hintText: "Enter Mobile Number",
-                    height: null,
-                  ))
+                 
+                        Expanded(
+                            child: Container(
+                                decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        border: Border.all(color: colorDark3.withOpacity(.4), width: .8)),
+                              child: SearchFields(
+                                lengthLimitingTextInputFormatter: [LengthLimitingTextInputFormatter(10)],
+                                textInpuType: TextInputType.phone,
+                                                    hintText: "Enter Mobile Number",
+                                                    height: null,
+                                                  ),
+                            ))
+                  
                 ],
               ),
             ),
@@ -105,11 +138,11 @@ class _LoginScreenState extends State<CustomerLoginScreen> {
                     .copyWith(color: colorDark3,fontWeight: FontWeight.w400, fontSize: 14),
                 children: <TextSpan>[
                   TextSpan(
-                      text: 'Sign Up ',
+                      text: 'Continue without account',
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: primaryColor),
+                          color: greenColor),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
                           // Navigator.pushNamed(context, RoutesName.signUpScreen);
@@ -123,18 +156,18 @@ class _LoginScreenState extends State<CustomerLoginScreen> {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 25),
         child: ButtonBig(
-          fontSize: 16,
+          fontSize: 14,
           onTap: () {
             if (kDebugMode) {
               print("working");
             }
-            // Navigator.pushNamed(context, RoutesName.loginOtpVerify);
+            Navigator.pushNamed(context, RoutesName.loginOtpVerify);
           },
           backgroundColor: primaryColor,
           backgroundColor2: primaryColor,
           width: double.infinity,
           height: 55,
-          text: "Get OTP",
+          text: "Get Code",
           showProgress: false,
           progressColor: colorLightWhite,
           progressStrokeWidth: 1.5,
@@ -142,7 +175,7 @@ class _LoginScreenState extends State<CustomerLoginScreen> {
           textColor: colorLightWhite,
           letterSpacing: 0,
           progressPadding: 20,
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.w700,
         ),
       ),
     );
