@@ -49,7 +49,6 @@ class TextFormFieldBig extends StatelessWidget {
     return SizedBox(
       height: 55,
       child: TextFormField(
-        
         inputFormatters: formaterss,
         onTap: onTap,
         readOnly: readOnly ?? false,
@@ -61,12 +60,9 @@ class TextFormFieldBig extends StatelessWidget {
         //maxLines: null,
         maxLines: maxlines,
         enabled: enabled,
-        style: Theme.of(context)
-            .textTheme
-            .titleSmall!
-            .copyWith(
-            
-              color: Theme.of(context).textTheme.headlineMedium!.color!, fontWeight: FontWeight.w400),
+        style: Theme.of(context).textTheme.titleSmall!.copyWith(
+            color: Theme.of(context).textTheme.headlineMedium!.color!,
+            fontWeight: FontWeight.w400),
         onFieldSubmitted: onFieldSubmitted,
         validator: validator,
         cursorColor: Theme.of(context).textSelectionTheme.cursorColor,
@@ -99,13 +95,16 @@ class TextFormFieldBig extends StatelessWidget {
               borderSide: BorderSide(width: 0.2, color: Colors.transparent),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(width: 1.5, color: Colors.transparent),
+              borderRadius: BorderRadius.circular(10),
+              borderSide: const BorderSide(width: 1, color: colorLight3),
             ),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(width: 0.2, color: Colors.transparent),
+              borderRadius: BorderRadius.circular(10),
+              borderSide: const BorderSide(width: 1, color: colorLight3),
             ),
             disabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(width: 0.2, color: Colors.transparent),
+              borderRadius: BorderRadius.circular(10),
+              borderSide: const BorderSide(width: 1, color: colorLight3),
             )),
       ),
     );

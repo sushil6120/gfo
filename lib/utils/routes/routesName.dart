@@ -6,4 +6,6 @@ class RoutesName {
   static const String singUpVerifyOtp = 'SingUpVerifyOtp';
   static const String rolesScreen = 'RolesScreen';
   static const String customerHomeScreen = 'CustomerHomeScreen';
+  static const String bottomNavigationBarScreen = 'BottomNavigationBarScreen';
+  static const String customerAllProductScreen = 'CustomerAllProductScreen';
 }

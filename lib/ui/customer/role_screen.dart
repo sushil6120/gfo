@@ -36,7 +36,7 @@ class _RolesScreenState extends State<RolesScreen> {
               height: verticalSpaceLarge,
             ),
          customeRoles("assets/user.svg", "Customer", () { 
-                 Navigator.pushNamed(context, RoutesName.customerHomeScreen);
+                 Navigator.pushNamed(context, RoutesName.bottomNavigationBarScreen);
          }),
          customeRoles("assets/user.svg", "Consultant", () { }),
          customeRoles("assets/user.svg", "Seller", () { }),
