@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:hisab_brabar/utils/responsive.dart';
+import 'package:gfo/utils/responsive.dart';
 import '../../utils/colors.dart';
 import '../../utils/images.dart';
 import '../../utils/valueConstants.dart';
