@@ -10,4 +10,15 @@ class RoutesName {
   static const String customerAllProductScreen = 'CustomerAllProductScreen';
   static const String checkOutScreen = 'CheckOutScreen';
   static const String customerProductDetailsScreen = 'CustomerProductDetailsScreen';
+  static const String customerAddressScreen = 'CustomerAddressScreen';
+
+
+  // ------- selller ------------
+
+  static const String SellerHomeScreen = 'SellerHomeScreen';
+  static const String SellerProfileScreen = 'SellerProfileScreen';
+  static const String SellerProfileDetailScreen = 'SellerProfileDetailScreen';
+  static const String SellerAddInventoryScreen = 'SellerAddInventoryScreen';
+  static const String SellerAddInventoryGeneralScreen =
+      'SellerAddInventoryGeneralScreen';
 }

@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gfo/utils/responsive.dart';
+import 'package:gfo/utils/routes/routesName.dart';
 import 'package:gfo/utils/valueConstants.dart';
 
 import '../../utils/colors.dart';
+import '../globalWidgets/buttonBig.dart';
 
 class CheckOutScreen extends StatefulWidget {
   const CheckOutScreen({super.key});
@@ -75,7 +78,9 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                           ],
                         ),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, RoutesName.customerAddressScreen);
+                          },
                           icon: Icon(
                             Icons.edit,
                             size: 18,
@@ -224,7 +229,8 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                   Expanded(
                       child: TextField(
                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: Theme.of(context).textTheme.headlineMedium!.color!,
+                        color:
+                            Theme.of(context).textTheme.headlineMedium!.color!,
                         fontSize: 16,
                         fontWeight: FontWeight.w500),
                     decoration: InputDecoration(
@@ -259,8 +265,107 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                   )
                 ],
               ),
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 18, top: verticalSpaceSmall2, bottom: 10),
+              child: Text(
+                "Promo code",
+                style: Theme.of(context)
+                    .textTheme
+                    .titleMedium!
+                    .copyWith(fontWeight: FontWeight.w700, fontSize: 18),
+              ),
+            ),
+            customeTile("Price (2 items)", "USD 300"),
+            SizedBox(
+              height: 1,
+            ),
+            customeTile("Discount", "USD 10"),
+            SizedBox(
+              height: 1,
+            ),
+            customeTile("Delivery Charges", "Free Delivery"),
+
+               Padding(
+                 padding: const EdgeInsets.only(left: 18, right: 18, top: verticalSpaceSmall),
+                 child: Row(
+                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                           children: [
+                             Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    "Total 2 Items",
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium!
+                        .copyWith(fontSize: 14, fontWeight: FontWeight.w400),
+                  ),
+                             ),
+                             Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    "USD 295",
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium!
+                        .copyWith(fontSize: 16, fontWeight: FontWeight.w700),
+                  ),
+                             ),
+                           ],
+                         ),
+               ),
+               SizedBox(height: verticalSpaceMedium,)
           ],
+        ),
+      ),
+      bottomNavigationBar:    Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 25),
+            child: ButtonBig(
+              fontSize: 14,
+              onTap: () {
+                if (kDebugMode) {
+                  print("working");
+                }
+                // Navigator.pushNamed(context, RoutesName.checkOutScreen);
+              },
+              backgroundColor: greenColor.withOpacity(.6),
+              backgroundColor2: greenColor.withOpacity(.6),
+              width: double.infinity,
+              height: 55,
+              text: "Proceed to Checkout",
+              showProgress: false,
+              progressColor: colorLightWhite,
+              progressStrokeWidth: 1.5,
+              radius: 5,
+              textColor: colorLightWhite,
+              letterSpacing: 0,
+              progressPadding: 20,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+    );
+  }
+
+  customeTile(String title, String titl1) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 18),
+      decoration: BoxDecoration(
+          color: searchColor, borderRadius: BorderRadius.circular(10)),
+      child: ListTile(
+        title: Text(
+          title,
+          style: Theme.of(context)
+              .textTheme
+              .titleMedium!
+              .copyWith(fontWeight: FontWeight.w400, fontSize: 14),
+        ),
+        trailing: Text(
+          titl1,
+          style: Theme.of(context)
+              .textTheme
+              .titleMedium!
+              .copyWith(fontWeight: FontWeight.w400, fontSize: 14),
         ),
       ),
     );
