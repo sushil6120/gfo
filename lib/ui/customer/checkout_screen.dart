@@ -327,7 +327,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                 if (kDebugMode) {
                   print("working");
                 }
-                // Navigator.pushNamed(context, RoutesName.checkOutScreen);
+                Navigator.pushNamed(context, RoutesName.congrotulationsScreen);
               },
               backgroundColor: greenColor.withOpacity(.6),
               backgroundColor2: greenColor.withOpacity(.6),

@@ -9,10 +9,12 @@ import 'package:gfo/ui/seller/seller_profile_detail_screen.dart';
 import '../../ui/customer/all_products_screen.dart';
 import '../../ui/customer/bottom_navBar_Screen.dart';
 import '../../ui/customer/checkout_screen.dart';
+import '../../ui/customer/customer_add_new_address.dart';
 import '../../ui/customer/customer_address_screen.dart';
 import '../../ui/customer/customer_home_Screen.dart';
 import '../../ui/customer/customer_login_screen.dart';
 import '../../ui/customer/login_otp_screen.dart';
+import '../../ui/customer/congratulations_screen.dart';
 import '../../ui/customer/role_screen.dart';
 import '../../ui/seller/seller_add_inventory_general_screen.dart';
 import '../../ui/seller/seller_profile_screen.dart';
@@ -43,6 +45,10 @@ class Routes {
         return SlideRoute(page: const CheckOutScreen(), x: 1, y: 0);
       case RoutesName.customerAddressScreen:
         return SlideRoute(page: const CustomerAddressScreen(), x: 1, y: 0);
+      case RoutesName.customerAddNewAddressScreen:
+        return SlideRoute(page: const CustomerAddNewAddressScreen(), x: 1, y: 0);
+      case RoutesName.congrotulationsScreen:
+        return SlideRoute(page: const CongrotulationsScreen(), x: 1, y: 0);
 
       // ------------Selller ------
 
