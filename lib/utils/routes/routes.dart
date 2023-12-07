@@ -2,8 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gfo/ui/customer/customer_product_details_screen.dart';
 import '../../ui/customer/all_products_screen.dart';
 import '../../ui/customer/bottom_navBar_Screen.dart';
+import '../../ui/customer/checkout_screen.dart';
 import '../../ui/customer/customer_home_Screen.dart';
 import '../../ui/customer/customer_login_screen.dart';
 import '../../ui/customer/login_otp_screen.dart';
@@ -28,6 +30,10 @@ class Routes {
         return SlideRoute(page: const BottomNavigationBarScreen(), x: 1, y: 0);
       case RoutesName.customerAllProductScreen:
         return SlideRoute(page: const CustomerAllProductScreen(), x: 1, y: 0);
+      case RoutesName.customerProductDetailsScreen:
+        return SlideRoute(page: const CustomerProductDetailsScreen(), x: 1, y: 0);
+      case RoutesName.checkOutScreen:
+        return SlideRoute(page: const CheckOutScreen(), x: 1, y: 0);
 
       default:
         return MaterialPageRoute(builder: (_) {

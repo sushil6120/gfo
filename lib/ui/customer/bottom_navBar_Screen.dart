@@ -4,6 +4,8 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gfo/ui/customer/all_products_screen.dart';
+import 'package:gfo/ui/customer/cart_screen.dart';
 import 'package:gfo/ui/customer/customer_home_Screen.dart';
 import 'package:provider/provider.dart';
 import '../../utils/colors.dart';
@@ -37,9 +39,9 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen>
 
   final screens = [
     const CustomerHomeScreen(),
+    CustomerAllProductScreen(),
     const Placeholder(),
-    const Placeholder(),
-    const Placeholder(),
+    const CartScreen(),
   ];
 
   var headers;

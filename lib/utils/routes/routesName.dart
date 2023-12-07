@@ -8,4 +8,6 @@ class RoutesName {
   static const String customerHomeScreen = 'CustomerHomeScreen';
   static const String bottomNavigationBarScreen = 'BottomNavigationBarScreen';
   static const String customerAllProductScreen = 'CustomerAllProductScreen';
+  static const String checkOutScreen = 'CheckOutScreen';
+  static const String customerProductDetailsScreen = 'CustomerProductDetailsScreen';
 }
