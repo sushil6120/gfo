@@ -128,76 +128,80 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
               itemCount: 3,
               itemBuilder: (context, index) {
                 return Row(
+                     crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Container(
-                      width: context.deviceWidth * .24,
-                      height: context.deviceHeight * .12,
-                      margin: EdgeInsets.only(
-                          left: 18, bottom: verticalSpaceSmall2),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: colorLight2,
-                          image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(
-                                  "https://sharksindia.com/images/products/Ext/e01.jpg"))),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            top: verticalSpaceSmall2,
-                            left: 14,
-                            right: verticalSpaceLarge,
+                     Container(
+                        width: context.deviceWidth * .18,
+                        height: context.deviceHeight * .09,
+                        margin: EdgeInsets.only(
+                            left: 18, bottom: verticalSpaceSmall2),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: colorLight2,
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: NetworkImage(
+                                    "https://sharksindia.com/images/products/Ext/e01.jpg"))),
+                      ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              top: 0,
+                              left: 14,
+                              right: verticalSpaceLarge,
+                            ),
+                            child: SizedBox(
+                              width: context.deviceWidth * .5,
+                              child: Text(
+                                "TMA-2 Comfort Wireless ",
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w400),
+                              ),
+                            ),
                           ),
-                          child: SizedBox(
-                            width: context.deviceWidth * .5,
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              top: 5,
+                              left: 14,
+                              right: verticalSpaceLarge,
+                            ),
                             child: Text(
-                              "TMA-2 Comfort Wireless ",
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
+                              "USD 270 ",
                               style: Theme.of(context)
                                   .textTheme
                                   .titleMedium!
                                   .copyWith(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400),
+                                      fontSize: 12, fontWeight: FontWeight.w700),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            top: 5,
-                            left: 14,
-                            right: verticalSpaceLarge,
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              top: 5,
+                              left: 14,
+                              right: verticalSpaceLarge,
+                            ),
+                            child: Text(
+                              "qty 3 ",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(
+                                      fontSize: 14, fontWeight: FontWeight.w700),
+                            ),
                           ),
-                          child: Text(
-                            "USD 270 ",
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium!
-                                .copyWith(
-                                    fontSize: 14, fontWeight: FontWeight.w700),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            top: 5,
-                            left: 14,
-                            right: verticalSpaceLarge,
-                          ),
-                          child: Text(
-                            "qty 3 ",
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium!
-                                .copyWith(
-                                    fontSize: 14, fontWeight: FontWeight.w700),
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     )
                   ],
                 );

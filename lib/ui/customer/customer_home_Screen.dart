@@ -31,13 +31,22 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const CircleAvatar(
-                    radius: 18,
-                    backgroundImage: NetworkImage(
-                        "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, RoutesName.customerProfileScreen);
+                    },
+                    child: const CircleAvatar(
+                      radius: 18,
+                      backgroundImage: NetworkImage(
+                          "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"),
+                    ),
                   ),
                   Image.asset("assets/logo.png"),
-                  const Icon(CupertinoIcons.bell)
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, RoutesName.notificationScreen);
+                    },
+                    child: const Icon(CupertinoIcons.bell))
                 ],
               ),
             ),
@@ -203,7 +212,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                               if (kDebugMode) {
                                 print("working");
                               }
-                              // Navigator.pushNamed(context, RoutesName.loginOtpVerify);
+                              Navigator.pushNamed(context, RoutesName.applyNocScreen);
                             },
                             backgroundColor: primaryColor,
                             backgroundColor2: primaryColor,
@@ -231,7 +240,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                               if (kDebugMode) {
                                 print("working");
                               }
-                              // Navigator.pushNamed(context, RoutesName.loginOtpVerify);
+                              Navigator.pushNamed(context, RoutesName.customeHireConsutantScreen);
                             },
                             backgroundColor: primaryColor,
                             backgroundColor2: primaryColor,
