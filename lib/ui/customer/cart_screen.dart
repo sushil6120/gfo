@@ -21,6 +21,7 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+      automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         title: Text(
@@ -52,10 +53,11 @@ class _CartScreenState extends State<CartScreen> {
                 itemCount: 3,
                 itemBuilder: (context, index) {
                   return Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Container(
-                        width: context.deviceWidth * .24,
-                        height: context.deviceHeight * .12,
+                        width: context.deviceWidth * .18,
+                        height: context.deviceHeight * .09,
                         margin: EdgeInsets.only(
                             left: 18, bottom: verticalSpaceSmall2),
                         decoration: BoxDecoration(
@@ -66,108 +68,111 @@ class _CartScreenState extends State<CartScreen> {
                                 image: NetworkImage(
                                     "https://sharksindia.com/images/products/Ext/e01.jpg"))),
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              top: verticalSpaceSmall2,
-                              left: 14,
-                              right: verticalSpaceLarge,
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 0),
+                        child: Column(
+                               crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                top: verticalSpaceSmall2,
+                                left: 14,
+                                right: verticalSpaceLarge,
+                              ),
+                              child: SizedBox(
+                                width: context.deviceWidth * .5,
+                                child: Text(
+                                  "TMA-2 Comfort Wireless ",
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleMedium!
+                                      .copyWith(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w400),
+                                ),
+                              ),
                             ),
-                            child: SizedBox(
-                              width: context.deviceWidth * .5,
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                top: 5,
+                                left: 14,
+                                right: verticalSpaceLarge,
+                              ),
                               child: Text(
-                                "TMA-2 Comfort Wireless ",
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
+                                "USD 270 ",
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleMedium!
                                     .copyWith(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400),
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w700),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              top: 5,
-                              left: 14,
-                              right: verticalSpaceLarge,
-                            ),
-                            child: Text(
-                              "USD 270 ",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium!
-                                  .copyWith(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w700),
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 10, top: 12),
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      width: context.deviceWidth * .08,
-                                      height: context.deviceHeight * .04,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          border: Border.all(
-                                            color: colorLight3,
-                                          )),
-                                      child: Icon(
-                                        Icons.remove,
-                                        size: 20,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(left: 10,),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        width: context.deviceWidth * .06,
+                                        height: context.deviceHeight * .03,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            border: Border.all(
+                                              color: colorLight3,
+                                            )),
+                                        child: Icon(
+                                          Icons.remove,
+                                          size: 16,
+                                        ),
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 20),
-                                      child: Text(
-                                        "1",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleMedium!
-                                            .copyWith(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w400),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 20),
+                                        child: Text(
+                                          "1",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleMedium!
+                                              .copyWith(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w400),
+                                        ),
                                       ),
-                                    ),
-                                    Container(
-                                      width: context.deviceWidth * .08,
-                                      height: context.deviceHeight * .04,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          border: Border.all(
-                                            color: colorLight3,
-                                          )),
-                                      child: Icon(
-                                        Icons.remove,
-                                        size: 20,
-                                      ),
-                                    )
-                                  ],
+                                      Container(
+                                        width: context.deviceWidth * .06,
+                                        height: context.deviceHeight * .03,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            border: Border.all(
+                                              color: colorLight3,
+                                            )),
+                                        child: Icon(
+                                          Icons.add,
+                                          size: 16,
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: context.deviceWidth * .28,
-                              ),
-                              IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(CupertinoIcons.delete))
-                            ],
-                          )
-                        ],
+                                SizedBox(
+                                  width: context.deviceWidth * .39,
+                                ),
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(CupertinoIcons.delete))
+                              ],
+                            )
+                          ],
+                        ),
                       )
                     ],
                   );

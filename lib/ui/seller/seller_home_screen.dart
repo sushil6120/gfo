@@ -193,7 +193,7 @@ class _SellerHomeScreenState extends State<SellerHomeScreen> {
                     Container(
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
-                          color: greenColor.withOpacity(.2),
+                          color: primaryColor.withOpacity(.45),
                           borderRadius: BorderRadius.circular(10)),
                       child: Column(children: [
                         Text(
@@ -269,12 +269,21 @@ class _SellerHomeScreenState extends State<SellerHomeScreen> {
                     ),
                     Column(
                       children: [
-                        Container(
-                          padding: EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: colorLight3),
-                              borderRadius: BorderRadius.circular(50)),
-                          child: SvgPicture.asset('assets/shopping.svg'),
+                        GestureDetector(
+                          onTap: () {
+                            if (kDebugMode) {
+                              print("working");
+                            }
+                            Navigator.pushNamed(
+                                context, RoutesName.SellerOrderScreen);
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(15),
+                            decoration: BoxDecoration(
+                                border: Border.all(color: colorLight3),
+                                borderRadius: BorderRadius.circular(50)),
+                            child: SvgPicture.asset('assets/shopping.svg'),
+                          ),
                         ),
                         SizedBox(
                           height: 10,

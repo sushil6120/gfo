@@ -72,11 +72,19 @@ class _SellerProfileScreenState extends State<SellerProfileScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                Text('Wallet',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black)),
+                GestureDetector(
+                  onTap: () {
+                    if (kDebugMode) {
+                      print("working");
+                    }
+                    Navigator.pushNamed(context, RoutesName.SellerWalletScreen);
+                  },
+                  child: Text('Wallet',
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black)),
+                ),
                 SizedBox(
                   height: 20,
                 ),

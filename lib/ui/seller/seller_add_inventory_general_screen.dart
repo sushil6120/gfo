@@ -29,8 +29,7 @@ class _SellerAddInventoryGeneralScreenState
             if (kDebugMode) {
               print("working");
             }
-            Navigator.pushNamed(
-                context, RoutesName.SellerAddInventoryGeneralScreen);
+            Navigator.pushNamed(context, RoutesName.SellerAddGalleryScreen);
           },
           backgroundColor: secondaryColorLight,
           backgroundColor2: secondaryColorLight,

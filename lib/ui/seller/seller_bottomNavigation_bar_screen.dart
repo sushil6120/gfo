@@ -8,24 +8,24 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gfo/ui/customer/all_products_screen.dart';
 import 'package:gfo/ui/customer/cart_screen.dart';
 import 'package:gfo/ui/customer/customer_home_Screen.dart';
+import 'package:gfo/ui/seller/seller_home_screen.dart';
+import 'package:gfo/ui/seller/seller_wallet_screen.dart';
 import 'package:provider/provider.dart';
 import '../../utils/colors.dart';
 import '../../utils/routes/routesName.dart';
 import '../../utils/valueConstants.dart';
 import '../globalWidgets/buttonBig.dart';
-import 'history_messages_screen.dart';
 
-class BottomNavigationBarScreen extends StatefulWidget {
-  const BottomNavigationBarScreen({super.key});
+class SellerBottomNavBar extends StatefulWidget {
+  const SellerBottomNavBar({super.key});
 
   @override
-  State<BottomNavigationBarScreen> createState() =>
-      _BottomNavigationBarScreenState();
+  State<SellerBottomNavBar> createState() => _SellerBottomNavBarState();
 }
 
-class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen>
+class _SellerBottomNavBarState extends State<SellerBottomNavBar>
     with WidgetsBindingObserver {
-  //const BottomNavigationBarScreen({Key? key}) : super(key: key);
+  //const SellerBottomNavBar({Key? key}) : super(key: key);
 
   //NotificationsServices notificationsServices = NotificationsServices();
 
@@ -39,10 +39,10 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen>
   ];
 
   final screens = [
-    const CustomerHomeScreen(),
-    CustomerAllProductScreen(),
-    const HistoryMessagesScreen(),
-    const CartScreen(),
+    const SellerHomeScreen(),
+    const Placeholder(),
+    const Placeholder(),
+    const SellerWalletScreen(),
   ];
 
   var headers;
@@ -104,32 +104,32 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen>
             elevation: 10,
             items: [
               BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home_outlined,
+                icon: SvgPicture.asset(
+                  "assets/home.svg",
+                  color: selectedIndex == 0 ? primaryColor : colorLight3,
                 ),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
-                  "assets/Vector.svg",
+                  "assets/document.svg",
                   color: selectedIndex == 1 ? primaryColor : colorLight3,
                 ),
-                label: 'Cart',
+                label: 'Document',
               ),
               BottomNavigationBarItem(
-          icon: SvgPicture.asset(
-                  "assets/chat.svg",
+                icon: SvgPicture.asset(
+                  "assets/product.svg",
                   color: selectedIndex == 2 ? primaryColor : colorLight3,
                 ),
-                label: 'History Message',
+                label: 'Products',
               ),
               BottomNavigationBarItem(
-        icon: SvgPicture.asset(
-                  "assets/shopping--bag.svg",
+                icon: SvgPicture.asset(
+                  "assets/wallet.svg",
                   color: selectedIndex == 3 ? primaryColor : colorLight3,
                 ),
-        
-                label: 'Cart',
+                label: 'Wallet',
               ),
               // BottomNavigationBarItem(
               //   icon: Icon(Icons.person),
