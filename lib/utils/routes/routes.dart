@@ -3,9 +3,13 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gfo/ui/customer/customer_product_details_screen.dart';
+import 'package:gfo/ui/seller/seller_add_gallery_screen.dart';
 import 'package:gfo/ui/seller/seller_add_inventory_screen.dart';
+import 'package:gfo/ui/seller/seller_bottomNavigation_bar_screen.dart';
 import 'package:gfo/ui/seller/seller_home_screen.dart';
+import 'package:gfo/ui/seller/seller_order_screen.dart';
 import 'package:gfo/ui/seller/seller_profile_detail_screen.dart';
+import 'package:gfo/ui/seller/seller_wallet_screen.dart';
 import '../../ui/customer/all_products_screen.dart';
 import '../../ui/customer/bottom_navBar_Screen.dart';
 import '../../ui/customer/checkout_screen.dart';
@@ -46,7 +50,8 @@ class Routes {
       case RoutesName.customerAddressScreen:
         return SlideRoute(page: const CustomerAddressScreen(), x: 1, y: 0);
       case RoutesName.customerAddNewAddressScreen:
-        return SlideRoute(page: const CustomerAddNewAddressScreen(), x: 1, y: 0);
+        return SlideRoute(
+            page: const CustomerAddNewAddressScreen(), x: 1, y: 0);
       case RoutesName.congrotulationsScreen:
         return SlideRoute(page: const CongrotulationsScreen(), x: 1, y: 0);
 
@@ -63,6 +68,14 @@ class Routes {
       case RoutesName.SellerAddInventoryGeneralScreen:
         return SlideRoute(
             page: const SellerAddInventoryGeneralScreen(), x: 1, y: 0);
+      case RoutesName.SellerAddGalleryScreen:
+        return SlideRoute(page: const SellerAddGalleryScreen(), x: 1, y: 0);
+      case RoutesName.SellerWalletScreen:
+        return SlideRoute(page: const SellerWalletScreen(), x: 1, y: 0);
+      case RoutesName.SellerOrderScreen:
+        return SlideRoute(page: const SellerOrderScreen(), x: 1, y: 0);
+      case RoutesName.SellerBottomNavBar:
+        return SlideRoute(page: const SellerBottomNavBar(), x: 1, y: 0);
 
       default:
         return MaterialPageRoute(builder: (_) {

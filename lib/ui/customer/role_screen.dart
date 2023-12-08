@@ -35,47 +35,46 @@ class _RolesScreenState extends State<RolesScreen> {
             SizedBox(
               height: verticalSpaceLarge,
             ),
-         customeRoles("assets/user.svg", "Customer", () { 
-                 Navigator.pushNamed(context, RoutesName.bottomNavigationBarScreen);
-         }),
-         customeRoles("assets/user.svg", "Consultant", () { }),
-         customeRoles("assets/user.svg", "Seller", () { 
-                      Navigator.pushNamed(context, RoutesName.SellerHomeScreen);
-         }),
+            customeRoles("assets/user.svg", "Customer", () {
+              Navigator.pushNamed(
+                  context, RoutesName.bottomNavigationBarScreen);
+            }),
+            customeRoles("assets/user.svg", "Consultant", () {}),
+            customeRoles("assets/user.svg", "Seller", () {
+              Navigator.pushNamed(context, RoutesName.SellerBottomNavBar);
+            }),
           ],
         ),
       ),
     );
   }
 
-  Widget customeRoles (String img, String roles , VoidCallback ontap){
-    return    Padding(
+  Widget customeRoles(String img, String roles, VoidCallback ontap) {
+    return Padding(
       padding: const EdgeInsets.symmetric(vertical: 30),
       child: Center(
-                child: Column(
-                  children: [
-                    GestureDetector(
-                      onTap: ontap,
-                      child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 3),
-                          decoration: BoxDecoration(
-                              color: colorLight3.withOpacity(.6),
-                              borderRadius: BorderRadius.circular(5)),
-                          child: SvgPicture.asset(img)),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      roles,
-                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          fontSize: 16,
-                          color: colorDark1,
-                          fontWeight: FontWeight.w700),
-                    ),
-                  ],
-                ),
-              ),
+        child: Column(
+          children: [
+            GestureDetector(
+              onTap: ontap,
+              child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 3),
+                  decoration: BoxDecoration(
+                      color: colorLight3.withOpacity(.6),
+                      borderRadius: BorderRadius.circular(5)),
+                  child: SvgPicture.asset(img)),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              roles,
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  fontSize: 16, color: colorDark1, fontWeight: FontWeight.w700),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

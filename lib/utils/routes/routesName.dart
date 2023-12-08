@@ -9,11 +9,12 @@ class RoutesName {
   static const String bottomNavigationBarScreen = 'BottomNavigationBarScreen';
   static const String customerAllProductScreen = 'CustomerAllProductScreen';
   static const String checkOutScreen = 'CheckOutScreen';
-  static const String customerProductDetailsScreen = 'CustomerProductDetailsScreen';
+  static const String customerProductDetailsScreen =
+      'CustomerProductDetailsScreen';
   static const String customerAddressScreen = 'CustomerAddressScreen';
-  static const String customerAddNewAddressScreen = 'CustomerAddNewAddressScreen';
+  static const String customerAddNewAddressScreen =
+      'CustomerAddNewAddressScreen';
   static const String congrotulationsScreen = 'CongrotulationsScreen';
-
 
   // ------- selller ------------
 
@@ -23,4 +24,8 @@ class RoutesName {
   static const String SellerAddInventoryScreen = 'SellerAddInventoryScreen';
   static const String SellerAddInventoryGeneralScreen =
       'SellerAddInventoryGeneralScreen';
+  static const String SellerAddGalleryScreen = 'SellerAddGalleryScreen';
+  static const String SellerWalletScreen = 'SellerWalletScreen';
+  static const String SellerOrderScreen = 'SellerOrderScreen';
+  static const String SellerBottomNavBar = 'SellerBottomNavBar';
 }

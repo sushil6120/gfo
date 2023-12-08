@@ -43,6 +43,7 @@ dependencies:
   country_code_picker: ^3.0.0
   pinput: ^3.0.1
   lottie: ^2.7.0
+  flutter_expanded_tile: ^0.3.7
 
 dev_dependencies:
   flutter_test:
