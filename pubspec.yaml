@@ -43,6 +43,13 @@ dependencies:
   country_code_picker: ^3.0.0
   pinput: ^3.0.1
   lottie: ^2.7.0
+  omni_datetime_picker: ^1.0.9
+  cached_network_image: ^3.3.0
+  chat_bubbles: ^1.5.0
+  audioplayers: ^5.2.1
+  flutter_rating_bar: ^4.0.1
+  order_tracker: ^0.0.2
+  expandable: ^5.0.1
 
 dev_dependencies:
   flutter_test:

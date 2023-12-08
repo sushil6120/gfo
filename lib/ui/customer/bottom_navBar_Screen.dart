@@ -13,6 +13,7 @@ import '../../utils/colors.dart';
 import '../../utils/routes/routesName.dart';
 import '../../utils/valueConstants.dart';
 import '../globalWidgets/buttonBig.dart';
+import 'history_messages_screen.dart';
 
 class BottomNavigationBarScreen extends StatefulWidget {
   const BottomNavigationBarScreen({super.key});
@@ -40,7 +41,7 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen>
   final screens = [
     const CustomerHomeScreen(),
     CustomerAllProductScreen(),
-    const Placeholder(),
+    const HistoryMessagesScreen(),
     const CartScreen(),
   ];
 
@@ -120,7 +121,7 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen>
                   "assets/chat.svg",
                   color: selectedIndex == 2 ? primaryColor : colorLight3,
                 ),
-                label: 'Chat',
+                label: 'History Message',
               ),
               BottomNavigationBarItem(
         icon: SvgPicture.asset(
