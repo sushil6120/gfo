@@ -42,7 +42,11 @@ class _ConsultantHomeScreenState extends State<ConsultantHomeScreen> {
                     ),
                   ),
                   Image.asset("assets/logo.png"),
-                  const Icon(CupertinoIcons.bell)
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, RoutesName.consultantNotificationScreen);
+                    },
+                    child: const Icon(CupertinoIcons.bell))
                 ],
               ),
             ),
@@ -279,98 +283,103 @@ class _ConsultantHomeScreenState extends State<ConsultantHomeScreen> {
             physics: ScrollPhysics(),
             itemCount: 4,
             itemBuilder: (context, index) {
-              return Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                    width: context.deviceWidth * .24,
-                    height: context.deviceHeight * .11,
-                    margin:
-                        EdgeInsets.only(left: 18, bottom: verticalSpaceSmall2),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: colorLight2,
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStwm8DDAL78_c8iv6IcujjSIY34vT5ok4FtA&usqp=CAU"))),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 14,
-                          right: verticalSpaceLarge,
+              return GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, RoutesName.consultantUserInfoScreen);
+                    },
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                      width: context.deviceWidth * .24,
+                      height: context.deviceHeight * .11,
+                      margin:
+                          EdgeInsets.only(left: 18, bottom: verticalSpaceSmall2),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: colorLight2,
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(
+                                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStwm8DDAL78_c8iv6IcujjSIY34vT5ok4FtA&usqp=CAU"))),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 14,
+                            right: verticalSpaceLarge,
+                          ),
+                          child: SizedBox(
+                            width: context.deviceWidth * .3,
+                            child: Text(
+                              "Amit Kumar",
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(
+                                      fontSize: 16, fontWeight: FontWeight.w700),
+                            ),
+                          ),
                         ),
-                        child: SizedBox(
-                          width: context.deviceWidth * .3,
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            top: 5,
+                            left: 14,
+                            right: verticalSpaceLarge,
+                          ),
                           child: Text(
-                            "Amit Kumar",
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
+                            "USD 270",
                             style: Theme.of(context)
                                 .textTheme
                                 .titleMedium!
                                 .copyWith(
-                                    fontSize: 16, fontWeight: FontWeight.w700),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: Color.fromRGBO(170, 170, 170, 1)),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          top: 5,
-                          left: 14,
-                          right: verticalSpaceLarge,
-                        ),
-                        child: Text(
-                          "USD 270",
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium!
-                              .copyWith(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: Color.fromRGBO(170, 170, 170, 1)),
-                        ),
-                      ),
-                      Padding(
-                          padding: const EdgeInsets.only(
-                            left: 12,
-                            right: verticalSpaceLarge,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Icon(Icons.location_on_outlined,
-                                  color: Color.fromRGBO(0, 148, 255, 1)),
-                              Text(
-                                "Location",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium!
-                                    .copyWith(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w400,
-                                        color: Color.fromRGBO(0, 148, 255, 1)),
-                              ),
-                            ],
-                          )),
-                    ],
-                  ),
-
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 18),
-                    child: Text("13:00"),
-                  ),
-                ],
+                        Padding(
+                            padding: const EdgeInsets.only(
+                              left: 12,
+                              right: verticalSpaceLarge,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Icon(Icons.location_on_outlined,
+                                    color: Color.fromRGBO(0, 148, 255, 1)),
+                                Text(
+                                  "Location",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleMedium!
+                                      .copyWith(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w400,
+                                          color: Color.fromRGBO(0, 148, 255, 1)),
+                                ),
+                              ],
+                            )),
+                      ],
+                    ),
+                
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 18),
+                      child: Text("13:00"),
+                    ),
+                  ],
+                ),
               );
             },
           )

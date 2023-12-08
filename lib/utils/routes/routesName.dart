@@ -29,7 +29,27 @@ class RoutesName {
   static const String privacyPolicyScreen = 'PrivacyPolicyScreen';
   static const String faqScreen = 'faqScreen';
 
-  // ------- selller ------------
+  // ------ consultant--------
+  static const String consultantBottomNavigationBarScreen =
+      "ConsultantBottomNavigationBarScreen";
+  static const String consultantHomeScreen = "ConsultantHomeScreen";
+  static const String consultantProfileScreen = "ConsultantProfileScreen";
+  static const String consultantProfileDetailScreen =
+      "ConsultantProfileDetailScreen";
+  static const String consultantRegistratinScreen =
+      "ConsultantRegistratinScreen";
+  static const String consultantChatListScreen = "ConsultantChatListScreen";
+  static const String consultantWalletScreen = "ConsultantWalletScreen";
+  static const String consultantChatMassageScreen =
+      "ConsultantChatMassageScreen";
+  static const String consultantUserInfoScreen = "ConsultantUserInfoScreen";
+    static const String consultantNotificationScreen = "consultantNotificationScreen";
+        static const String consultantCoustomerReview= "consultantCoustomerReview";
+
+    
+
+
+// ------- selller ------------
 
   static const String SellerHomeScreen = 'SellerHomeScreen';
   static const String SellerProfileScreen = 'SellerProfileScreen';
@@ -37,20 +57,8 @@ class RoutesName {
   static const String SellerAddInventoryScreen = 'SellerAddInventoryScreen';
   static const String SellerAddInventoryGeneralScreen =
       'SellerAddInventoryGeneralScreen';
-
- // ------ consultant--------
- static const String consultantBottomNavigationBarScreen = "ConsultantBottomNavigationBarScreen";
- static const String consultantHomeScreen = "ConsultantHomeScreen";
- static const String consultantProfileScreen = "ConsultantProfileScreen";
- static const String consultantProfileDetailScreen = "ConsultantProfileDetailScreen";
-  static const String consultantRegistratinScreen = "ConsultantRegistratinScreen";
-
-
   static const String SellerAddGalleryScreen = 'SellerAddGalleryScreen';
   static const String SellerWalletScreen = 'SellerWalletScreen';
   static const String SellerOrderScreen = 'SellerOrderScreen';
   static const String SellerBottomNavBar = 'SellerBottomNavBar';
 }
-
-
-

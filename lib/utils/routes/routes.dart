@@ -2,11 +2,17 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gfo/ui/consultant/Consultant_customer_review.dart';
 import 'package:gfo/ui/consultant/Consultant_registration.dart';
 import 'package:gfo/ui/consultant/consultantBottomNavigation.dart';
+import 'package:gfo/ui/consultant/consultantUserDeatails.dart';
+import 'package:gfo/ui/consultant/consultant_chat_list.dart';
+import 'package:gfo/ui/consultant/consultant_chat_massage.dart';
 import 'package:gfo/ui/consultant/consultant_homeScreen.dart';
+import 'package:gfo/ui/consultant/consultant_notification.dart';
 import 'package:gfo/ui/consultant/consultant_profile.dart';
 import 'package:gfo/ui/consultant/consultant_profile_details.dart';
+import 'package:gfo/ui/consultant/consultant_wallet.dart';
 import 'package:gfo/ui/customer/cart_screen.dart';
 import 'package:gfo/ui/customer/customer_product_details_screen.dart';
 import 'package:gfo/ui/seller/seller_add_gallery_screen.dart';
@@ -130,6 +136,19 @@ class Routes {
         return SlideRoute(page: const ConsultantProfileDetailScreen(), x: 1, y: 0);
         case RoutesName.consultantRegistratinScreen:
         return SlideRoute(page: const ConsultantRegistratinScreen(), x: 1, y: 0);
+        case RoutesName.consultantChatListScreen:
+        return SlideRoute(page: const ConsultantChatListScreen(), x: 1, y: 0);
+         case RoutesName.consultantWalletScreen:
+        return SlideRoute(page: const ConsultantWalletScreen(), x: 1, y: 0);
+        case RoutesName.consultantChatMassageScreen:
+        return SlideRoute(page: ConsultantChatMassageScreen(), x: 1, y: 0);
+         case RoutesName.consultantUserInfoScreen:
+        return SlideRoute(page: const ConsultantUserInfoScreen(), x: 1, y: 0);
+         case RoutesName.consultantNotificationScreen:
+        return SlideRoute(page: const ConsultantNotificationScreen(), x: 1, y: 0);
+         case RoutesName.consultantCoustomerReview:
+        return SlideRoute(page: const ConsultantCoustomerReview(), x: 1, y: 0);
+
 
       default:
         return MaterialPageRoute(builder: (_) {

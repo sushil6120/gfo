@@ -1,11 +1,10 @@
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gfo/ui/consultant/consultant_chat_list.dart';
 import 'package:gfo/ui/consultant/consultant_homeScreen.dart';
+import 'package:gfo/ui/consultant/consultant_wallet.dart';
 import 'package:gfo/ui/customer/all_products_screen.dart';
 import 'package:gfo/ui/customer/cart_screen.dart';
 import 'package:gfo/ui/customer/customer_home_Screen.dart';
@@ -41,8 +40,8 @@ class _ConsultantBottomNavigationBarScreenState
 
   final screens = [
     const ConsultantHomeScreen(),
-    const Placeholder(),
-    const Placeholder(),
+    const ConsultantChatListScreen(),
+    const ConsultantWalletScreen(),
   ];
 
   var headers;

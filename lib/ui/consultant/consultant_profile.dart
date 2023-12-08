@@ -88,6 +88,19 @@ class _ConsultantProfileScreenState extends State<ConsultantProfileScreen> {
                 SizedBox(
                   height: 20,
                 ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, RoutesName.consultantCoustomerReview);
+                  },
+                  child: Text('Customer Review',
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black)),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
                 Text('Benefit',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         fontSize: 16,

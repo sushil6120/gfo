@@ -38,7 +38,7 @@ class _ConsultantInfoScreenState extends State<ConsultantInfoScreen> {
                   image: DecorationImage(
                       fit: BoxFit.cover,
                       image: NetworkImage(
-                          "https://play-lh.googleusercontent.com/C9CAt9tZr8SSi4zKCxhQc9v4I6AOTqRmnLchsu1wVDQL0gsQ3fmbCVgQmOVM1zPru8UH=w240-h480-rw"))),
+                          "https://t4.ftcdn.net/jpg/02/14/74/61/360_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg"))),
             ),
             Padding(
               padding: const EdgeInsets.only(
@@ -158,7 +158,9 @@ class _ConsultantInfoScreenState extends State<ConsultantInfoScreen> {
                   print("working");
                 }
                 DateTime? dateTime = await showOmniDateTimePicker(
+
                   theme: ThemeData.light(),
+                  
                   context: context,
                   initialDate: DateTime.now(),
                   firstDate:
