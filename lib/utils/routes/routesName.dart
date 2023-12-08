@@ -23,4 +23,16 @@ class RoutesName {
   static const String SellerAddInventoryScreen = 'SellerAddInventoryScreen';
   static const String SellerAddInventoryGeneralScreen =
       'SellerAddInventoryGeneralScreen';
+
+ // ------ consultant--------
+ static const String consultantBottomNavigationBarScreen = "ConsultantBottomNavigationBarScreen";
+ static const String consultantHomeScreen = "ConsultantHomeScreen";
+ static const String consultantProfileScreen = "ConsultantProfileScreen";
+ static const String consultantProfileDetailScreen = "ConsultantProfileDetailScreen";
+  static const String consultantRegistratinScreen = "ConsultantRegistratinScreen";
+
+
 }
+
+
+

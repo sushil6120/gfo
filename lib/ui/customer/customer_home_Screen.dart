@@ -7,10 +7,8 @@ import "package:gfo/utils/colors.dart";
 import "package:gfo/utils/responsive.dart";
 import "package:gfo/utils/routes/routesName.dart";
 import "package:gfo/widgets/products_widget.dart";
-
 import "../../utils/valueConstants.dart";
 import "../globalWidgets/buttonBig.dart";
-
 class CustomerHomeScreen extends StatefulWidget {
   const CustomerHomeScreen({super.key});
 
@@ -41,7 +39,8 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                 ],
               ),
             ),
-      )),
+      )
+      ),
       body: SingleChildScrollView(
         child: Column(
    

@@ -43,6 +43,7 @@ dependencies:
   country_code_picker: ^3.0.0
   pinput: ^3.0.1
   lottie: ^2.7.0
+  circular_chart_flutter: ^0.0.2
 
 dev_dependencies:
   flutter_test:

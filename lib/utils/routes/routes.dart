@@ -2,6 +2,11 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gfo/ui/consultant/Consultant_registration.dart';
+import 'package:gfo/ui/consultant/consultantBottomNavigation.dart';
+import 'package:gfo/ui/consultant/consultant_homeScreen.dart';
+import 'package:gfo/ui/consultant/consultant_profile.dart';
+import 'package:gfo/ui/consultant/consultant_profile_details.dart';
 import 'package:gfo/ui/customer/customer_product_details_screen.dart';
 import 'package:gfo/ui/seller/seller_add_inventory_screen.dart';
 import 'package:gfo/ui/seller/seller_home_screen.dart';
@@ -46,7 +51,8 @@ class Routes {
       case RoutesName.customerAddressScreen:
         return SlideRoute(page: const CustomerAddressScreen(), x: 1, y: 0);
       case RoutesName.customerAddNewAddressScreen:
-        return SlideRoute(page: const CustomerAddNewAddressScreen(), x: 1, y: 0);
+        return SlideRoute(
+            page: const CustomerAddNewAddressScreen(), x: 1, y: 0);
       case RoutesName.congrotulationsScreen:
         return SlideRoute(page: const CongrotulationsScreen(), x: 1, y: 0);
 
@@ -63,6 +69,19 @@ class Routes {
       case RoutesName.SellerAddInventoryGeneralScreen:
         return SlideRoute(
             page: const SellerAddInventoryGeneralScreen(), x: 1, y: 0);
+
+      // --------- consultant ------
+      case RoutesName.consultantHomeScreen:
+        return SlideRoute(page: const ConsultantHomeScreen(), x: 1, y: 0);
+      case RoutesName.consultantBottomNavigationBarScreen:
+        return SlideRoute(
+            page: const ConsultantBottomNavigationBarScreen(), x: 1, y: 0);
+      case RoutesName.consultantProfileScreen:
+        return SlideRoute(page: const ConsultantProfileScreen(), x: 1, y: 0);
+        case RoutesName.consultantProfileDetailScreen:
+        return SlideRoute(page: const ConsultantProfileDetailScreen(), x: 1, y: 0);
+        case RoutesName.consultantRegistratinScreen:
+        return SlideRoute(page: const ConsultantRegistratinScreen(), x: 1, y: 0);
 
       default:
         return MaterialPageRoute(builder: (_) {

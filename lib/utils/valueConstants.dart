@@ -11,7 +11,7 @@ const double headingVerticalSpace = 10;
 const double verticalSpaceLarge = 40;
 const double verticalSpaceMedium = 30;
 const double verticalSpaceSmall = 20;
-const double verticalSpaceSmall2 = 12;
+const double verticalSpaceSmall2 = 10;
 const double verticalSpaceExtraSmall = 10;
 
 const Duration kDuration = Duration(milliseconds: 300);
