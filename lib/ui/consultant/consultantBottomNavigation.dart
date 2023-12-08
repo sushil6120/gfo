@@ -23,7 +23,8 @@ class ConsultantBottomNavigationBarScreen extends StatefulWidget {
       _ConsultantBottomNavigationBarScreenState();
 }
 
-class _ConsultantBottomNavigationBarScreenState extends State<ConsultantBottomNavigationBarScreen>
+class _ConsultantBottomNavigationBarScreenState
+    extends State<ConsultantBottomNavigationBarScreen>
     with WidgetsBindingObserver {
   //const ConsultantBottomNavigationBarScreen({Key? key}) : super(key: key);
 
@@ -40,7 +41,7 @@ class _ConsultantBottomNavigationBarScreenState extends State<ConsultantBottomNa
 
   final screens = [
     const ConsultantHomeScreen(),
-   const Placeholder(),
+    const Placeholder(),
     const Placeholder(),
   ];
 
@@ -103,19 +104,24 @@ class _ConsultantBottomNavigationBarScreenState extends State<ConsultantBottomNa
             elevation: 10,
             items: [
               BottomNavigationBarItem(
-                icon: SvgPicture.asset("assets/home.svg", color: selectedIndex == 0 ? primaryColor : colorLight3,),
+                icon: 
+                SvgPicture.asset(
+                  "assets/home.svg",
+                  color: selectedIndex == 0 ? primaryColor : colorLight3,
+                ),
                 label: 'Home',
               ),
-              
               BottomNavigationBarItem(
-          icon: SvgPicture.asset(
-                  "assets/chat.svg",
-                  color: selectedIndex == 1 ? primaryColor : colorLight3,
-                ),
+                icon: 
+                SvgPicture.asset(
+                        "assets/chat.svg",
+                        color: selectedIndex == 1 ? primaryColor : colorLight3,
+                      ),
                 label: 'Chat',
               ),
               BottomNavigationBarItem(
-        icon: SvgPicture.asset(
+                icon: 
+                SvgPicture.asset(
                   "assets/wallet.svg",
                   color: selectedIndex == 2 ? primaryColor : colorLight3,
                 ),

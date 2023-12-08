@@ -164,7 +164,7 @@ class _CartScreenState extends State<CartScreen> {
                                   ),
                                 ),
                                 SizedBox(
-                                  width: context.deviceWidth * .39,
+                                  width: context.deviceWidth * .3,
                                 ),
                                 IconButton(
                                     onPressed: () {},

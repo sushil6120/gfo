@@ -42,15 +42,15 @@ class _FaqScreenState extends State<FaqScreen> {
                     .copyWith(fontSize: 16, fontWeight: FontWeight.w700),
               ),
             ),
-            SizedBox(height: verticalSpaceSmall2,),
+            const SizedBox(height: verticalSpaceSmall2,),
           ListView.builder(
             shrinkWrap: true,
             itemCount: 4,
-            physics: ScrollPhysics(),
+            physics: const ScrollPhysics(),
             itemBuilder: (context, index) {
             return   Container(
-              margin: EdgeInsets.symmetric(horizontal: 18, vertical: 8),
-              padding: EdgeInsets.only(left: 10, right: 10, top: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+              padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),
                 color: Colors.greenAccent.withOpacity(.3)
@@ -58,7 +58,7 @@ class _FaqScreenState extends State<FaqScreen> {
               child: Center(
                 child: ExpandablePanel(
 
-                  theme: ExpandableThemeData(
+                  theme: const ExpandableThemeData(
                       expandIcon: Icons.keyboard_arrow_down_sharp,
                       collapseIcon: Icons.keyboard_arrow_up,
                       iconColor: colorDark1),
