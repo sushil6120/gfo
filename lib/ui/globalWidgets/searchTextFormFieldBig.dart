@@ -48,6 +48,8 @@ class SearchTextFormFieldBig extends StatelessWidget {
         validator: validator,
         cursorColor: Theme.of(context).textSelectionTheme.cursorColor,
         decoration: InputDecoration(
+          filled: true,
+          fillColor: colorLight2.withOpacity(.4),
           labelText: labale,
         labelStyle: TextStyle(
           fontSize: 13,
@@ -63,6 +65,8 @@ class SearchTextFormFieldBig extends StatelessWidget {
             errorStyle: const TextStyle(color: colorLight3, fontSize: 12),
             hintText: hintText,
             hintStyle: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
                 color: Theme.of(context).textSelectionTheme.selectionColor),
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
@@ -78,17 +82,17 @@ class SearchTextFormFieldBig extends StatelessWidget {
                     const BorderRadius.all(Radius.circular(radiusValue))),
             focusedBorder: OutlineInputBorder(
                 borderSide:
-                    BorderSide(width: 1, color: Theme.of(context).primaryColor),
+                    BorderSide(width: 1, color: Theme.of(context).scaffoldBackgroundColor),
                 borderRadius:
                     const BorderRadius.all(Radius.circular(radiusValue))),
                     disabledBorder:OutlineInputBorder(
                 borderSide:
-                    BorderSide(width: 1, color: Theme.of(context).primaryColor),
+                    BorderSide(width: 1, color: Theme.of(context).scaffoldBackgroundColor),
                 borderRadius:
                     const BorderRadius.all(Radius.circular(radiusValue))),
             enabledBorder: OutlineInputBorder(
                 borderSide:
-                    BorderSide(width: 1, color: Theme.of(context).primaryColor),
+                    BorderSide(width: 1, color: Theme.of(context).scaffoldBackgroundColor),
                 borderRadius:
                     const BorderRadius.all(Radius.circular(radiusValue)))),
       ),

@@ -11,6 +11,8 @@ class RoutesName {
   static const String checkOutScreen = 'CheckOutScreen';
   static const String customerProductDetailsScreen = 'CustomerProductDetailsScreen';
   static const String customerAddressScreen = 'CustomerAddressScreen';
+  static const String customerAddNewAddressScreen = 'CustomerAddNewAddressScreen';
+  static const String congrotulationsScreen = 'CongrotulationsScreen';
 
 
   // ------- selller ------------

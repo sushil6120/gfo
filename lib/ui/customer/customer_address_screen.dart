@@ -119,7 +119,7 @@ class _CustomerAddressScreenState extends State<CustomerAddressScreen> {
                 if (kDebugMode) {
                   print("working");
                 }
-                // Navigator.pushNamed(context, RoutesName.checkOutScreen);
+                Navigator.pushNamed(context, RoutesName.customerAddNewAddressScreen);
               },
               backgroundColor: colorLight2,
               backgroundColor2: colorLight2,

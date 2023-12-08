@@ -292,11 +292,16 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                       scrollDirection: Axis.horizontal,
                       physics: ScrollPhysics(),
                       itemBuilder: (context, index) {
-                        return ProductsWidgets(
-                          img:
-                              "https://thesvgroup.in/images/img/fire-equipments.jpg",
-                          title: "TMA-2 HD Wireless",
-                          price: "USD 25",
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, RoutesName.customerProductDetailsScreen);
+                          },
+                          child: ProductsWidgets(
+                            img:
+                                "https://thesvgroup.in/images/img/fire-equipments.jpg",
+                            title: "TMA-2 HD Wireless",
+                            price: "USD 25",
+                          ),
                         );
                       },
                     ),

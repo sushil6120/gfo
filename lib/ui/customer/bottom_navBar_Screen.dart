@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gfo/ui/customer/all_products_screen.dart';
 import 'package:gfo/ui/customer/cart_screen.dart';
 import 'package:gfo/ui/customer/customer_home_Screen.dart';
@@ -12,7 +13,6 @@ import '../../utils/colors.dart';
 import '../../utils/routes/routesName.dart';
 import '../../utils/valueConstants.dart';
 import '../globalWidgets/buttonBig.dart';
-
 
 class BottomNavigationBarScreen extends StatefulWidget {
   const BottomNavigationBarScreen({super.key});
@@ -101,30 +101,34 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen>
             }),
             currentIndex: selectedIndex,
             elevation: 10,
-            items: const [
+            items: [
               BottomNavigationBarItem(
                 icon: Icon(
-                  CupertinoIcons.home,
+                  Icons.home_outlined,
                 ),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
-                icon: Icon(
-                  CupertinoIcons.cart,
+                icon: SvgPicture.asset(
+                  "assets/Vector.svg",
+                  color: selectedIndex == 1 ? primaryColor : colorLight3,
                 ),
                 label: 'Cart',
               ),
               BottomNavigationBarItem(
-                icon: Icon(
-                  CupertinoIcons.heart,
+          icon: SvgPicture.asset(
+                  "assets/chat.svg",
+                  color: selectedIndex == 2 ? primaryColor : colorLight3,
                 ),
-                label: 'Wishlist',
+                label: 'Chat',
               ),
               BottomNavigationBarItem(
-                icon: Icon(
-                  CupertinoIcons.person,
+        icon: SvgPicture.asset(
+                  "assets/shopping--bag.svg",
+                  color: selectedIndex == 3 ? primaryColor : colorLight3,
                 ),
-                label: 'Profile',
+        
+                label: 'Cart',
               ),
               // BottomNavigationBarItem(
               //   icon: Icon(Icons.person),

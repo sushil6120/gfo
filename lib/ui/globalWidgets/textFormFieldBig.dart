@@ -70,6 +70,7 @@ class TextFormFieldBig extends StatelessWidget {
             border: const OutlineInputBorder(),
             // fillColor: searchColor,
             filled: false,
+            // filled: true,
             isDense: true,
             labelText: labelText,
             labelStyle: TextStyle(
