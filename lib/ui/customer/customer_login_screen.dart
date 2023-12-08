@@ -1,4 +1,6 @@
+import 'package:country_calling_code_picker/functions.dart';
 import 'package:country_code_picker/country_code_picker.dart';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -83,7 +85,7 @@ class _LoginScreenState extends State<CustomerLoginScreen> {
               child: Row(
                 children: [
                   Container(
-                    width: context.deviceWidth * .24,
+                    width: context.deviceWidth * .16,
                     height: context.deviceHeight * .058,
                     margin: EdgeInsets.symmetric(horizontal: 10),
                     decoration: BoxDecoration(
@@ -91,26 +93,27 @@ class _LoginScreenState extends State<CustomerLoginScreen> {
                         border: Border.all(
                             color: colorDark3.withOpacity(.4), width: .8)),
                     child: Center(
-                      child: CountryCodePicker(
-                        
-                        showFlag: false,
-                        hideMainText: false,
-                        
-                        showDropDownButton: true,
-                        textStyle: Theme.of(context)
-                            .textTheme
-                            .titleMedium!
-                            .copyWith(
-                                fontSize: 15, fontWeight: FontWeight.w400),
-                        onChanged: (value) {
-                          countryCode = value.dialCode.toString();
-                          setState(() {});
+                      child: GestureDetector(
+                        onTap: () {
+                           _showCountryPicker();
                         },
-                        initialSelection: 'IN',
-                        favorite: ['+91', 'IN'],
-                        showCountryOnly: true,
-                        showOnlyCountryWhenClosed: false,
-                        alignLeft: false,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              countryCode.toString(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(
+                                      fontSize: 14, fontWeight: FontWeight.w400),
+                            ),
+                            Icon(
+                              Icons.arrow_drop_down,
+                              color: colorDark3,
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -169,6 +172,8 @@ class _LoginScreenState extends State<CustomerLoginScreen> {
               print("working");
             }
             Navigator.pushNamed(context, RoutesName.loginOtpVerify);
+            /// Default.
+           
           },
           backgroundColor: primaryColor,
           backgroundColor2: primaryColor,
@@ -187,4 +192,18 @@ class _LoginScreenState extends State<CustomerLoginScreen> {
       ),
     );
   }
+
+  void _showCountryPicker() async {
+    final country = await showCountryPickerDialog(
+      
+      context,
+    );
+    if (country != null) {
+      setState(() {
+        countryCode = country.callingCode.toString();
+      });
+    }
+  }
+
+
 }

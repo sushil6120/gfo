@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gfo/utils/colors.dart';
+import 'package:gfo/utils/responsive.dart';
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -74,6 +75,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           ),
                         ),
                       Container(
+                        
                         padding: EdgeInsets.all(8.0),
                         decoration: BoxDecoration(
                           color: isSent ? Colors.green : Colors.red,
@@ -117,14 +119,17 @@ class _ChatScreenState extends State<ChatScreen> {
           Expanded(
             child: SizedBox(
               height: 50,
-              child: TextField(
+              child: TextFormField(
                 
                 controller: _messageController,
-                onSubmitted: (_) => _sendMessage(),
+                onFieldSubmitted: (_) => _sendMessage(),
                 decoration: InputDecoration(
                     hintText: 'Send a message',
                     hintStyle:Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 16, fontWeight: FontWeight.w400, color: colorLight3) ,
                     enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(color: colorLight3)),
+                        focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: BorderSide(color: colorLight3)),
                     filled: true,

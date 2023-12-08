@@ -50,6 +50,7 @@ dependencies:
   cached_network_image: ^3.3.0
   expandable: ^5.0.1
   order_tracker: ^0.0.2
+  country_calling_code_picker: ^2.0.1
 
 dev_dependencies:
   flutter_test:
