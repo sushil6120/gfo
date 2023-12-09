@@ -27,11 +27,11 @@ class AuthViewModel with ChangeNotifier {
             "number":phone
           } );
           Utils.flushBarErrorMessage(value.otp.toString(), context, Icons.error,
-              colorLightWhite, backgroundColor);
+              colorLightWhite, greenColor);
           setLoading(false);
         } else {
           Utils.flushBarErrorMessage(value.message.toString(), context,
-              Icons.error, colorLightWhite, backgroundColor);
+              Icons.error, colorLightWhite, primaryColor);
           setLoading(false);
         }
       });
