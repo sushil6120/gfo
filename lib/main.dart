@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gfo/viewmodel/authviewmodel.dart';
 import 'package:provider/provider.dart';
 
 import 'services/themeServices/themeManager.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeManager()),
         ChangeNotifierProvider(create: (_) => IndexViewModel()),
+        ChangeNotifierProvider(create: (_) => AuthViewModel()),
       ],
       child: Builder(
         builder: (BuildContext context) {

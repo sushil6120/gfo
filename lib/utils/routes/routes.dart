@@ -58,7 +58,8 @@ class Routes {
       case RoutesName.splashScreen:
         return SlideRoute(page: const CustomerLoginScreen(), x: 1, y: 0);
       case RoutesName.loginOtpVerify:
-        return SlideRoute(page: const LoginOtpVerifyScreen(), x: 1, y: 0);
+      final arguments = settings.arguments as Map<String, dynamic>;
+        return SlideRoute(page:  LoginOtpVerifyScreen(arguments: arguments), x: 1, y: 0);
       case RoutesName.rolesScreen:
         return SlideRoute(page: const RolesScreen(), x: 1, y: 0);
       case RoutesName.customerHomeScreen:

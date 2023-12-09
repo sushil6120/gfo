@@ -3,19 +3,30 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gfo/utils/colors.dart';
 import 'package:gfo/utils/valueConstants.dart';
+import 'package:gfo/viewmodel/authviewmodel.dart';
 import 'package:pinput/pinput.dart';
+import 'package:provider/provider.dart';
 
 import '../../utils/routes/routesName.dart';
 import '../globalWidgets/buttonBig.dart';
 
 class LoginOtpVerifyScreen extends StatefulWidget {
-  const LoginOtpVerifyScreen({super.key});
+  Map<String, dynamic> ?arguments;
+   LoginOtpVerifyScreen({super.key, this.arguments});
 
   @override
   State<LoginOtpVerifyScreen> createState() => _LoginOtpVerifyScreenState();
 }
 
 class _LoginOtpVerifyScreenState extends State<LoginOtpVerifyScreen> {
+  TextEditingController pinController = TextEditingController();
+  String? phone;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    phone = widget.arguments!['number'];
+  }
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
@@ -87,7 +98,7 @@ class _LoginOtpVerifyScreenState extends State<LoginOtpVerifyScreen> {
                         fontSize: 14),
                     children: <TextSpan>[
                       TextSpan(
-                          text: '+8801774280874',
+                          text: '+91$phone',
                           style: Theme.of(context)
                               .textTheme
                               .titleMedium!
@@ -120,13 +131,12 @@ class _LoginOtpVerifyScreenState extends State<LoginOtpVerifyScreen> {
             ),
             SizedBox(height: verticalSpaceSmall),
             Pinput(
+              controller: pinController,
               length: 4,
               defaultPinTheme: defaultPinTheme,
               focusedPinTheme: focusedPinTheme,
               submittedPinTheme: submittedPinTheme,
-              validator: (s) {
-                return s == '2222' ? null : 'Pin is incorrect';
-              },
+      
               pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
               showCursor: true,
               onCompleted: (pin) => print(pin),
@@ -157,7 +167,8 @@ class _LoginOtpVerifyScreenState extends State<LoginOtpVerifyScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: Padding(
+      bottomNavigationBar: Consumer<AuthViewModel>(builder: (context, value, child) {
+        return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 25),
         child: ButtonBig(
           fontSize: 14,
@@ -165,14 +176,15 @@ class _LoginOtpVerifyScreenState extends State<LoginOtpVerifyScreen> {
             if (kDebugMode) {
               print("working");
             }
-            Navigator.pushNamed(context, RoutesName.rolesScreen);
+            value.loginOtpVerifyApis(phone.toString(), pinController.text, context);
+            // Navigator.pushNamed(context, RoutesName.rolesScreen);
           },
           backgroundColor: primaryColor,
           backgroundColor2: primaryColor,
           width: double.infinity,
           height: 55,
           text: "Submit",
-          showProgress: false,
+          showProgress: value.loading,
           progressColor: colorLightWhite,
           progressStrokeWidth: 1.5,
           radius: 5,
@@ -181,7 +193,8 @@ class _LoginOtpVerifyScreenState extends State<LoginOtpVerifyScreen> {
           progressPadding: 20,
           fontWeight: FontWeight.w700,
         ),
-      ),
+      );
+      },)
     );
   }
 }
