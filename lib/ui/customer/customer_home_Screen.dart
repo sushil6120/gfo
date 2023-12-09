@@ -1,7 +1,7 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
-import "package:flutter_svg/svg.dart";
+// import "package:flutter_svg/svg.dart";
 import "package:gfo/ui/globalWidgets/textFormFieldBig.dart";
 import "package:gfo/utils/colors.dart";
 import "package:gfo/utils/responsive.dart";

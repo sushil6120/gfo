@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+// import 'package:flutter_svg/svg.dart';
 import 'package:gfo/utils/colors.dart';
+import 'package:gfo/utils/routes/routesName.dart';
 
 class SellerProfileDetailScreen extends StatefulWidget {
   const SellerProfileDetailScreen({super.key});
@@ -44,9 +45,14 @@ class _SellerProfileDetailScreenState extends State<SellerProfileDetailScreen> {
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                     color: colorDark3)),
-            trailing: Icon(
-              Icons.edit_outlined,
-              color: Colors.black,
+            trailing: GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, RoutesName.sellerRegistratinScreen);
+                },
+              child: Icon(
+                Icons.edit_outlined,
+                color: Colors.black,
+              ),
             ),
           ),
           SizedBox(

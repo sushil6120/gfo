@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:gfo/ui/consultant/consultantBottomNavigation.dart';
+// import 'package:gfo/ui/consultant/consultantBottomNavigation.dart';
 import 'package:gfo/utils/valueConstants.dart';
 
 import '../../utils/colors.dart';
@@ -43,7 +43,7 @@ class _RolesScreenState extends State<RolesScreen> {
           Navigator.pushNamed(context, RoutesName.consultantBottomNavigationBarScreen);
          }),
          customeRoles("assets/user.svg", "Seller", () { 
-                      Navigator.pushNamed(context, RoutesName.SellerHomeScreen);
+                      Navigator.pushNamed(context, RoutesName.SellerBottomNavBar);
          }),
     
           ],

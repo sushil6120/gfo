@@ -1,22 +1,16 @@
-// import 'package:cached_network_image/cached_network_image.dart';
-// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_svg/svg.dart';
 import 'package:gfo/utils/responsive.dart';
-import 'package:gfo/utils/routes/routesName.dart';
-
+// import 'package:gfo/utils/routes/routesName.dart';
 import '../../utils/colors.dart';
-// import '../../utils/valueConstants.dart';
-// import '../globalWidgets/textFormFieldBig.dart';
 
-class ConsultantNotificationScreen extends StatefulWidget {
-  const ConsultantNotificationScreen({super.key});
+class SellerNotificationScreen extends StatefulWidget {
+  const SellerNotificationScreen({super.key});
 
   @override
-  State<ConsultantNotificationScreen> createState() => _HistoryMessagesScreenState();
+  State<SellerNotificationScreen> createState() => _HistoryMessagesScreenState();
 }
 
-class _HistoryMessagesScreenState extends State<ConsultantNotificationScreen> {
+class _HistoryMessagesScreenState extends State<SellerNotificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +39,7 @@ class _HistoryMessagesScreenState extends State<ConsultantNotificationScreen> {
                 children: [
                   ListTile(
                     onTap: () {
-                      Navigator.pushNamed(context, RoutesName.chatScreen);
+                      // Navigator.pushNamed(context, RoutesName.chatScreen);
                     },
                     leading: Container(
                       width: context.deviceWidth * .1,

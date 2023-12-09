@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gfo/ui/globalWidgets/buttonBig.dart';
-import 'package:gfo/ui/globalWidgets/searchTextFormFieldBig.dart';
 import 'package:gfo/ui/globalWidgets/search_field.dart';
-import 'package:gfo/ui/globalWidgets/textFormFieldBig.dart';
-import 'package:gfo/ui/seller/seller_add_inventory_general_screen.dart';
 import 'package:gfo/utils/colors.dart';
 import 'package:gfo/utils/routes/routesName.dart';
+// import 'package:gfo/ui/globalWidgets/searchTextFormFieldBig.dart';
+// import 'package:gfo/ui/globalWidgets/textFormFieldBig.dart';
+// import 'package:gfo/ui/seller/seller_add_inventory_general_screen.dart';
 
 class SellerAddInventoryScreen extends StatefulWidget {
   const SellerAddInventoryScreen({super.key});

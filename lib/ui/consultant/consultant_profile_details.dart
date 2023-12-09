@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:gfo/ui/consultant/Consultant_registration.dart';
+// import 'package:flutter_svg/svg.dart';
+// import 'package:gfo/ui/consultant/Consultant_registration.dart';
 import 'package:gfo/utils/colors.dart';
 import 'package:gfo/utils/routes/routesName.dart';
 

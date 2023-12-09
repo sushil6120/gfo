@@ -35,9 +35,14 @@ class _SellerHomeScreenState extends State<SellerHomeScreen> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20),
-            child: Icon(
-              CupertinoIcons.bell,
-              color: Colors.black,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, RoutesName.sellerNotificationScreen);
+              },
+              child: Icon(
+                CupertinoIcons.bell,
+                color: Colors.black,
+              ),
             ),
           ),
         ],

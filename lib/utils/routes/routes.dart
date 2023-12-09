@@ -1,6 +1,3 @@
-import 'dart:math';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gfo/ui/consultant/Consultant_customer_review.dart';
 import 'package:gfo/ui/consultant/Consultant_registration.dart';
@@ -20,8 +17,13 @@ import 'package:gfo/ui/customer/faq_screen.dart';
 import 'package:gfo/ui/seller/seller_add_inventory_screen.dart';
 import 'package:gfo/ui/seller/seller_bottomNavigation_bar_screen.dart';
 import 'package:gfo/ui/seller/seller_home_screen.dart';
+import 'package:gfo/ui/seller/seller_notification.dart';
 import 'package:gfo/ui/seller/seller_order_screen.dart';
+import 'package:gfo/ui/seller/seller_privacy_policy.dart';
+import 'package:gfo/ui/seller/seller_producat.dart';
+import 'package:gfo/ui/seller/seller_product_details.dart';
 import 'package:gfo/ui/seller/seller_profile_detail_screen.dart';
+import 'package:gfo/ui/seller/seller_registration.dart';
 import 'package:gfo/ui/seller/seller_wallet_screen.dart';
 import '../../ui/customer/all_products_screen.dart';
 import '../../ui/customer/apply_noc_screen.dart';
@@ -123,6 +125,16 @@ class Routes {
         return SlideRoute(page: const SellerOrderScreen(), x: 1, y: 0);
       case RoutesName.SellerBottomNavBar:
         return SlideRoute(page: const SellerBottomNavBar(), x: 1, y: 0);
+        case RoutesName.sellerRegistratinScreen:
+        return SlideRoute(page: const SellerRegistratinScreen(), x: 1, y: 0);
+         case RoutesName.sellerNotificationScreen:
+        return SlideRoute(page: const SellerNotificationScreen(), x: 1, y: 0);
+         case RoutesName.sellerPrivacyPolicyScreen:
+        return SlideRoute(page: const  SellerPrivacyPolicyScreen(), x: 1, y: 0);
+         case RoutesName.sellerAllProductScreen:
+        return SlideRoute(page: const  SellerAllProductScreen(), x: 1, y: 0);
+        case RoutesName.sellerProductDetailsScreen:
+        return SlideRoute(page: const  SellerProductDetailsScreen(), x: 1, y: 0);
 
       // --------- consultant ------
       case RoutesName.consultantHomeScreen:
@@ -148,6 +160,7 @@ class Routes {
         return SlideRoute(page: const ConsultantNotificationScreen(), x: 1, y: 0);
          case RoutesName.consultantCoustomerReview:
         return SlideRoute(page: const ConsultantCoustomerReview(), x: 1, y: 0);
+        
 
 
       default:

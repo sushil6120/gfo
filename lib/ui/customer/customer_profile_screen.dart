@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:gfo/ui/seller/seller_profile_detail_screen.dart';
+// import 'package:flutter_svg/svg.dart';
+// import 'package:gfo/ui/seller/seller_profile_detail_screen.dart';
 import 'package:gfo/utils/colors.dart';
 import 'package:gfo/utils/routes/routesName.dart';
 

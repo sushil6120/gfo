@@ -43,11 +43,9 @@ class RoutesName {
   static const String consultantChatMassageScreen =
       "ConsultantChatMassageScreen";
   static const String consultantUserInfoScreen = "ConsultantUserInfoScreen";
-    static const String consultantNotificationScreen = "consultantNotificationScreen";
-        static const String consultantCoustomerReview= "consultantCoustomerReview";
-
-    
-
+  static const String consultantNotificationScreen =
+      "consultantNotificationScreen";
+  static const String consultantCoustomerReview = "consultantCoustomerReview";
 
 // ------- selller ------------
 
@@ -61,4 +59,11 @@ class RoutesName {
   static const String SellerWalletScreen = 'SellerWalletScreen';
   static const String SellerOrderScreen = 'SellerOrderScreen';
   static const String SellerBottomNavBar = 'SellerBottomNavBar';
+  static const String sellerRegistratinScreen = 'SellerRegistratinScreen';
+  static const String sellerNotificationScreen = 'sellerNotificationScreen';
+  static const String sellerPrivacyPolicyScreen = 'sellerPrivacyPolicyScreen';
+    static const String sellerAllProductScreen= 'sellerAllProductScreen';
+        static const String sellerProductDetailsScreen = 'sellerProductDetailsScreen';
+
+
 }

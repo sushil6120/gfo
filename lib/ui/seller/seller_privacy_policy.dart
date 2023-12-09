@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:gfo/utils/colors.dart';
 import 'package:gfo/utils/valueConstants.dart';
 
-class PrivacyPolicyScreen extends StatefulWidget {
-  const PrivacyPolicyScreen({super.key});
+class SellerPrivacyPolicyScreen extends StatefulWidget {
+  const SellerPrivacyPolicyScreen({super.key});
 
   @override
-  State<PrivacyPolicyScreen> createState() => _PrivacyPolicyScreenState();
+  State<SellerPrivacyPolicyScreen> createState() => _SellerPrivacyPolicyScreenState();
 }
 
-class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
+class _SellerPrivacyPolicyScreenState extends State<SellerPrivacyPolicyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

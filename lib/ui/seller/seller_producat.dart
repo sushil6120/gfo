@@ -7,15 +7,15 @@ import 'package:gfo/utils/routes/routesName.dart';
 
 import '../../utils/valueConstants.dart';
 
-class CustomerAllProductScreen extends StatefulWidget {
-  const CustomerAllProductScreen({super.key});
+class SellerAllProductScreen extends StatefulWidget {
+  const SellerAllProductScreen({super.key});
 
   @override
-  State<CustomerAllProductScreen> createState() =>
-      _CustomerAllProductScreenState();
+  State<SellerAllProductScreen> createState() =>
+      _SellerAllProductScreenState();
 }
 
-class _CustomerAllProductScreenState extends State<CustomerAllProductScreen> {
+class _SellerAllProductScreenState extends State<SellerAllProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,11 +35,11 @@ class _CustomerAllProductScreenState extends State<CustomerAllProductScreen> {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(CupertinoIcons.bell, color: colorDark1),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(CupertinoIcons.cart, color: colorDark1),
+            icon: GestureDetector(
+              onTap: (){
+                Navigator.pushNamed(context, RoutesName.sellerNotificationScreen);
+              },
+              child: const Icon(CupertinoIcons.bell, color: colorDark1)),
           ),
         ],
       ),
@@ -47,19 +47,38 @@ class _CustomerAllProductScreenState extends State<CustomerAllProductScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                 Padding(
               padding: const EdgeInsets.only(
                 top: verticalSpaceMedium,
                 left: 18,
                 right: verticalSpaceLarge,
               ),
               child: Text(
-                "Top Products",
+                "All Items",
                 style: Theme.of(context)
                     .textTheme
                     .titleMedium!
                     .copyWith(fontSize: 16, fontWeight: FontWeight.w400),
               ),
+            ),
+              Padding(
+              padding: const EdgeInsets.only(
+                top: verticalSpaceMedium,
+                left: 18,
+                right: 18,
+              ),
+              child: Text(
+                "+ Add Product",
+                style: Theme.of(context)
+                    .textTheme
+                    .titleMedium!
+                    .copyWith(fontSize: 16, fontWeight: FontWeight.w400,color:Color.fromRGBO(0, 210, 170, 1)),
+              ),
+            ),
+              ],
             ),
             Padding(
               padding: const EdgeInsets.only(
@@ -68,7 +87,7 @@ class _CustomerAllProductScreenState extends State<CustomerAllProductScreen> {
                 right: verticalSpaceLarge,
               ),
               child: Text(
-                "All Products",
+                "GFO Products",
                 style: Theme.of(context)
                     .textTheme
                     .titleMedium!
@@ -99,12 +118,12 @@ class _CustomerAllProductScreenState extends State<CustomerAllProductScreen> {
                 itemBuilder: (BuildContext context, int index) {
                   return GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, RoutesName.customerProductDetailsScreen);
+                      Navigator.pushNamed(context, RoutesName.sellerProductDetailsScreen);
                     },
                     child: Container(
                       width: context.deviceWidth * .4,
                       height: context.deviceHeight * .25,
-                      margin: const EdgeInsets.only(top: 16, left: 9, right: 9),
+                      margin: const EdgeInsets.only(top: 16, left: 9, right: 9,),
                       decoration: BoxDecoration(
                           color: colorLightWhite,
                           borderRadius: BorderRadius.circular(5),

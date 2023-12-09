@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gfo/utils/colors.dart';
-import 'package:gfo/utils/responsive.dart';
+// import 'package:gfo/utils/responsive.dart';
 
 class ChatScreen extends StatefulWidget {
   @override

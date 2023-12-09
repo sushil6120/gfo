@@ -1,16 +1,16 @@
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gfo/ui/consultant/consultant_chat_list.dart';
 import 'package:gfo/ui/consultant/consultant_homeScreen.dart';
 import 'package:gfo/ui/consultant/consultant_wallet.dart';
-import 'package:gfo/ui/customer/all_products_screen.dart';
-import 'package:gfo/ui/customer/cart_screen.dart';
-import 'package:gfo/ui/customer/customer_home_Screen.dart';
-import 'package:provider/provider.dart';
+// import 'package:gfo/ui/customer/all_products_screen.dart';
+// import 'package:gfo/ui/customer/cart_screen.dart';
+// import 'package:gfo/ui/customer/customer_home_Screen.dart';
+// import 'package:provider/provider.dart';
 import '../../utils/colors.dart';
-import '../../utils/routes/routesName.dart';
+// import '../../utils/routes/routesName.dart';
 import '../../utils/valueConstants.dart';
 import '../globalWidgets/buttonBig.dart';
 

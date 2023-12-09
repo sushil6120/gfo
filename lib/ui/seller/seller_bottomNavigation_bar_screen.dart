@@ -1,18 +1,11 @@
-import 'dart:convert';
-import 'dart:developer';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:gfo/ui/customer/all_products_screen.dart';
-import 'package:gfo/ui/customer/cart_screen.dart';
-import 'package:gfo/ui/customer/customer_home_Screen.dart';
 import 'package:gfo/ui/seller/seller_home_screen.dart';
+import 'package:gfo/ui/seller/seller_order_screen.dart';
+import 'package:gfo/ui/seller/seller_producat.dart';
 import 'package:gfo/ui/seller/seller_wallet_screen.dart';
-import 'package:provider/provider.dart';
 import '../../utils/colors.dart';
-import '../../utils/routes/routesName.dart';
 import '../../utils/valueConstants.dart';
 import '../globalWidgets/buttonBig.dart';
 
@@ -40,8 +33,8 @@ class _SellerBottomNavBarState extends State<SellerBottomNavBar>
 
   final screens = [
     const SellerHomeScreen(),
-    const Placeholder(),
-    const Placeholder(),
+    const SellerOrderScreen(),
+    const SellerAllProductScreen(),
     const SellerWalletScreen(),
   ];
 

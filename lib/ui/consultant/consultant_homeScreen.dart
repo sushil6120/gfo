@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gfo/utils/colors.dart';
@@ -59,7 +59,7 @@ class _ConsultantHomeScreenState extends State<ConsultantHomeScreen> {
             padding: const EdgeInsets.only(
                 top: verticalSpaceSmall2, left: 18, right: verticalSpaceLarge),
             child: Text(
-              "Hi, Amit",
+              "Hi, Amit kushwaha",
               style: Theme.of(context)
                   .textTheme
                   .titleMedium!

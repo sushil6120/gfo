@@ -5,6 +5,7 @@ import 'package:gfo/ui/seller/seller_dilevery_tabbar_screen.dart';
 import 'package:gfo/ui/seller/seller_past_tabbar_screen.dart';
 import 'package:gfo/ui/seller/seller_upcoming_tabbar_screen.dart';
 import 'package:gfo/utils/colors.dart';
+import 'package:gfo/utils/routes/routesName.dart';
 
 class SellerOrderScreen extends StatefulWidget {
   const SellerOrderScreen({super.key});
@@ -30,7 +31,11 @@ class _SellerOrderScreenState extends State<SellerOrderScreen> {
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 20),
-              child: Icon(CupertinoIcons.bell),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, RoutesName.sellerNotificationScreen);
+                },
+                child: Icon(CupertinoIcons.bell,color:colorDark1,)),
             )
           ],
         ),
