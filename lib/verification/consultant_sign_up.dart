@@ -1,6 +1,3 @@
-import 'package:country_calling_code_picker/functions.dart';
-// import 'package:country_code_picker/country_code_picker.dart';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -8,32 +5,36 @@ import 'package:flutter/services.dart';
 import 'package:gfo/utils/responsive.dart';
 import 'package:gfo/utils/routes/routesName.dart';
 import 'package:gfo/viewmodel/authviewmodel.dart';
+
+import 'package:gfo/viewmodel/indesViewModel.dart';
+
 import 'package:provider/provider.dart';
 
 import '../../utils/colors.dart';
 import '../../utils/valueConstants.dart';
-import '../globalWidgets/buttonBig.dart';
-import '../globalWidgets/search_field.dart';
+import '../ui/globalWidgets/buttonBig.dart';
+import '../ui/globalWidgets/search_field.dart';
 
-class CustomerLoginScreen extends StatefulWidget {
-  const CustomerLoginScreen({super.key});
+class ConsultantSignUpScreen extends StatefulWidget {
+  const ConsultantSignUpScreen({super.key});
 
   @override
-  State<CustomerLoginScreen> createState() => _LoginScreenState();
+  State<ConsultantSignUpScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<CustomerLoginScreen> {
-  TextEditingController phoneController = TextEditingController();
+class _LoginScreenState extends State<ConsultantSignUpScreen> {
   String countryCode = "+91";
+  TextEditingController phoneController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    // final singUp = Provider.of<VerifyViewModel>(context, listen: false);
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
           elevation: 0,
           backgroundColor: primaryColor,
           title: Text(
-            "LogIn",
+            "SignUp",
             style: Theme.of(context).textTheme.titleMedium!.copyWith(
                 fontSize: 18,
                 color: colorLightWhite,
@@ -148,14 +149,14 @@ class _LoginScreenState extends State<CustomerLoginScreen> {
               Center(
                 child: RichText(
                     text: TextSpan(
-                  text: 'Don’t have an account?  ',
+                  text: 'Already have an account?  ',
                   style: Theme.of(context).textTheme.titleSmall!.copyWith(
                       color: colorDark3,
                       fontWeight: FontWeight.w400,
                       fontSize: 14),
                   children: <TextSpan>[
                     TextSpan(
-                        text: 'Create an account',
+                        text: 'Login',
                         style: Theme.of(context)
                             .textTheme
                             .titleMedium!
@@ -165,7 +166,8 @@ class _LoginScreenState extends State<CustomerLoginScreen> {
                                 color: greenColor),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            Navigator.pushNamed(context, RoutesName.RoleScreen);
+                            Navigator.pushNamedAndRemoveUntil(context,
+                                RoutesName.splashScreen, (route) => false);
                           }),
                   ],
                 )),
@@ -173,47 +175,43 @@ class _LoginScreenState extends State<CustomerLoginScreen> {
             ],
           ),
         ),
-        bottomNavigationBar: Consumer<AuthViewModel>(
-          builder: (context, value, child) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 25),
-              child: ButtonBig(
-                fontSize: 14,
-                onTap: () {
-                  if (kDebugMode) {
-                    print("working");
-                  }
-                  value.loginSendApis(phoneController.text, context);
-                  // Navigator.pushNamed(context, RoutesName.loginOtpVerify);
-                  /// Default.
-                },
-                backgroundColor: primaryColor,
-                backgroundColor2: primaryColor,
-                width: double.infinity,
-                height: 55,
-                text: "Get Code",
-                showProgress: value.loading,
-                progressColor: colorLightWhite,
-                progressStrokeWidth: 1.5,
-                radius: 5,
-                textColor: colorLightWhite,
-                letterSpacing: 0,
-                progressPadding: 20,
-                fontWeight: FontWeight.w700,
-              ),
-            );
-          },
-        ));
+        bottomNavigationBar:Consumer<AuthViewModel>(builder: (context, value, child) {
+          return  Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 25),
+          child: ButtonBig(
+            fontSize: 14,
+            onTap: () {
+              if (kDebugMode) {
+                print("working");
+              }
+              value.consultantSignUpApi(phoneController.text, context);
+            },
+            backgroundColor: primaryColor,
+            backgroundColor2: primaryColor,
+            width: double.infinity,
+            height: 55,
+            text: "Get Code",
+            showProgress: value.loading,
+            progressColor: colorLightWhite,
+            progressStrokeWidth: 1.5,
+            radius: 5,
+            textColor: colorLightWhite,
+            letterSpacing: 0,
+            progressPadding: 20,
+            fontWeight: FontWeight.w700,
+          ),
+        );
+        },));
   }
 
   void _showCountryPicker() async {
-    final country = await showCountryPickerDialog(
-      context,
-    );
-    if (country != null) {
-      setState(() {
-        countryCode = country.callingCode.toString();
-      });
-    }
+    // final country = await showCountryPickerDialog(
+    //   context,
+    // );
+    // if (country != null) {
+    //   setState(() {
+    //     countryCode = country.callingCode.toString();
+    //   });
+    // }
   }
 }

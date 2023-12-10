@@ -57,7 +57,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
           children: [
             Padding(
               padding: const EdgeInsets.only(
-                  top: verticalSpaceMedium,
+                  top: verticalSpaceSmall2,
                   left: 18,
                   right: verticalSpaceLarge),
               child: Text(

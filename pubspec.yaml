@@ -51,6 +51,7 @@ dependencies:
   expandable: ^5.0.1
   order_tracker: ^0.0.2
   country_calling_code_picker: ^2.0.1
+  http: ^1.1.2
 
 dev_dependencies:
   flutter_test:

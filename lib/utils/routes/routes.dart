@@ -25,6 +25,11 @@ import 'package:gfo/ui/seller/seller_product_details.dart';
 import 'package:gfo/ui/seller/seller_profile_detail_screen.dart';
 import 'package:gfo/ui/seller/seller_registration.dart';
 import 'package:gfo/ui/seller/seller_wallet_screen.dart';
+import 'package:gfo/verification/consultant_sign_up.dart';
+import 'package:gfo/verification/customer_sign_up.dart';
+import 'package:gfo/verification/role.dart';
+import 'package:gfo/verification/seller_sign_up.dart';
+import 'package:gfo/verification/sign_up_otp_verify.dart';
 import '../../ui/customer/all_products_screen.dart';
 import '../../ui/customer/apply_noc_screen.dart';
 import '../../ui/customer/bottom_navBar_Screen.dart';
@@ -104,6 +109,18 @@ class Routes {
         return SlideRoute(page: PrivacyPolicyScreen(), x: 1, y: 0);
       case RoutesName.faqScreen:
         return SlideRoute(page: FaqScreen(), x: 1, y: 0);
+      case RoutesName.customerSignUpScreen:
+        return SlideRoute(page: CustomerSignUpScreen(), x: 1, y: 0);
+      case RoutesName.SellerSignUpScreen:
+        return SlideRoute(page: SellerSignUp(), x: 1, y: 0);
+      case RoutesName.ConsultantSignUpScreen:
+        return SlideRoute(page: ConsultantSignUpScreen(), x: 1, y: 0);
+      case RoutesName.RoleScreen:
+        return SlideRoute(page: RoleScreen(), x: 1, y: 0);
+      case RoutesName.SignUpOtpScreen:
+            final arguments = settings.arguments as Map<String, dynamic>;
+        return SlideRoute(page: SignUpOtpVerifyScreen(arguments: arguments), x: 1, y: 0);
+ 
 
       // ------------Selller ------
 

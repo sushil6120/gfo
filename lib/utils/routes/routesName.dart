@@ -28,6 +28,11 @@ class RoutesName {
   static const String orderInfoScreen = 'OrderInfoScreen';
   static const String privacyPolicyScreen = 'PrivacyPolicyScreen';
   static const String faqScreen = 'faqScreen';
+  static const String customerSignUpScreen = 'CustomerSignUpScreen';
+  static const String ConsultantSignUpScreen = 'ConsultantSignUpScree';
+  static const String SellerSignUpScreen = 'SellerSignUpScreen';
+  static const String RoleScreen = 'RolleScreen';
+  static const String SignUpOtpScreen = 'SignUpOtpVerify';
 
   // ------ consultant--------
   static const String consultantBottomNavigationBarScreen =

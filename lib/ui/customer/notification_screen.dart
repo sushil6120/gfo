@@ -1,8 +1,3 @@
-// import 'package:cached_network_image/cached_network_image.dart';
-// import 'package:flutter/cupertino.dart';
-// import '../../utils/valueConstants.dart';
-// import '../globalWidgets/textFormFieldBig.dart';
-// import 'package:flutter_svg/svg.dart';
 
 import 'package:flutter/material.dart';
 import 'package:gfo/utils/responsive.dart';
@@ -45,7 +40,7 @@ class _HistoryMessagesScreenState extends State<NotificationScreen> {
                 children: [
                   ListTile(
                     onTap: () {
-                      Navigator.pushNamed(context, RoutesName.chatScreen);
+                      // Navigator.pushNamed(context, RoutesName.chatScreen);
                     },
                     leading: Container(
                       width: context.deviceWidth * .1,

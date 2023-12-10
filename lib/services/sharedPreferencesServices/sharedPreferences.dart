@@ -7,10 +7,28 @@ class SharedPreferencesViewModel with ChangeNotifier{
     final SharedPreferences sp =  await SharedPreferences.getInstance();
     sp.setString('token', token!);
   }
+  saveSellerToken(String? token)async{
+    final SharedPreferences sp =  await SharedPreferences.getInstance();
+    sp.setString('Sellertoken', token!);
+  }
+  saveConsultantToken(String? token)async{
+    final SharedPreferences sp =  await SharedPreferences.getInstance();
+    sp.setString('Consultanttoken', token!);
+  }
 
   Future<String?> getToken()async{
     final SharedPreferences sp =  await SharedPreferences.getInstance();
     final String? token = sp.getString('token');
+    return token;
+  }
+  Future<String?> getSellerToken()async{
+    final SharedPreferences sp =  await SharedPreferences.getInstance();
+    final String? token = sp.getString('Sellertoken');
+    return token;
+  }
+  Future<String?> getConsultantToken()async{
+    final SharedPreferences sp =  await SharedPreferences.getInstance();
+    final String? token = sp.getString('Consultanttoken');
     return token;
   }
 
@@ -18,10 +36,28 @@ class SharedPreferencesViewModel with ChangeNotifier{
     final SharedPreferences sp =  await SharedPreferences.getInstance();
     sp.setString('signUpToken', token!);
   }
+  saveSellerSignUpToken(String? token)async{
+    final SharedPreferences sp =  await SharedPreferences.getInstance();
+    sp.setString('signUpSellerToken', token!);
+  }
+  saveConsultantSignUpToken(String? token)async{
+    final SharedPreferences sp =  await SharedPreferences.getInstance();
+    sp.setString('signUpConsultantToken', token!);
+  }
 
   Future<String?> getSignUpToken()async{
     final SharedPreferences sp =  await SharedPreferences.getInstance();
     final String? token = sp.getString('signUpToken');
+    return token;
+  }
+  Future<String?> getSellerSignUpToken()async{
+    final SharedPreferences sp =  await SharedPreferences.getInstance();
+    final String? token = sp.getString('signUpSellerToken');
+    return token;
+  }
+  Future<String?> getConsultantSignUpToken()async{
+    final SharedPreferences sp =  await SharedPreferences.getInstance();
+    final String? token = sp.getString('signUpConsultantToken');
     return token;
   }
 
@@ -128,17 +164,7 @@ class SharedPreferencesViewModel with ChangeNotifier{
     sp.setString('path', path!);
   }
 
-  Future<String?> getBucketName()async{
-    final SharedPreferences sp =  await SharedPreferences.getInstance();
-    final String? bucketName = sp.getString('bucketName');
-    return bucketName;
-  }
-
-  Future<String?> getPoolId()async{
-    final SharedPreferences sp =  await SharedPreferences.getInstance();
-    final String? poolId = sp.getString('poolId');
-    return poolId;
-  }
+ 
 
 
   Future<bool> remove()async{
