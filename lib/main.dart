@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:gfo/viewmodel/addressViewModel.dart';
 import 'package:gfo/viewmodel/authviewmodel.dart';
+import 'package:gfo/viewmodel/nocViewModel.dart';
 import 'package:provider/provider.dart';
 
 import 'services/themeServices/themeManager.dart';
 import 'utils/routes/routes.dart';
 import 'utils/routes/routesName.dart';
 import 'utils/scrollBehavior.dart';
+import 'viewmodel/consultantViewmodel.dart';
 import 'viewmodel/indesViewModel.dart';
 
 void main() {
@@ -23,6 +26,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ThemeManager()),
         ChangeNotifierProvider(create: (_) => IndexViewModel()),
         ChangeNotifierProvider(create: (_) => AuthViewModel()),
+        ChangeNotifierProvider(create: (_) => CosultantViewModel()),
+        ChangeNotifierProvider(create: (_) => NocViewModel()),
+        ChangeNotifierProvider(create: (_) => AddressViewModel()),
       ],
       child: Builder(
         builder: (BuildContext context) {

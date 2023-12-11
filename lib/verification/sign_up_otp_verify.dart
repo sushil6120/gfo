@@ -59,7 +59,7 @@ class _LoginOtpVerifyScreenState extends State<SignUpOtpVerifyScreen> {
           elevation: 0,
           backgroundColor: primaryColor,
           title: Text(
-            "LogIn",
+            "Verify Otp",
             style: Theme.of(context).textTheme.titleMedium!.copyWith(
                 fontSize: 18,
                 color: colorLightWhite,

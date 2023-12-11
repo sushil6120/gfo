@@ -198,7 +198,8 @@ class _CustomerAllProductScreenState extends State<CustomerAllProductScreen> {
                 },
               ),
             ),
-            SizedBox(height: verticalSpaceMedium,)
+            SizedBox(height: verticalSpaceLarge,),
+            SizedBox(height: verticalSpaceLarge,)
           ],
         ),
       ),
