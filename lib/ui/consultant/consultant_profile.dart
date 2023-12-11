@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:gfo/services/sharedPreferencesServices/sharedPreferences.dart';
 // import 'package:flutter_svg/svg.dart';
 // import 'package:gfo/ui/seller/seller_profile_detail_screen.dart';
 import 'package:gfo/utils/colors.dart';
@@ -9,10 +10,13 @@ class ConsultantProfileScreen extends StatefulWidget {
   const ConsultantProfileScreen({super.key});
 
   @override
-  State<ConsultantProfileScreen> createState() => _ConsultantProfileScreenState();
+  State<ConsultantProfileScreen> createState() =>
+      _ConsultantProfileScreenState();
 }
 
 class _ConsultantProfileScreenState extends State<ConsultantProfileScreen> {
+  SharedPreferencesViewModel sharedPreferencesViewModel =
+      SharedPreferencesViewModel();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,7 +94,8 @@ class _ConsultantProfileScreenState extends State<ConsultantProfileScreen> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, RoutesName.consultantCoustomerReview);
+                    Navigator.pushNamed(
+                        context, RoutesName.consultantCoustomerReview);
                   },
                   child: Text('Customer Review',
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
@@ -125,11 +130,22 @@ class _ConsultantProfileScreenState extends State<ConsultantProfileScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                Text('Logout',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black)),
+                GestureDetector(
+                  onTap: () {
+                    sharedPreferencesViewModel
+                        .removeConsultantToken()
+                        .then((value) {
+                      sharedPreferencesViewModel.remove();
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, RoutesName.splashScreen, (route) => false);
+                    });
+                  },
+                  child: Text('Logout',
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black)),
+                ),
                 SizedBox(
                   height: 20,
                 ),

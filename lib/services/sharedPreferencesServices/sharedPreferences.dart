@@ -176,6 +176,14 @@ class SharedPreferencesViewModel with ChangeNotifier{
     final SharedPreferences sp =  await SharedPreferences.getInstance();
     return sp.remove("token");
   }
+  Future<bool> removeConsultantToken()async{
+    final SharedPreferences sp =  await SharedPreferences.getInstance();
+    return sp.remove("Sellertoken");
+  }
+  Future<bool> removeSellerToken()async{
+    final SharedPreferences sp =  await SharedPreferences.getInstance();
+    return sp.remove("Consultanttoken");
+  }
 
   Future<bool> removeSignUpToken()async{
     final SharedPreferences sp =  await SharedPreferences.getInstance();

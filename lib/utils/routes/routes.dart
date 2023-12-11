@@ -52,14 +52,15 @@ import '../../ui/customer/review_screen.dart';
 import '../../ui/customer/role_screen.dart';
 import '../../ui/seller/seller_add_inventory_general_screen.dart';
 import '../../ui/seller/seller_profile_screen.dart';
+import '../../ui/splash_screen.dart';
 import '../slideTransition.dart';
 import 'routesName.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      // case RoutesName.splashScreen:
-      //   return SlideRoute(page: const SplashScreen(), x: 1, y: 0);
+      case RoutesName.splashScreen1:
+        return SlideRoute(page: const SplashScreen(), x: 1, y: 0);
       case RoutesName.splashScreen:
         return SlideRoute(page: const CustomerLoginScreen(), x: 1, y: 0);
       case RoutesName.loginOtpVerify:

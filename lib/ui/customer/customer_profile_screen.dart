@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:gfo/services/sharedPreferencesServices/sharedPreferences.dart';
 // import 'package:flutter_svg/svg.dart';
 // import 'package:gfo/ui/seller/seller_profile_detail_screen.dart';
 import 'package:gfo/utils/colors.dart';
@@ -15,6 +16,8 @@ class CustomerProfileScreen extends StatefulWidget {
 }
 
 class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
+  SharedPreferencesViewModel sharedPreferencesViewModel =
+      SharedPreferencesViewModel();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -282,11 +285,19 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                Text('Logout',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: primaryColor)),
+                GestureDetector(
+                  onTap: () {
+                    sharedPreferencesViewModel.removeToken().then((value) {
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, RoutesName.splashScreen, (route) => false);
+                    });
+                  },
+                  child: Text('Logout',
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: primaryColor)),
+                ),
               ],
             ),
           )

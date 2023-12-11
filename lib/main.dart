@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
             title: 'GFO',
             // home: const MyHomePage(title: 'Flutter Demo Home Page'),
 
-            initialRoute: RoutesName.splashScreen,
+            initialRoute: RoutesName.splashScreen1,
             onGenerateRoute: Routes.generateRoute,
             scrollBehavior: MyBehavior(),
           );

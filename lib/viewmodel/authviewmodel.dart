@@ -29,7 +29,7 @@ class AuthViewModel with ChangeNotifier {
           Navigator.pushNamed(context, RoutesName.loginOtpVerify,
               arguments: {"number": phone});
           Utils.flushBarErrorMessage(value.otp.toString(), context, Icons.error,
-              colorLightWhite, Colors.green.shade400);
+              colorLightWhite, greenColor);
           setLoading(false);
         } else {
           Utils.flushBarErrorMessage(value.message.toString(), context,
@@ -91,7 +91,7 @@ class AuthViewModel with ChangeNotifier {
           Navigator.pushNamed(context, RoutesName.SignUpOtpScreen,
               arguments: {"number": phone});
           Utils.flushBarErrorMessage(value.user!.otp.toString(), context,
-              Icons.error, colorLightWhite, Colors.green.shade400);
+              Icons.error, colorLightWhite,greenColor);
         }
         setLoading(false);
       });
@@ -109,7 +109,7 @@ class AuthViewModel with ChangeNotifier {
           Navigator.pushNamed(context, RoutesName.SignUpOtpScreen,
               arguments: {"number": phone});
           Utils.flushBarErrorMessage(value.user!.otp.toString(), context,
-              Icons.error, colorLightWhite, Colors.green.shade400);
+              Icons.error, colorLightWhite, greenColor);
         }
         setLoading(false);
       });
@@ -127,7 +127,7 @@ class AuthViewModel with ChangeNotifier {
           Navigator.pushNamed(context, RoutesName.SignUpOtpScreen,
               arguments: {"number": phone});
           Utils.flushBarErrorMessage(value.user!.otp.toString(), context,
-              Icons.error, colorLightWhite, Colors.green.shade400);
+              Icons.error, colorLightWhite, greenColor);
         }
         setLoading(false);
       });
@@ -149,14 +149,14 @@ class AuthViewModel with ChangeNotifier {
         if (value!.success == true) {
           if (value.userType == "user") {
             sharedPreferencesViewModel.saveSignUpToken(value.token);
-            // Navigator.pushNamed(context, RoutesName.bottomNavigationBarScreen);
+            Navigator.pushNamed(context, RoutesName.bottomNavigationBarScreen);
           } else if (value.userType == "consultant") {
             sharedPreferencesViewModel.saveConsultantSignUpToken(value.token);
-            // Navigator.pushNamed(
-            //     context, RoutesName.consultantBottomNavigationBarScreen);
+            Navigator.pushNamed(
+                context, RoutesName.consultantRegistratinScreen);
           } else if (value.userType == "seller") {
             sharedPreferencesViewModel.saveSellerSignUpToken(value.token);
-            // Navigator.pushNamed(context, RoutesName.SellerBottomNavBar);
+            Navigator.pushNamed(context, RoutesName.sellerRegistratinScreen);
           } else {
             Utils.flushBarErrorMessage("Somthing Went Weong", context,
                 Icons.error, colorLightWhite, primaryColor);
