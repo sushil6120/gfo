@@ -83,6 +83,7 @@ class _OrderScreenState extends State<OrderScreen> {
                       },
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
                             width: context.deviceWidth * .18,
@@ -109,30 +110,19 @@ class _OrderScreenState extends State<OrderScreen> {
                                     left: 14,
                                     right: verticalSpaceLarge,
                                   ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      SizedBox(
-                                        width: context.deviceWidth * .6,
-                                        child: Text(
-                                          "TMA-2 Comfort Wireless ",
-                                          maxLines: 2,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleMedium!
-                                              .copyWith(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w400),
-                                        ),
-                                      ),
-                                      Icon(
-                                        Icons.arrow_forward_ios_outlined,
-                                        size: 16,
-                                        color: colorDark3,
-                                      )
-                                    ],
+                                  child: SizedBox(
+                                    width: context.deviceWidth * .6,
+                                    child: Text(
+                                      "TMA-2 Comfort Wireless ",
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleMedium!
+                                          .copyWith(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w400),
+                                    ),
                                   ),
                                 ),
                                 Padding(
@@ -169,7 +159,12 @@ class _OrderScreenState extends State<OrderScreen> {
                                 ),
                               ],
                             ),
-                          )
+                          ),
+                           Icon(
+                                        Icons.arrow_forward_ios_outlined,
+                                        size: 16,
+                                        color: colorDark3,
+                                      )
                         ],
                       ),
                     ),

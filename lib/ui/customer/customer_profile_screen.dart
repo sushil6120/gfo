@@ -47,7 +47,6 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
                       offset: Offset(0, 2))
                 ]),
             child: ListTile(
-              
               leading: CircleAvatar(
                   backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                   child: Image.asset(
