@@ -1,20 +1,22 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:gfo/model/consultant/consultantRegistrationModel.dart';
 import 'package:gfo/model/consultantSignUpModel.dart';
 import 'package:gfo/model/login_model_class.dart';
 import 'package:gfo/model/otp_verify_model_class.dart';
 import 'package:gfo/utils/app_url.dart';
-import 'package:gfo/utils/colors.dart';
-import 'package:gfo/utils/routes/routesName.dart';
+// import 'package:gfo/utils/colors.dart';
+// import 'package:gfo/utils/routes/routesName.dart';
 import 'package:gfo/utils/utilsFunction.dart';
-import 'package:gfo/verification/consultant_sign_up.dart';
+// import 'package:gfo/verification/consultant_sign_up.dart';
 import 'package:http/http.dart' as http;
 
 class SignUpRepo {
   LoginModelClass? loginModelClass;
   OtpVerifyModelClass? otpVerifyModelClass;
   ConsultantSignUpModel? consultantSignUpModel;
+  ConsultantRegistrationModel ? consultantRegistrationModel;
 
   Future<ConsultantSignUpModel?> consultantSignUp(
       String phone, BuildContext context) async {
@@ -99,4 +101,27 @@ class SignUpRepo {
       print(e);
     }
   }
+  // consultant registration
+  Future<ConsultantRegistrationModel?> consultantRegistration(
+      dynamic datas, String token, BuildContext context) async {
+    try {
+      final response = await http.put(Uri.parse(AppUrl.consultantRegistration),
+          headers: {"Content-type": "application/json","Authorization":"Bearer $token"},
+          body: datas);
+      var data = jsonDecode(response.body);
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        var data = jsonDecode(response.body);
+        consultantRegistrationModel = ConsultantRegistrationModel.fromJson(data);
+      } else {
+        Utils.snackBar(data['message'], context);
+        print(response.body);
+        print(response.statusCode);
+      }
+      return consultantRegistrationModel;
+    } catch (e) {
+      
+      print(e);
+    }
+  }
+
 }

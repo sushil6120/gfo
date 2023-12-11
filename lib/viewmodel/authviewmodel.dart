@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gfo/model/consultant/consultantRegistrationModel.dart';
 import 'package:gfo/model/login_model_class.dart';
 import 'package:gfo/repository/login_repo.dart';
 import 'package:gfo/repository/singUpRepo.dart';
@@ -12,6 +13,7 @@ class AuthViewModel with ChangeNotifier {
   SignUpRepo signUpRepo = SignUpRepo();
 
   LoginModelClass? loginModelClass;
+  ConsultantRegistrationModel ? consultantRegistrationModel;
 
   bool loading = false;
 
@@ -162,6 +164,31 @@ class AuthViewModel with ChangeNotifier {
                 Icons.error, colorLightWhite, primaryColor);
             setLoading(false);
           }
+          Utils.flushBarErrorMessage(value.message.toString(), context,
+              Icons.error, colorLightWhite, greenColor);
+          setLoading(false);
+        } else {
+          Utils.flushBarErrorMessage(value.message.toString(), context,
+              Icons.error, colorLightWhite, primaryColor);
+          setLoading(false);
+        }
+      });
+    } catch (e) {
+      print("exception:" + e.toString());
+      setLoading(false);
+    }
+  }
+
+  // consultant registration
+  Future<void> consultantRegistrationApis(
+     dynamic data ,String token , BuildContext context) async {
+    setLoading(true);
+    // final SharedPreferencesViewModel sharedPreferencesViewModel =
+    //     SharedPreferencesViewModel();
+    try {
+      await signUpRepo.consultantRegistration(data, token, context).then((value) async {
+        if (value!.message == "Consultant Personal details filled up successfully") {
+          Navigator.pushNamedAndRemoveUntil(context, RoutesName.splashScreen, (route) => false);
           Utils.flushBarErrorMessage(value.message.toString(), context,
               Icons.error, colorLightWhite, greenColor);
           setLoading(false);

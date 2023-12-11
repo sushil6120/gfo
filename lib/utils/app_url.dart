@@ -6,4 +6,9 @@ class AppUrl {
   static var sellerSignUpApi = "$baseUrl/api/v1/auth/seller/signup";
   static var costumerSignUpApi = "$baseUrl/api/v1/auth/customer/signup";
 
+
+
+//   !--------consultaant---------!
+  static var consultantRegistration = "https://gfo-backend-code.vercel.app/api/v1/auth/consultant/details";
+
 }

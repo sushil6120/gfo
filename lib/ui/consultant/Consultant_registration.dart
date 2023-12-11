@@ -1,7 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:gfo/services/sharedPreferencesServices/sharedPreferences.dart';
 import 'package:gfo/ui/globalWidgets/searchTextFormFieldBig.dart';
+import 'package:gfo/viewmodel/authviewmodel.dart';
+import 'package:provider/provider.dart';
 
 import '../../utils/colors.dart';
 import '../../utils/valueConstants.dart';
@@ -17,6 +22,34 @@ class ConsultantRegistratinScreen extends StatefulWidget {
 
 class _ConsultantRegistratinScreenState
     extends State<ConsultantRegistratinScreen> {
+  TextEditingController fullName = TextEditingController();
+  TextEditingController contact = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController adharNum = TextEditingController();
+  TextEditingController penNum = TextEditingController();
+  TextEditingController education = TextEditingController();
+    TextEditingController fee = TextEditingController();
+  TextEditingController designation = TextEditingController();
+  TextEditingController experience = TextEditingController();
+  TextEditingController address = TextEditingController();
+  TextEditingController pincode = TextEditingController();
+  TextEditingController bio = TextEditingController();
+  TextEditingController accountName = TextEditingController();
+  TextEditingController accountNumber = TextEditingController();
+  TextEditingController reAccountNumber = TextEditingController();
+  TextEditingController ifsc = TextEditingController();
+
+  String ? token;
+  SharedPreferencesViewModel sharedPreferencesViewModel = SharedPreferencesViewModel();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.wait([sharedPreferencesViewModel.getConsultantSignUpToken()]).then((value){
+      token = value[0];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +89,7 @@ class _ConsultantRegistratinScreenState
               padding: const EdgeInsets.only(
                   left: 18, right: 18, top: verticalSpaceSmall),
               child: SearchTextFormFieldBig(
+                controller: fullName,
                 height: 55,
                 hintText: "Full Name",
               ),
@@ -66,6 +100,7 @@ class _ConsultantRegistratinScreenState
               child: SearchTextFormFieldBig(
                 height: 55,
                 hintText: "contact",
+                controller: contact,
               ),
             ),
             Padding(
@@ -74,6 +109,7 @@ class _ConsultantRegistratinScreenState
               child: SearchTextFormFieldBig(
                 height: 55,
                 hintText: "Email Id",
+                controller: email,
               ),
             ),
             Padding(
@@ -81,6 +117,7 @@ class _ConsultantRegistratinScreenState
                   left: 18, right: 18, top: verticalSpaceSmall),
               child: SearchTextFormFieldBig(
                 height: 55,
+                controller: adharNum,
                 hintText: "Adhar Number",
               ),
             ),
@@ -90,6 +127,7 @@ class _ConsultantRegistratinScreenState
               child: SearchTextFormFieldBig(
                 height: 55,
                 hintText: "Pan No",
+                controller: penNum,
               ),
             ),
             Padding(
@@ -98,6 +136,7 @@ class _ConsultantRegistratinScreenState
               child: SearchTextFormFieldBig(
                 height: 55,
                 hintText: "Education",
+                controller: education,
               ),
             ),
             Padding(
@@ -106,6 +145,7 @@ class _ConsultantRegistratinScreenState
               child: SearchTextFormFieldBig(
                 height: 55,
                 hintText: "Current or ex-designation ",
+                controller: designation,
               ),
             ),
             Padding(
@@ -114,6 +154,7 @@ class _ConsultantRegistratinScreenState
               child: SearchTextFormFieldBig(
                 height: 55,
                 hintText: "Experience",
+                controller: experience,
               ),
             ),
             Padding(
@@ -122,6 +163,7 @@ class _ConsultantRegistratinScreenState
               child: SearchTextFormFieldBig(
                 height: 55,
                 hintText: "Address",
+                controller: address,
               ),
             ),
             Padding(
@@ -130,12 +172,14 @@ class _ConsultantRegistratinScreenState
               child: SearchTextFormFieldBig(
                 height: 55,
                 hintText: "Pin code",
+                controller: pincode,
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(
                   left: 18, right: 18, top: verticalSpaceSmall),
               child: TextFormField(
+                controller: bio,
                 maxLines: 10,
                 decoration: InputDecoration(
                     filled: true,
@@ -147,32 +191,22 @@ class _ConsultantRegistratinScreenState
                         borderSide: BorderSide(color: colorLight3, width: 1))),
               ),
             ),
-             Padding(
-              padding: const EdgeInsets.only(left: 18, right: 18, top: verticalSpaceSmall),
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 18, right: 18, top: verticalSpaceSmall),
               child: Container(
-                decoration: BoxDecoration(color: colorLight3.withOpacity(.1),borderRadius: BorderRadius.circular(5)),
-                child:Padding(
+                decoration: BoxDecoration(
+                    color: colorLight3.withOpacity(.1),
+                    borderRadius: BorderRadius.circular(5)),
+                child: Padding(
                   padding: const EdgeInsets.all(10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Upload Adhar Card",style: TextStyle(fontSize:12),),
-                      Icon(Icons.upload),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-             Padding(
-              padding: const EdgeInsets.only(left: 18, right: 18, top: verticalSpaceSmall),
-              child: Container(
-                decoration: BoxDecoration(color: colorLight3.withOpacity(.1),borderRadius: BorderRadius.circular(5)),
-                child:Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Upload Pen Card",style: TextStyle(fontSize:12),),
+                      Text(
+                        "Upload Adhar Card",
+                        style: TextStyle(fontSize: 12),
+                      ),
                       Icon(Icons.upload),
                     ],
                   ),
@@ -180,15 +214,43 @@ class _ConsultantRegistratinScreenState
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 18, right: 18, top: verticalSpaceSmall),
+              padding: const EdgeInsets.only(
+                  left: 18, right: 18, top: verticalSpaceSmall),
               child: Container(
-                decoration: BoxDecoration(color: colorLight3.withOpacity(.1),borderRadius: BorderRadius.circular(5)),
-                child:Padding(
+                decoration: BoxDecoration(
+                    color: colorLight3.withOpacity(.1),
+                    borderRadius: BorderRadius.circular(5)),
+                child: Padding(
                   padding: const EdgeInsets.all(10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Upload Education Documents",style: TextStyle(fontSize:12),),
+                      Text(
+                        "Upload Pen Card",
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      Icon(Icons.upload),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 18, right: 18, top: verticalSpaceSmall),
+              child: Container(
+                decoration: BoxDecoration(
+                    color: colorLight3.withOpacity(.1),
+                    borderRadius: BorderRadius.circular(5)),
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Upload Education Documents",
+                        style: TextStyle(fontSize: 12),
+                      ),
                       Icon(Icons.upload),
                     ],
                   ),
@@ -201,6 +263,7 @@ class _ConsultantRegistratinScreenState
               child: SearchTextFormFieldBig(
                 height: 55,
                 hintText: "Account holder name",
+                controller: accountName,
               ),
             ),
             Padding(
@@ -209,6 +272,7 @@ class _ConsultantRegistratinScreenState
               child: SearchTextFormFieldBig(
                 height: 55,
                 hintText: "Account no.",
+                controller: accountNumber,
               ),
             ),
             Padding(
@@ -217,6 +281,7 @@ class _ConsultantRegistratinScreenState
               child: SearchTextFormFieldBig(
                 height: 55,
                 hintText: "Re-enter account no.",
+                controller: reAccountNumber,
               ),
             ),
             Padding(
@@ -225,12 +290,14 @@ class _ConsultantRegistratinScreenState
               child: SearchTextFormFieldBig(
                 height: 55,
                 hintText: "IFSC Code",
+                controller: ifsc,
               ),
             ),
           ],
         ),
       ),
-      bottomNavigationBar: Padding(
+      bottomNavigationBar: Consumer<AuthViewModel>(builder: (context, value, child) {
+        return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 25),
         child: ButtonBig(
           fontSize: 14,
@@ -238,14 +305,15 @@ class _ConsultantRegistratinScreenState
             if (kDebugMode) {
               print("working");
             }
-            // Navigator.pushNamed(context, RoutesName.checkOutScreen);
+            var data = jsonEncode({"name":fullName.text,"email":email.text,"address":address.text,"gender":"notinoption","education" :education.text,"consultantFee":"600","bankAccName":accountName.text,"AccNo":accountNumber.text,"reAccNo":reAccountNumber.text,"ifcsCode":ifsc.text,  "experience":experience.text,"pinCode":pincode.text,"designation":designation.text,"bio":bio.text,"aadharCard":adharNum.text,"panCard":penNum.text});
+            value.consultantRegistrationApis(data, token.toString(), context);
           },
           backgroundColor: greenColor.withOpacity(.6),
           backgroundColor2: greenColor.withOpacity(.6),
           width: double.infinity,
           height: 55,
-          text: "Save",
-          showProgress: false,
+          text: "Submit",
+          showProgress: value.loading,
           progressColor: colorLightWhite,
           progressStrokeWidth: 1.5,
           radius: 5,
@@ -254,7 +322,8 @@ class _ConsultantRegistratinScreenState
           progressPadding: 20,
           fontWeight: FontWeight.w700,
         ),
-      ),
+      );
+      },)
     );
   }
 }
