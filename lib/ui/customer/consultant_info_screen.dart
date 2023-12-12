@@ -14,6 +14,7 @@ import '../../services/sharedPreferencesServices/sharedPreferences.dart';
 import '../../viewmodel/consultantViewmodel.dart';
 import '../globalWidgets/buttonBig.dart';
 
+// ignore: must_be_immutable
 class ConsultantInfoScreen extends StatefulWidget {
   Map<String, dynamic>? arguments;
   ConsultantInfoScreen({super.key, this.arguments});
