@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gfo/model/consultant/consultantRegistrationModel.dart';
-import 'package:gfo/model/login_model_class.dart';
+// import 'package:gfo/model/login_model_class.dart';
 import 'package:gfo/repository/login_repo.dart';
 import 'package:gfo/repository/singUpRepo.dart';
 import 'package:gfo/services/sharedPreferencesServices/sharedPreferences.dart';
 import 'package:gfo/utils/colors.dart';
 import 'package:gfo/utils/routes/routesName.dart';
 import 'package:gfo/utils/utilsFunction.dart';
+
+import '../model/costumer/login_model_class.dart';
 
 class AuthViewModel with ChangeNotifier {
   LoginRepo loginRepo = LoginRepo();
@@ -90,10 +92,8 @@ class AuthViewModel with ChangeNotifier {
     try {
       await signUpRepo.consultantSignUp(phone, context).then((value) async {
         if (value!.message == "Consultant created successfully") {
-          Navigator.pushNamed(context, RoutesName.SignUpOtpScreen,
-              arguments: {"number": phone});
           Utils.flushBarErrorMessage(value.user!.otp.toString(), context,
-              Icons.error, colorLightWhite,greenColor);
+              Icons.error, colorLightWhite, greenColor);
         }
         setLoading(false);
       });
@@ -126,9 +126,10 @@ class AuthViewModel with ChangeNotifier {
     try {
       await signUpRepo.sellerSignUp(phone, context).then((value) async {
         if (value!.message == "Seller created successfully") {
-          Navigator.pushNamed(context, RoutesName.SignUpOtpScreen,
-              arguments: {"number": phone});
           Utils.flushBarErrorMessage(value.user!.otp.toString(), context,
+              Icons.error, colorLightWhite, greenColor);
+        } else {
+          Utils.flushBarErrorMessage(value.message.toString(), context,
               Icons.error, colorLightWhite, greenColor);
         }
         setLoading(false);

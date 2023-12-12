@@ -64,8 +64,9 @@ class Routes {
       case RoutesName.splashScreen:
         return SlideRoute(page: const CustomerLoginScreen(), x: 1, y: 0);
       case RoutesName.loginOtpVerify:
-      final arguments = settings.arguments as Map<String, dynamic>;
-        return SlideRoute(page:  LoginOtpVerifyScreen(arguments: arguments), x: 1, y: 0);
+        final arguments = settings.arguments as Map<String, dynamic>;
+        return SlideRoute(
+            page: LoginOtpVerifyScreen(arguments: arguments), x: 1, y: 0);
       case RoutesName.rolesScreen:
         return SlideRoute(page: const RolesScreen(), x: 1, y: 0);
       case RoutesName.customerHomeScreen:
@@ -93,7 +94,9 @@ class Routes {
       case RoutesName.applyNocScreen:
         return SlideRoute(page: const ApplyNocScreen(), x: 1, y: 0);
       case RoutesName.consultantInfoScreen:
-        return SlideRoute(page: const ConsultantInfoScreen(), x: 1, y: 0);
+        final arguments = settings.arguments as Map<String, dynamic>;
+        return SlideRoute(
+            page: ConsultantInfoScreen(arguments: arguments), x: 1, y: 0);
       case RoutesName.chatScreen:
         return SlideRoute(page: ChatScreen(), x: 1, y: 0);
       case RoutesName.customerProfileScreen:
@@ -119,9 +122,9 @@ class Routes {
       case RoutesName.RoleScreen:
         return SlideRoute(page: RoleScreen(), x: 1, y: 0);
       case RoutesName.SignUpOtpScreen:
-            final arguments = settings.arguments as Map<String, dynamic>;
-        return SlideRoute(page: SignUpOtpVerifyScreen(arguments: arguments), x: 1, y: 0);
- 
+        final arguments = settings.arguments as Map<String, dynamic>;
+        return SlideRoute(
+            page: SignUpOtpVerifyScreen(arguments: arguments), x: 1, y: 0);
 
       // ------------Selller ------
 
@@ -144,16 +147,16 @@ class Routes {
         return SlideRoute(page: const SellerOrderScreen(), x: 1, y: 0);
       case RoutesName.SellerBottomNavBar:
         return SlideRoute(page: const SellerBottomNavBar(), x: 1, y: 0);
-        case RoutesName.sellerRegistratinScreen:
+      case RoutesName.sellerRegistratinScreen:
         return SlideRoute(page: const SellerRegistratinScreen(), x: 1, y: 0);
-         case RoutesName.sellerNotificationScreen:
+      case RoutesName.sellerNotificationScreen:
         return SlideRoute(page: const SellerNotificationScreen(), x: 1, y: 0);
-         case RoutesName.sellerPrivacyPolicyScreen:
-        return SlideRoute(page: const  SellerPrivacyPolicyScreen(), x: 1, y: 0);
-         case RoutesName.sellerAllProductScreen:
-        return SlideRoute(page: const  SellerAllProductScreen(), x: 1, y: 0);
-        case RoutesName.sellerProductDetailsScreen:
-        return SlideRoute(page: const  SellerProductDetailsScreen(), x: 1, y: 0);
+      case RoutesName.sellerPrivacyPolicyScreen:
+        return SlideRoute(page: const SellerPrivacyPolicyScreen(), x: 1, y: 0);
+      case RoutesName.sellerAllProductScreen:
+        return SlideRoute(page: const SellerAllProductScreen(), x: 1, y: 0);
+      case RoutesName.sellerProductDetailsScreen:
+        return SlideRoute(page: const SellerProductDetailsScreen(), x: 1, y: 0);
 
       // --------- consultant ------
       case RoutesName.consultantHomeScreen:
@@ -163,24 +166,25 @@ class Routes {
             page: const ConsultantBottomNavigationBarScreen(), x: 1, y: 0);
       case RoutesName.consultantProfileScreen:
         return SlideRoute(page: const ConsultantProfileScreen(), x: 1, y: 0);
-        case RoutesName.consultantProfileDetailScreen:
-        return SlideRoute(page: const ConsultantProfileDetailScreen(), x: 1, y: 0);
-        case RoutesName.consultantRegistratinScreen:
-        return SlideRoute(page: const ConsultantRegistratinScreen(), x: 1, y: 0);
-        case RoutesName.consultantChatListScreen:
+      case RoutesName.consultantProfileDetailScreen:
+        return SlideRoute(
+            page: const ConsultantProfileDetailScreen(), x: 1, y: 0);
+      case RoutesName.consultantRegistratinScreen:
+        return SlideRoute(
+            page: const ConsultantRegistratinScreen(), x: 1, y: 0);
+      case RoutesName.consultantChatListScreen:
         return SlideRoute(page: const ConsultantChatListScreen(), x: 1, y: 0);
-         case RoutesName.consultantWalletScreen:
+      case RoutesName.consultantWalletScreen:
         return SlideRoute(page: const ConsultantWalletScreen(), x: 1, y: 0);
-        case RoutesName.consultantChatMassageScreen:
+      case RoutesName.consultantChatMassageScreen:
         return SlideRoute(page: ConsultantChatMassageScreen(), x: 1, y: 0);
-         case RoutesName.consultantUserInfoScreen:
+      case RoutesName.consultantUserInfoScreen:
         return SlideRoute(page: const ConsultantUserInfoScreen(), x: 1, y: 0);
-         case RoutesName.consultantNotificationScreen:
-        return SlideRoute(page: const ConsultantNotificationScreen(), x: 1, y: 0);
-         case RoutesName.consultantCoustomerReview:
+      case RoutesName.consultantNotificationScreen:
+        return SlideRoute(
+            page: const ConsultantNotificationScreen(), x: 1, y: 0);
+      case RoutesName.consultantCoustomerReview:
         return SlideRoute(page: const ConsultantCoustomerReview(), x: 1, y: 0);
-        
-
 
       default:
         return MaterialPageRoute(builder: (_) {

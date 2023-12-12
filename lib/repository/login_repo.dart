@@ -1,11 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:gfo/model/login_model_class.dart';
-import 'package:gfo/model/otp_verify_model_class.dart';
+
 import 'package:gfo/utils/app_url.dart';
 import 'package:gfo/utils/utilsFunction.dart';
 import 'package:http/http.dart' as http;
+
+import '../model/costumer/login_model_class.dart';
+import '../model/costumer/otp_verify_model_class.dart';
 
 class LoginRepo {
   LoginModelClass? loginModelClass;

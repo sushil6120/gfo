@@ -2,19 +2,19 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:gfo/model/consultant/consultantRegistrationModel.dart';
-import 'package:gfo/model/consultantSignUpModel.dart';
-import 'package:gfo/model/login_model_class.dart';
-import 'package:gfo/model/otp_verify_model_class.dart';
+import 'package:gfo/model/costumer/otp_verify_model_class.dart';
 import 'package:gfo/utils/app_url.dart';
-// import 'package:gfo/utils/colors.dart';
-// import 'package:gfo/utils/routes/routesName.dart';
+import 'package:gfo/utils/routes/routesName.dart';
 import 'package:gfo/utils/utilsFunction.dart';
-// import 'package:gfo/verification/consultant_sign_up.dart';
 import 'package:http/http.dart' as http;
+
+import '../model/costumer/consultantSignUpModel.dart';
+import '../model/costumer/login_model_class.dart';
+
 
 class SignUpRepo {
   LoginModelClass? loginModelClass;
-  OtpVerifyModelClass? otpVerifyModelClass;
+   OtpVerifyModelClass ? otpVerifyModelClass;
   ConsultantSignUpModel? consultantSignUpModel;
   ConsultantRegistrationModel ? consultantRegistrationModel;
 
@@ -29,8 +29,8 @@ class SignUpRepo {
         var data = jsonDecode(response.body);
         print(data);
         consultantSignUpModel = ConsultantSignUpModel.fromJson(data);
-
-       
+           Navigator.pushNamed(context, RoutesName.SignUpOtpScreen,
+              arguments: {"number": phone});
       } else {
         Utils.snackBar(data['message'], context);
       }
@@ -61,6 +61,8 @@ class SignUpRepo {
     }
   }
 
+  // ----------------------------------------------------------------------------
+
   Future<ConsultantSignUpModel?> sellerSignUp(
       String phone, BuildContext context) async {
     try {
@@ -72,8 +74,8 @@ class SignUpRepo {
         var data = jsonDecode(response.body);
         print(data);
         consultantSignUpModel = ConsultantSignUpModel.fromJson(data);
-
-    
+           Navigator.pushNamed(context, RoutesName.SignUpOtpScreen,
+              arguments: {"number": phone});
       } else {
         Utils.snackBar(data['message'], context);
       }
