@@ -1,5 +1,5 @@
 class AppUrl {
-  static var baseUrl = "https://gfo-fire.vercel.app";
+  static var baseUrl = "https://gfo-backend-code.vercel.app";
   static var loginSendApi = "$baseUrl/api/v1/auth/user/login";
   static var loginOtpVerifyApi = "$baseUrl/api/v1/auth/otp/verify";
   static var consultantSignUpApi = "$baseUrl/api/v1/auth/consultant/signup";
@@ -14,6 +14,6 @@ class AppUrl {
 
 
 //   !--------consultaant---------!
-  static var consultantRegistration = "https://gfo-backend-code.vercel.app/api/v1/auth/consultant/details";
+  static var consultantRegistration = "$baseUrl/api/v1/auth/consultant/details";
 
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gfo/model/consultant/consultantRegistrationModel.dart';
 import 'package:gfo/model/costumer/otp_verify_model_class.dart';
 import 'package:gfo/utils/app_url.dart';
+import 'package:gfo/utils/colors.dart';
 import 'package:gfo/utils/routes/routesName.dart';
 import 'package:gfo/utils/utilsFunction.dart';
 import 'package:http/http.dart' as http;
@@ -11,12 +12,11 @@ import 'package:http/http.dart' as http;
 import '../model/costumer/consultantSignUpModel.dart';
 import '../model/costumer/login_model_class.dart';
 
-
 class SignUpRepo {
   LoginModelClass? loginModelClass;
-   OtpVerifyModelClass ? otpVerifyModelClass;
+  OtpVerifyModelClass? otpVerifyModelClass;
   ConsultantSignUpModel? consultantSignUpModel;
-  ConsultantRegistrationModel ? consultantRegistrationModel;
+  ConsultantRegistrationModel? consultantRegistrationModel;
 
   Future<ConsultantSignUpModel?> consultantSignUp(
       String phone, BuildContext context) async {
@@ -29,8 +29,11 @@ class SignUpRepo {
         var data = jsonDecode(response.body);
         print(data);
         consultantSignUpModel = ConsultantSignUpModel.fromJson(data);
-           Navigator.pushNamed(context, RoutesName.SignUpOtpScreen,
-              arguments: {"number": phone});
+
+        Navigator.pushNamed(context, RoutesName.SignUpOtpScreen,
+            arguments: {"number": phone});
+        Utils.flushBarErrorMessage(consultantSignUpModel!.data!.otp.toString(),
+            context, Icons.error, colorLightWhite, greenColor);
       } else {
         Utils.snackBar(data['message'], context);
       }
@@ -74,8 +77,8 @@ class SignUpRepo {
         var data = jsonDecode(response.body);
         print(data);
         consultantSignUpModel = ConsultantSignUpModel.fromJson(data);
-           Navigator.pushNamed(context, RoutesName.SignUpOtpScreen,
-              arguments: {"number": phone});
+        Navigator.pushNamed(context, RoutesName.SignUpOtpScreen,
+            arguments: {"number": phone});
       } else {
         Utils.snackBar(data['message'], context);
       }
@@ -103,17 +106,22 @@ class SignUpRepo {
       print(e);
     }
   }
+
   // consultant registration
   Future<ConsultantRegistrationModel?> consultantRegistration(
       dynamic datas, String token, BuildContext context) async {
     try {
       final response = await http.put(Uri.parse(AppUrl.consultantRegistration),
-          headers: {"Content-type": "application/json","Authorization":"Bearer $token"},
+          headers: {
+            "Content-type": "application/json",
+            "Authorization": "Bearer $token"
+          },
           body: datas);
       var data = jsonDecode(response.body);
       if (response.statusCode == 200 || response.statusCode == 201) {
         var data = jsonDecode(response.body);
-        consultantRegistrationModel = ConsultantRegistrationModel.fromJson(data);
+        consultantRegistrationModel =
+            ConsultantRegistrationModel.fromJson(data);
       } else {
         Utils.snackBar(data['message'], context);
         print(response.body);
@@ -121,9 +129,7 @@ class SignUpRepo {
       }
       return consultantRegistrationModel;
     } catch (e) {
-      
       print(e);
     }
   }
-
 }

@@ -90,11 +90,8 @@ class AuthViewModel with ChangeNotifier {
   Future<void> consultantSignUpApi(String phone, BuildContext context) async {
     setLoading(true);
     try {
-      await signUpRepo.consultantSignUp(phone, context).then((value) async {
-        if (value!.message == "Consultant created successfully") {
-          Utils.flushBarErrorMessage(value.user!.otp.toString(), context,
-              Icons.error, colorLightWhite, greenColor);
-        }
+      await signUpRepo.consultantSignUp(phone, context).then((value)  {
+   
         setLoading(false);
       });
     } catch (e) {
@@ -110,7 +107,7 @@ class AuthViewModel with ChangeNotifier {
         if (value!.message == "Customer created successfully") {
           Navigator.pushNamed(context, RoutesName.SignUpOtpScreen,
               arguments: {"number": phone});
-          Utils.flushBarErrorMessage(value.user!.otp.toString(), context,
+          Utils.flushBarErrorMessage(value.data!.otp.toString(), context,
               Icons.error, colorLightWhite, greenColor);
         }
         setLoading(false);
@@ -126,7 +123,7 @@ class AuthViewModel with ChangeNotifier {
     try {
       await signUpRepo.sellerSignUp(phone, context).then((value) async {
         if (value!.message == "Seller created successfully") {
-          Utils.flushBarErrorMessage(value.user!.otp.toString(), context,
+          Utils.flushBarErrorMessage(value.data!.otp.toString(), context,
               Icons.error, colorLightWhite, greenColor);
         } else {
           Utils.flushBarErrorMessage(value.message.toString(), context,

@@ -8,14 +8,14 @@ class LoginModelClass {
   LoginModelClass.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     message = json['message'];
-    otp = json['otp'];
+    otp = json['Otp'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['success'] = this.success;
     data['message'] = this.message;
-    data['otp'] = this.otp;
+    data['Otp'] = this.otp;
     return data;
   }
 }
