@@ -23,7 +23,7 @@ class ProductDetailsWidget extends StatelessWidget {
                       right: verticalSpaceLarge,
                     ),
                     child: Text(
-                      "Highly Detailed ",
+                      "Highly Detailed",
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
