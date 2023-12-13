@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gfo/viewmodel/addressViewModel.dart';
 import 'package:gfo/viewmodel/authviewmodel.dart';
+import 'package:gfo/viewmodel/consultant/consultantGetBookedAllUser.dart';
 import 'package:gfo/viewmodel/nocViewModel.dart';
 import 'package:provider/provider.dart';
 
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => CosultantViewModel()),
         ChangeNotifierProvider(create: (_) => NocViewModel()),
         ChangeNotifierProvider(create: (_) => AddressViewModel()),
+        ChangeNotifierProvider(create: (_) => ConsultantViewModelHome()),
       ],
       child: Builder(
         builder: (BuildContext context) {
