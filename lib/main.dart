@@ -10,6 +10,7 @@ import 'utils/routes/routes.dart';
 import 'utils/routes/routesName.dart';
 import 'utils/scrollBehavior.dart';
 import 'viewmodel/consultantViewmodel.dart';
+import 'viewmodel/homeViewModel.dart';
 import 'viewmodel/indesViewModel.dart';
 
 void main() {
@@ -30,7 +31,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => CosultantViewModel()),
         ChangeNotifierProvider(create: (_) => NocViewModel()),
         ChangeNotifierProvider(create: (_) => AddressViewModel()),
-        ChangeNotifierProvider(create: (_) => ConsultantViewModelHome()),
       ],
       child: Builder(
         builder: (BuildContext context) {

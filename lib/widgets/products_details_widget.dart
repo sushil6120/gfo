@@ -5,7 +5,8 @@ import '../utils/colors.dart';
 import '../utils/valueConstants.dart';
 
 class ProductDetailsWidget extends StatelessWidget {
-  const ProductDetailsWidget({super.key});
+  String? desc, desc2, sellerName, location;
+   ProductDetailsWidget({super.key, this.desc,this.desc2,this.location, this.sellerName});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class ProductDetailsWidget extends StatelessWidget {
                       right: verticalSpaceLarge,
                     ),
                     child: Text(
-                      "The speaker unit contains a diaphragm that is precision-grown from NAC Audio bio-cellulose, making it stiffer, lighter and stronger than regular PET speaker units, and allowing the sound-producing diaphragm to vibrate without the levels of distortion found in other speakers.  ",
+                      desc.toString(),
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
@@ -50,7 +51,7 @@ class ProductDetailsWidget extends StatelessWidget {
                       right: verticalSpaceLarge,
                     ),
                     child: Text(
-                      "The speaker unit contains a diaphragm that is precision-grown from NAC Audio bio-cellulose, making it stiffer, lighter and stronger than regular PET speaker units, and allowing the sound-producing diaphragm to vibrate without the levels of distortion found in other speakers.  ",
+                     desc2.toString(),
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
@@ -64,7 +65,7 @@ class ProductDetailsWidget extends StatelessWidget {
                         right: verticalSpaceLarge,
                         bottom: verticalSpaceMedium),
                     child: Text(
-                      "Seller name | Location Name",
+                      "$sellerName | $location",
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
                             fontSize: 16,
                             color: greenColor.withOpacity(.7),

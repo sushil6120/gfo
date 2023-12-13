@@ -10,6 +10,8 @@ class AppUrl {
   static var singleConsultantApis = "$baseUrl/api/v1/auth/consultant/";
   static var applyNocApis = "$baseUrl/api/v1/noc/add";
   static var addAddressApi = "$baseUrl/api/v1/shipping/create";
+  static var productInfoApi = "$baseUrl/api/v1/product/";
+  static var anotherProductApi = "$baseUrl/api/v1/product?limit=10&sellerId=";
 
 
 
