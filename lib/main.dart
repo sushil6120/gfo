@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => CosultantViewModel()),
         ChangeNotifierProvider(create: (_) => NocViewModel()),
         ChangeNotifierProvider(create: (_) => AddressViewModel()),
+        ChangeNotifierProvider(create: (_) => HomeViewModel()),
       ],
       child: Builder(
         builder: (BuildContext context) {

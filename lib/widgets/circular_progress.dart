@@ -9,7 +9,7 @@ class MyCircularProgressWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: context.deviceWidth,
-      height: context.deviceHeight,
+      height: context.deviceHeight*.5,
       color: colorLightWhite,
 
       child: Center(
