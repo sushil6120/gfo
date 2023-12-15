@@ -53,10 +53,10 @@ class AddressViewModel with ChangeNotifier {
     }
   }
 
-  Future<void> deleteAddressAPi(String id, BuildContext context) async {
+  Future<void> deleteAddressAPi(String id,token, BuildContext context) async {
     setLoading(true);
     try {
-      await addressRepo.deletAddress(id, context).then((value) async {
+      await addressRepo.deletAddress(id,token, context).then((value) async {
         // Navigator.pushNamedAndRemoveUntil(context, RoutesName.bottomNavigationBarScreen, (route) => false);
         if (value!.success == true) {
           Navigator.pushReplacementNamed(
@@ -73,10 +73,33 @@ class AddressViewModel with ChangeNotifier {
     }
   }
 
-  Future<void> getAddressApi() async {
+  Future<void> updateAddressAPi(String pinCode, addresss, localty, city, state,
+      id,token, BuildContext context) async {
+    setLoading(true);
+    try {
+      await addressRepo
+          .updateAddress(pinCode, addresss, localty, city, state, id,token, context)
+          .then((value) async {
+        // Navigator.pushNamedAndRemoveUntil(context, RoutesName.bottomNavigationBarScreen, (route) => false);
+        if (value!.success == true) {
+          Navigator.pushReplacementNamed(
+              context, RoutesName.customerAddressScreen);
+          Utils.flushBarErrorMessage(value.message.toString(), context,
+              Icons.error, colorLightWhite, greenColor);
+        }
+
+        setLoading(false);
+      });
+    } catch (e) {
+      print("exception:" + e.toString());
+      setLoading(false);
+    }
+  }
+
+  Future<void> getAddressApi(String token) async {
     setHomeScreenData(ApiResponse.loading());
     try {
-      await addressRepo.addressApi().then((value) async {
+      await addressRepo.addressApi(token).then((value) async {
         address = value;
         print(address);
         setHomeScreenData(ApiResponse.completed(value));

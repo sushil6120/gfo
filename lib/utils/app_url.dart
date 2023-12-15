@@ -12,6 +12,7 @@ class AppUrl {
   static var addAddressApi = "$baseUrl/api/v1/shipping/create";
   static var allAddressApi = "$baseUrl/api/v1/shipping";
   static var deletAddressApi = "$baseUrl/api/v1/shipping/";
+  static var updateAddressApi = "$baseUrl/api/v1/shipping/";
   static var productInfoApi = "$baseUrl/api/v1/product/";
   static var anotherProductApi = "$baseUrl/api/v1/product?limit=10&sellerId=";
   static var addToCartApi = "$baseUrl/api/v1/cart/add";

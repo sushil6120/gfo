@@ -76,16 +76,21 @@ class Routes {
       case RoutesName.customerAllProductScreen:
         return SlideRoute(page: const CustomerAllProductScreen(), x: 1, y: 0);
       case RoutesName.customerProductDetailsScreen:
-       final arguments = settings.arguments as Map<String, dynamic>;
+        final arguments = settings.arguments as Map<String, dynamic>;
         return SlideRoute(
-            page:  CustomerProductDetailsScreen(arguments: arguments), x: 1, y: 0);
+            page: CustomerProductDetailsScreen(arguments: arguments),
+            x: 1,
+            y: 0);
       case RoutesName.checkOutScreen:
         return SlideRoute(page: const CheckOutScreen(), x: 1, y: 0);
       case RoutesName.customerAddressScreen:
         return SlideRoute(page: const CustomerAddressScreen(), x: 1, y: 0);
       case RoutesName.customerAddNewAddressScreen:
+        final arguments = settings.arguments as Map<String, dynamic>;
         return SlideRoute(
-            page: const CustomerAddNewAddressScreen(), x: 1, y: 0);
+            page: CustomerAddNewAddressScreen(arguments: arguments),
+            x: 1,
+            y: 0);
       case RoutesName.congrotulationsScreen:
         return SlideRoute(page: const CongrotulationsScreen(), x: 1, y: 0);
       case RoutesName.customeHireConsutantScreen:

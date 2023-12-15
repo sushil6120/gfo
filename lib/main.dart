@@ -38,14 +38,11 @@ class MyApp extends StatelessWidget {
           final themeManager = Provider.of<ThemeManager>(context);
           return MaterialApp(
             useInheritedMediaQuery: true,
-
             themeMode: themeManager.themeMode,
             theme: MyThemes.lightTheme,
             darkTheme: MyThemes.darkTheme,
             debugShowCheckedModeBanner: false,
             title: 'GFO',
-            // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-
             initialRoute: RoutesName.splashScreen1,
             onGenerateRoute: Routes.generateRoute,
             scrollBehavior: MyBehavior(),

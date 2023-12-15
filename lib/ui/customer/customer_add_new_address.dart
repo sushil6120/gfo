@@ -11,7 +11,8 @@ import '../../utils/valueConstants.dart';
 import '../globalWidgets/buttonBig.dart';
 
 class CustomerAddNewAddressScreen extends StatefulWidget {
-  const CustomerAddNewAddressScreen({super.key});
+  Map<String, dynamic>? arguments;
+  CustomerAddNewAddressScreen({super.key, this.arguments});
 
   @override
   State<CustomerAddNewAddressScreen> createState() =>
@@ -29,10 +30,22 @@ class _CustomerAddNewAddressScreenState
   SharedPreferencesViewModel sharedPreferencesViewModel =
       SharedPreferencesViewModel();
   String? token;
+  String? id;
+  bool isEdit = false;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    isEdit = widget.arguments!['isEdit'];
+
+    if (isEdit == true) {
+      id = widget.arguments!['id'];
+      pinController.text = widget.arguments!['pinCode'];
+      addressController.text = widget.arguments!['address'];
+      localityController.text = widget.arguments!['locality'];
+      cityController.text = widget.arguments!['city'];
+      stateController.text = widget.arguments!['state'];
+    }
     Future.wait([sharedPreferencesViewModel.getToken()]).then((value) {
       token = value[0];
     });
@@ -66,14 +79,14 @@ class _CustomerAddNewAddressScreenState
                 padding: const EdgeInsets.only(
                     left: 18, top: verticalSpaceSmall2, bottom: 10),
                 child: Text(
-                  "Add new address",
+                 isEdit? "Upadte Address": "Add new address",
                   style: Theme.of(context)
                       .textTheme
                       .titleMedium!
                       .copyWith(fontWeight: FontWeight.w700, fontSize: 28),
                 ),
               ),
-               Padding(
+              Padding(
                 padding: EdgeInsets.only(
                     left: 18, right: 18, top: verticalSpaceSmall),
                 child: SearchTextFormFieldBig(
@@ -82,7 +95,7 @@ class _CustomerAddNewAddressScreenState
                   hintText: "Pin Code",
                 ),
               ),
-               Padding(
+              Padding(
                 padding: EdgeInsets.only(
                     left: 18, right: 18, top: verticalSpaceSmall),
                 child: SearchTextFormFieldBig(
@@ -91,7 +104,7 @@ class _CustomerAddNewAddressScreenState
                   hintText: "Address (House No., Building, Street, Area)",
                 ),
               ),
-               Padding(
+              Padding(
                 padding: EdgeInsets.only(
                     left: 18, right: 18, top: verticalSpaceSmall),
                 child: SearchTextFormFieldBig(
@@ -100,7 +113,7 @@ class _CustomerAddNewAddressScreenState
                   hintText: "Locality / Town",
                 ),
               ),
-               Padding(
+              Padding(
                 padding: EdgeInsets.only(
                     left: 18, right: 18, top: verticalSpaceSmall),
                 child: SearchTextFormFieldBig(
@@ -109,7 +122,7 @@ class _CustomerAddNewAddressScreenState
                   hintText: "City / District",
                 ),
               ),
-             Padding(
+              Padding(
                 padding: EdgeInsets.only(
                     left: 18, right: 18, top: verticalSpaceSmall),
                 child: SearchTextFormFieldBig(
@@ -131,14 +144,27 @@ class _CustomerAddNewAddressScreenState
                   if (kDebugMode) {
                     print("working");
                   }
-                  value.addAddressApis(
-                      pinController.text,
-                      addressController.text,
-                      localityController.text,
-                      cityController.text,
-                      stateController.text,
-                      token,
-                      context);
+
+                  if (isEdit == true) {
+                    value.updateAddressAPi(
+                        pinController.text,
+                        addressController.text,
+                        localityController.text,
+                        cityController.text,
+                        stateController.text,
+                        id,
+                        token,
+                        context);
+                  } else {
+                    value.addAddressApis(
+                        pinController.text,
+                        addressController.text,
+                        localityController.text,
+                        cityController.text,
+                        stateController.text,
+                        token,
+                        context);
+                  }
                 },
                 backgroundColor: greenColor.withOpacity(.6),
                 backgroundColor2: greenColor.withOpacity(.6),

@@ -23,6 +23,8 @@ class _CustomerAddressScreenState extends State<CustomerAddressScreen> {
   SharedPreferencesViewModel sharedPreferencesViewModel =
       SharedPreferencesViewModel();
 
+      String ? token;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -30,7 +32,8 @@ class _CustomerAddressScreenState extends State<CustomerAddressScreen> {
     final addressData = Provider.of<AddressViewModel>(context, listen: false);
     Future.wait([sharedPreferencesViewModel.getToken()]).then((value) {
       print(value[0]);
-      addressData.getAddressApi();
+      token = value[0];
+      addressData.getAddressApi(token.toString());
     });
   }
 
@@ -72,126 +75,161 @@ class _CustomerAddressScreenState extends State<CustomerAddressScreen> {
                       child: Text(value.addressData.message.toString()),
                     );
                   case Status.COMPLETED:
-                    return Stack(
-                      children: [
-                        SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              ListView.builder(
-                                shrinkWrap: true,
-                                physics: const ScrollPhysics(),
-                                itemCount: value.address!.addresses!.length,
-                                itemBuilder: (context, index) {
-                                  var items = value.address!.addresses!.reversed
-                                      .toList();
-                                  return Container(
-                                    width: context.deviceWidth,
-                                    margin: const EdgeInsets.only(
-                                        left: 18, right: 18, top: 10),
-                                    decoration: BoxDecoration(
-                                        color: colorLight2.withOpacity(.5),
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 18, right: 18, bottom: 2),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  const Icon(Icons
-                                                      .location_on_outlined),
-                                                  const SizedBox(
-                                                    width: 10,
-                                                  ),
-                                                  Text(
-                                                    "Home",
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .titleMedium!
-                                                        .copyWith(
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            fontSize: 14),
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(
-                                                children: [
-                                                  IconButton(
-                                                    onPressed: () {
-                                                      // Navigator.pushNamed(context, RoutesName.customerAddressScreen);
-                                                    },
-                                                    icon: const Icon(
-                                                      Icons.edit,
-                                                      size: 18,
+                    if (value.address == null) {
+                      return Center(
+                        child: Text("No Data Found!"),
+                      );
+                    } else {
+                      return Stack(
+                        children: [
+                          SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                ListView.builder(
+                                  shrinkWrap: true,
+                                  physics: const ScrollPhysics(),
+                                  itemCount: value.address!.addresses!.length,
+                                  itemBuilder: (context, index) {
+                                    var items = value
+                                        .address!.addresses!.reversed
+                                        .toList();
+                                    return Container(
+                                      width: context.deviceWidth,
+                                      margin: const EdgeInsets.only(
+                                          left: 18, right: 18, top: 10),
+                                      decoration: BoxDecoration(
+                                          color: colorLight2.withOpacity(.5),
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 18, right: 18, bottom: 2),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    const Icon(Icons
+                                                        .location_on_outlined),
+                                                    const SizedBox(
+                                                      width: 10,
                                                     ),
-                                                  ),
-                                                  IconButton(
-                                                    onPressed: () {
-                                                      value.deleteAddressAPi(
-                                                          items[index]
-                                                              .sId
-                                                              .toString(),
-                                                          context);
-                                                    },
-                                                    icon: const Icon(
-                                                      Icons.delete_outline,
-                                                      size: 18,
+                                                    Text(
+                                                      "Home",
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .titleMedium!
+                                                          .copyWith(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                              fontSize: 14),
                                                     ),
-                                                  ),
-                                                ],
-                                              )
-                                            ],
+                                                  ],
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    IconButton(
+                                                      onPressed: () {
+                                                        Navigator.pushNamed(
+                                                            context,
+                                                            RoutesName
+                                                                .customerAddNewAddressScreen,
+                                                            arguments: {
+                                                              "pinCode":
+                                                                  items[index]
+                                                                      .pinCode,
+                                                              "address":
+                                                                  items[index]
+                                                                      .address,
+                                                              "locality":
+                                                                  items[index]
+                                                                      .locality,
+                                                              "city":
+                                                                  items[index]
+                                                                      .city,
+                                                              "state":
+                                                                  items[index]
+                                                                      .state,
+                                                                      "id":items[index].sId,
+                                                              "isEdit": true
+                                                            });
+                                                      },
+                                                      icon: const Icon(
+                                                        Icons.edit,
+                                                        size: 18,
+                                                      ),
+                                                    ),
+                                                    IconButton(
+                                                      onPressed: () {
+                                                        value.deleteAddressAPi(
+                                                            items[index]
+                                                                .sId
+                                                                .toString(),
+                                                                token.toString(),
+                                                            context);
+                                                      },
+                                                      icon: const Icon(
+                                                        Icons.delete_outline,
+                                                        size: 18,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                )
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 18, right: 30, bottom: 18),
-                                          child: Text(
-                                            "${items[index].city} ${items[index].state} ${items[index].pinCode} ${items[index].address} ${items[index].locality}",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .titleMedium!
-                                                .copyWith(
-                                                    color: colorDark3,
-                                                    fontWeight: FontWeight.w400,
-                                                    fontSize: 12),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 18,
+                                                right: 30,
+                                                bottom: 18),
+                                            child: Text(
+                                              "${items[index].city} ${items[index].state} ${items[index].pinCode} ${items[index].address} ${items[index].locality}",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleMedium!
+                                                  .copyWith(
+                                                      color: colorDark3,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontSize: 12),
+                                            ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
-                              )
-                            ],
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                        value.loading
-                            ? Container(
-                                width: context.deviceWidth,
-                                height: context.deviceHeight,
-                                color: colorLight2.withOpacity(.6),
-                                child: const Padding(
-                                  padding: EdgeInsets.only(
-                                      bottom: verticalSpaceLarge),
-                                  child: Center(
-                                    child: CircularProgressIndicator(
-                                      color: primaryColor,
-                                      strokeWidth: 2,
+                          value.loading
+                              ? Container(
+                                  width: context.deviceWidth,
+                                  height: context.deviceHeight,
+                                  color: colorLight2.withOpacity(.6),
+                                  child: const Padding(
+                                    padding: EdgeInsets.only(
+                                        bottom: verticalSpaceLarge),
+                                    child: Center(
+                                      child: CircularProgressIndicator(
+                                        color: primaryColor,
+                                        strokeWidth: 2,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              )
-                            : const SizedBox()
-                      ],
-                    );
+                                )
+                              : const SizedBox()
+                        ],
+                      );
+                    }
 
                   default:
                 }
