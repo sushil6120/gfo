@@ -23,4 +23,13 @@ class AppUrl {
   static var consultantRegistration = "$baseUrl/api/v1/auth/consultant/details";
   static var consultantGetBookedUser = "$baseUrl/api/v1/booking/consultant/users";
 
+
+
+  // -----------Seller ----------------!
+  static var sellerUploadProduct = "$baseUrl/api/v1/product";
+
+ 
+
+
+
 }

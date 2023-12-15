@@ -3,6 +3,7 @@ import 'package:gfo/viewmodel/addressViewModel.dart';
 import 'package:gfo/viewmodel/authviewmodel.dart';
 import 'package:gfo/viewmodel/consultant/consultantGetBookedAllUser.dart';
 import 'package:gfo/viewmodel/nocViewModel.dart';
+import 'package:gfo/viewmodel/seller/addProductViewModel.dart';
 import 'package:provider/provider.dart';
 
 import 'services/themeServices/themeManager.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => NocViewModel()),
         ChangeNotifierProvider(create: (_) => AddressViewModel()),
         ChangeNotifierProvider(create: (_) => HomeViewModel()),
+        ChangeNotifierProvider(create: (_) => AddProductViewModel()),
       ],
       child: Builder(
         builder: (BuildContext context) {

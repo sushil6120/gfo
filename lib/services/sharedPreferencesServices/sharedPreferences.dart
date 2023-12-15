@@ -15,10 +15,19 @@ class SharedPreferencesViewModel with ChangeNotifier{
     final SharedPreferences sp =  await SharedPreferences.getInstance();
     sp.setString('Consultanttoken', token!);
   }
+  saveUserId(String? token)async{
+    final SharedPreferences sp =  await SharedPreferences.getInstance();
+    sp.setString('userId', token!);
+  }
 
   Future<String?> getToken()async{
     final SharedPreferences sp =  await SharedPreferences.getInstance();
     final String? token = sp.getString('token');
+    return token;
+  }
+  Future<String?> getUserId()async{
+    final SharedPreferences sp =  await SharedPreferences.getInstance();
+    final String? token = sp.getString('userId');
     return token;
   }
   Future<String?> getSellerToken()async{

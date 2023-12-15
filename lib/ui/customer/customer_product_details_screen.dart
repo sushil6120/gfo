@@ -80,7 +80,8 @@ class _CustomerProductDetailsScreenState
                   child: Text(value.allProductData.message.toString()),
                 );
               case Status.COMPLETED:
-                if (value.productInfoModel == null|| value.allProductModelClass == null) {
+                if (value.productInfoModel == null ||
+                    value.allProductModelClass == null) {
                   return const Center(
                     child: Text("No Data Found"),
                   );
@@ -273,14 +274,18 @@ class _CustomerProductDetailsScreenState
                           height: context.deviceHeight * .29,
                           child: ListView.builder(
                             shrinkWrap: true,
-                            itemCount: value.allProductModelClass!.products!.length,
+                            itemCount:
+                                value.allProductModelClass!.products!.length,
                             scrollDirection: Axis.horizontal,
                             physics: const ScrollPhysics(),
                             itemBuilder: (context, index) {
-                              var items = value.allProductModelClass!.products![index];
+                              var items =
+                                  value.allProductModelClass!.products![index];
                               return ProductsWidgets(
-                                img:items.images![1],
-                                    
+                                img: items.thumbnail == null ||
+                                        items.thumbnail!.isEmpty
+                                    ? "https://cdn5.vectorstock.com/i/1000x1000/38/19/product-promotion-black-icon-concept-vector-29963819.jpg"
+                                    : items.thumbnail,
                                 title: items.title,
                                 price: "₹ ${items.salePrice}",
                               );

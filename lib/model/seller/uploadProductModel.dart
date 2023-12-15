@@ -1,37 +1,29 @@
-class AllProductModelClass {
-  List<Products>? products;
-  int? totalDoc;
-  int? limits;
-  int? pages;
+class UploadProductModel {
+  bool? success;
+  String? message;
+  Product? product;
 
-  AllProductModelClass({this.products, this.totalDoc, this.limits, this.pages});
+  UploadProductModel({this.success, this.message, this.product});
 
-  AllProductModelClass.fromJson(Map<String, dynamic> json) {
-    if (json['products'] != null) {
-      products = <Products>[];
-      json['products'].forEach((v) {
-        products!.add(new Products.fromJson(v));
-      });
-    }
-    totalDoc = json['totalDoc'];
-    limits = json['limits'];
-    pages = json['pages'];
+  UploadProductModel.fromJson(Map<String, dynamic> json) {
+    success = json['success'];
+    message = json['message'];
+    product =
+        json['product'] != null ? new Product.fromJson(json['product']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.products != null) {
-      data['products'] = this.products!.map((v) => v.toJson()).toList();
+    data['success'] = this.success;
+    data['message'] = this.message;
+    if (this.product != null) {
+      data['product'] = this.product!.toJson();
     }
-    data['totalDoc'] = this.totalDoc;
-    data['limits'] = this.limits;
-    data['pages'] = this.pages;
     return data;
   }
 }
 
-class Products {
-  String? sId;
+class Product {
   String? title;
   String? sku;
   String? description;
@@ -47,18 +39,16 @@ class Products {
   int? stockQuantity;
   String? allowBackOrders;
   String? lowStockHolder;
-  String? postedBy;
-  List<String>? images;
-  String? thumbnail;
+
   String? status;
+  String? sId;
   String? createdAt;
   String? updatedAt;
   String? slug;
   int? iV;
 
-  Products(
-      {this.sId,
-      this.title,
+  Product(
+      {this.title,
       this.sku,
       this.description,
       this.requiredPrice,
@@ -73,17 +63,14 @@ class Products {
       this.stockQuantity,
       this.allowBackOrders,
       this.lowStockHolder,
-      this.postedBy,
-      this.images,
-      this.thumbnail,
       this.status,
+      this.sId,
       this.createdAt,
       this.updatedAt,
       this.slug,
       this.iV});
 
-  Products.fromJson(Map<String, dynamic> json) {
-    sId = json['_id'];
+  Product.fromJson(Map<String, dynamic> json) {
     title = json['title'];
     sku = json['sku'];
     description = json['description'];
@@ -99,10 +86,9 @@ class Products {
     stockQuantity = json['stockQuantity'];
     allowBackOrders = json['allowBackOrders'];
     lowStockHolder = json['lowStockHolder'];
-    postedBy = json['postedBy'];
-    images = json['images'].cast<String>();
-    thumbnail = json['thumbnail'];
+
     status = json['status'];
+    sId = json['_id'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
     slug = json['slug'];
@@ -111,7 +97,6 @@ class Products {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.sId;
     data['title'] = this.title;
     data['sku'] = this.sku;
     data['description'] = this.description;
@@ -127,10 +112,9 @@ class Products {
     data['stockQuantity'] = this.stockQuantity;
     data['allowBackOrders'] = this.allowBackOrders;
     data['lowStockHolder'] = this.lowStockHolder;
-    data['postedBy'] = this.postedBy;
-    data['images'] = this.images;
-    data['thumbnail'] = this.thumbnail;
+
     data['status'] = this.status;
+    data['_id'] = this.sId;
     data['createdAt'] = this.createdAt;
     data['updatedAt'] = this.updatedAt;
     data['slug'] = this.slug;

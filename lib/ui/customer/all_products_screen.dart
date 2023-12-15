@@ -142,7 +142,7 @@ class _CustomerAllProductScreenState extends State<CustomerAllProductScreen> {
                               Navigator.pushNamed(context,
                                   RoutesName.customerProductDetailsScreen,
                                   arguments: {
-                                    "id":items.postedBy.toString(),
+                                    "id": items.postedBy.toString(),
                                     "productId": items.sId,
                                   });
                             },
@@ -166,19 +166,32 @@ class _CustomerAllProductScreenState extends State<CustomerAllProductScreen> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Container(
-                                    height: context.deviceHeight * .15,
-                                    margin: const EdgeInsets.symmetric(
-                                        vertical: 10),
-                                    decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: NetworkImage(
-                                          items.images![0].toString(),
+                                  items.thumbnail == null|| items.thumbnail!.isEmpty
+                                      ? Container(
+                                          height: context.deviceHeight * .15,
+                                          margin: const EdgeInsets.symmetric(
+                                              vertical: 10),
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: NetworkImage(
+                                                  "https://cdn5.vectorstock.com/i/1000x1000/38/19/product-promotion-black-icon-concept-vector-29963819.jpg"),
+                                            ),
+                                          ),
+                                        )
+                                      : Container(
+                                          height: context.deviceHeight * .15,
+                                          margin: const EdgeInsets.symmetric(
+                                              vertical: 10),
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: NetworkImage(
+                                                items.thumbnail.toString(),
+                                              ),
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                  ),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 10),
                                     child: Text(

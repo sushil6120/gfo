@@ -143,10 +143,15 @@ class Routes {
       case RoutesName.SellerAddInventoryScreen:
         return SlideRoute(page: const SellerAddInventoryScreen(), x: 1, y: 0);
       case RoutesName.SellerAddInventoryGeneralScreen:
+        final arguments = settings.arguments as Map<String, dynamic>;
         return SlideRoute(
-            page: const SellerAddInventoryGeneralScreen(), x: 1, y: 0);
+            page: SellerAddInventoryGeneralScreen(arguments: arguments),
+            x: 1,
+            y: 0);
       case RoutesName.SellerAddGalleryScreen:
-        return SlideRoute(page: const SellerAddGalleryScreen(), x: 1, y: 0);
+        final arguments = settings.arguments as Map<String, dynamic>;
+        return SlideRoute(
+            page: SellerAddGalleryScreen(arguments: arguments), x: 1, y: 0);
       case RoutesName.SellerWalletScreen:
         return SlideRoute(page: const SellerWalletScreen(), x: 1, y: 0);
       case RoutesName.SellerOrderScreen:
