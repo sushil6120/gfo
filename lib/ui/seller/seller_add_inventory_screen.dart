@@ -18,6 +18,7 @@ class SellerAddInventoryScreen extends StatefulWidget {
 
 class _AddInventoryScreenState extends State<SellerAddInventoryScreen> {
   bool _checkbox = false;
+  TextEditingController sdkController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +31,10 @@ class _AddInventoryScreenState extends State<SellerAddInventoryScreen> {
               print("working");
             }
             Navigator.pushNamed(
-                context, RoutesName.SellerAddInventoryGeneralScreen);
+                context, RoutesName.SellerAddInventoryGeneralScreen, arguments: {
+                  "isManageStock":_checkbox ?"Yes":"No",
+                  "Sdk":sdkController.text
+                });
           },
           backgroundColor: secondaryColorLight,
           backgroundColor2: secondaryColorLight,
@@ -86,7 +90,9 @@ class _AddInventoryScreenState extends State<SellerAddInventoryScreen> {
             child: Container(
                 decoration: BoxDecoration(
                     color: greyColor, borderRadius: BorderRadius.circular(5)),
-                child: SearchFields(hintText: 'SDK', height: 55)),
+                child: SearchFields(
+                  controller: sdkController,
+                  hintText: 'SDK', height: 55)),
           ),
           SizedBox(
             height: 20,

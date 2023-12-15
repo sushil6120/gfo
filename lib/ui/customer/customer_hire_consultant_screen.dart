@@ -21,8 +21,9 @@ class CustomeHireConsutantScreen extends StatefulWidget {
 
 class _CustomeHireConsutantScreenState
     extends State<CustomeHireConsutantScreen> {
-      @override
-      SharedPreferencesViewModel sharedPreferencesViewModel = SharedPreferencesViewModel();
+  @override
+  SharedPreferencesViewModel sharedPreferencesViewModel =
+      SharedPreferencesViewModel();
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -30,6 +31,7 @@ class _CustomeHireConsutantScreenState
       print(value[0]);
     });
   }
+
   @override
   Widget build(BuildContext context) {
     final getConsultant =
@@ -113,11 +115,12 @@ class _CustomeHireConsutantScreenState
               future: getConsultant.getAllConsultantApi(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator(
-        
-          valueColor: AlwaysStoppedAnimation<Color>(primaryColor),
-          strokeWidth: 3.0,
-        ),);
+                  return Center(
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(primaryColor),
+                      strokeWidth: 3.0,
+                    ),
+                  );
                 } else {
                   final data =
                       context.watch<CosultantViewModel>().allConsultantModel;
@@ -126,7 +129,7 @@ class _CustomeHireConsutantScreenState
                     physics: ScrollPhysics(),
                     itemCount: data!.data!.length,
                     itemBuilder: (context, index) {
-                      var items = data.data![index];
+                      var items = data.data!.reversed.toList();
                       return Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -142,8 +145,13 @@ class _CustomeHireConsutantScreenState
                                     fit: BoxFit.cover,
                                     image: NetworkImage(data
                                         .data![index].educationDocument
-                                        .toString()
-                                        ))),
+                                        .toString()))),
+                            child: SizedBox(
+                                height: context.deviceHeight * .11,
+                              child: items[index].panCard == null ? Image.network(
+                                
+                                  "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"):SizedBox()
+                            ),
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -157,7 +165,7 @@ class _CustomeHireConsutantScreenState
                                 child: SizedBox(
                                   width: context.deviceWidth * .5,
                                   child: Text(
-                                    items.name.toString(),
+                                    items[index].name.toString(),
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: Theme.of(context)
@@ -177,7 +185,7 @@ class _CustomeHireConsutantScreenState
                                 child: SizedBox(
                                   width: context.deviceWidth * .5,
                                   child: Text(
-                                    "Experiance: ${items.experience}",
+                                    "Experiance: ${items[index].experience}",
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: Theme.of(context)
@@ -199,7 +207,7 @@ class _CustomeHireConsutantScreenState
                                 child: SizedBox(
                                   width: context.deviceWidth * .5,
                                   child: Text(
-                                    "₹ ${items.consultantFee}",
+                                    "₹ ${items[index].consultantFee}",
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: Theme.of(context)
@@ -237,8 +245,9 @@ class _CustomeHireConsutantScreenState
                                     GestureDetector(
                                       onTap: () {
                                         Navigator.pushNamed(context,
-                                            RoutesName.consultantInfoScreen, arguments: {
-                                              "id":items.sId
+                                            RoutesName.consultantInfoScreen,
+                                            arguments: {
+                                              "id": items[index].sId
                                             });
                                       },
                                       child: Container(

@@ -7,7 +7,8 @@ import 'package:gfo/utils/colors.dart';
 import 'package:gfo/utils/routes/routesName.dart';
 
 class SellerAddInventoryGeneralScreen extends StatefulWidget {
-  const SellerAddInventoryGeneralScreen({super.key});
+  Map<String, dynamic>? arguments;
+  SellerAddInventoryGeneralScreen({super.key, this.arguments});
 
   @override
   State<SellerAddInventoryGeneralScreen> createState() =>
@@ -16,6 +17,22 @@ class SellerAddInventoryGeneralScreen extends StatefulWidget {
 
 class _SellerAddInventoryGeneralScreenState
     extends State<SellerAddInventoryGeneralScreen> {
+  TextEditingController titleController = TextEditingController();
+  TextEditingController requiredPriceController = TextEditingController();
+  TextEditingController salePriceController = TextEditingController();
+  TextEditingController descController = TextEditingController();
+
+  String? managesStock;
+  String? sdk;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    managesStock = widget.arguments!['isManageStock'];
+    sdk = widget.arguments!['Sdk'];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +44,15 @@ class _SellerAddInventoryGeneralScreenState
             if (kDebugMode) {
               print("working");
             }
-            Navigator.pushNamed(context, RoutesName.SellerAddGalleryScreen);
+            Navigator.pushNamed(context, RoutesName.SellerAddGalleryScreen,
+                arguments: {
+                  "title": titleController.text,
+                  "requiredPrice": requiredPriceController.text,
+                  "salePrice": salePriceController.text,
+                  "desc": descController.text,
+                  "Sdk": sdk,
+                  "isManageStock": managesStock
+                });
           },
           backgroundColor: secondaryColorLight,
           backgroundColor2: secondaryColorLight,
@@ -63,53 +88,72 @@ class _SellerAddInventoryGeneralScreenState
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          SizedBox(
-            height: 20,
+        child: SingleChildScrollView(
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            SizedBox(
+              height: 20,
+            ),
+            Text('Inventory General\ninformation',
+                style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.black)),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+                decoration: BoxDecoration(
+                    color: greyColor, borderRadius: BorderRadius.circular(5)),
+                child: SearchFields(
+                    controller: titleController,
+                    hintText: 'Title',
+                    height: 55)),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+                decoration: BoxDecoration(
+                    color: greyColor, borderRadius: BorderRadius.circular(5)),
+                child: SearchFields(
+                    controller: requiredPriceController,
+                    hintText: 'Required Price',
+                    height: 55)),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+                decoration: BoxDecoration(
+                    color: greyColor, borderRadius: BorderRadius.circular(5)),
+                child: SearchFields(
+                    controller: salePriceController,
+                    hintText: 'Sale Price (Show to customer)',
+                    height: 55)),
+            SizedBox(
+              height: 30,
+            ),
+            Text('Description',
+                style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.black)),
+            SizedBox(
+              height: 20,
+            ),
+          TextFormField(
+            maxLines: 10,
+            decoration: InputDecoration(
+              hintText: "description",
+              hintStyle: TextStyle(color: colorLight3),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(6),
+          
+                borderSide: BorderSide(color: colorLight3, width: 1)
+              )
+            ),
           ),
-          Text('Inventory General\ninformation',
-              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.black)),
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-              decoration: BoxDecoration(
-                  color: greyColor, borderRadius: BorderRadius.circular(5)),
-              child: SearchFields(hintText: 'Title', height: 55)),
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-              decoration: BoxDecoration(
-                  color: greyColor, borderRadius: BorderRadius.circular(5)),
-              child: SearchFields(hintText: 'Required Price', height: 55)),
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-              decoration: BoxDecoration(
-                  color: greyColor, borderRadius: BorderRadius.circular(5)),
-              child: SearchFields(
-                  hintText: 'Sale Price (Show to customer)', height: 55)),
-          SizedBox(
-            height: 30,
-          ),
-          Text('Description',
-              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.black)),
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-              decoration: BoxDecoration(
-                  color: greyColor, borderRadius: BorderRadius.circular(5)),
-              child: SearchFields(hintText: 'Describe here...', height: 115))
-        ]),
+          ]),
+        ),
       ),
     );
   }

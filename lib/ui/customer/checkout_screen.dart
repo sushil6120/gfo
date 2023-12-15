@@ -239,7 +239,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                         fontWeight: FontWeight.w500),
                     decoration: InputDecoration(
                         hintStyle: TextStyle(
-                            fontSize: 16,
+                            fontSize: 12,
                             fontWeight: FontWeight.w400,
                             color: colorDark3.withOpacity(.8)),
                         hintText: "Proceed to Checkout",
@@ -313,7 +313,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                     style: Theme.of(context)
                         .textTheme
                         .titleMedium!
-                        .copyWith(fontSize: 16, fontWeight: FontWeight.w700),
+                        .copyWith(fontSize: 16, fontWeight: FontWeight.w700, color: primaryColor),
                   ),
                              ),
                            ],
