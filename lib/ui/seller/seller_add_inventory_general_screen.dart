@@ -142,8 +142,11 @@ class _SellerAddInventoryGeneralScreenState
             ),
           TextFormField(
             maxLines: 10,
+            controller: descController,
             decoration: InputDecoration(
               hintText: "description",
+              filled: true,
+              fillColor: colorLight1,
               hintStyle: TextStyle(color: colorLight3),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(6),
