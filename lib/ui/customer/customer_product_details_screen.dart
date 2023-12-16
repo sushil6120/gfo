@@ -8,6 +8,7 @@ import 'package:gfo/widgets/circular_progress.dart';
 import 'package:provider/provider.dart';
 
 import '../../utils/colors.dart';
+import '../../utils/routes/routesName.dart';
 import '../../utils/valueConstants.dart';
 import '../../widgets/products_details_widget.dart';
 import '../../widgets/products_review_widget.dart';
@@ -82,8 +83,13 @@ class _CustomerProductDetailsScreenState
               case Status.COMPLETED:
                 if (value.productInfoModel == null ||
                     value.allProductModelClass == null) {
-                  return const Center(
-                    child: Text("No Data Found"),
+                  return Center(
+                    child: MyCircularProgressWidget(),
+                  );
+                } else if (value.productInfoModel!.data == null ||
+                    value.allProductModelClass!.products!.isEmpty) {
+                  return Center(
+                    child: Text("Nu Product Found!"),
                   );
                 } else {
                   return SingleChildScrollView(
@@ -281,13 +287,23 @@ class _CustomerProductDetailsScreenState
                             itemBuilder: (context, index) {
                               var items =
                                   value.allProductModelClass!.products![index];
-                              return ProductsWidgets(
-                                img: items.thumbnail == null ||
-                                        items.thumbnail!.isEmpty
-                                    ? "https://cdn5.vectorstock.com/i/1000x1000/38/19/product-promotion-black-icon-concept-vector-29963819.jpg"
-                                    : items.thumbnail,
-                                title: items.title,
-                                price: "₹ ${items.salePrice}",
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(context,
+                                      RoutesName.customerProductDetailsScreen,
+                                      arguments: {
+                                        "id": items.postedBy.toString(),
+                                        "productId": items.sId,
+                                      });
+                                },
+                                child: ProductsWidgets(
+                                  img: items.thumbnail == null ||
+                                          items.thumbnail!.isEmpty
+                                      ? "https://cdn5.vectorstock.com/i/1000x1000/38/19/product-promotion-black-icon-concept-vector-29963819.jpg"
+                                      : items.thumbnail,
+                                  title: items.title,
+                                  price: "₹ ${items.salePrice}",
+                                ),
                               );
                             },
                           ),
@@ -303,6 +319,7 @@ class _CustomerProductDetailsScreenState
             }
             return Container();
           },
-        ));
+        )
+        );
   }
 }

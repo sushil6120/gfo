@@ -9,6 +9,7 @@ import 'package:gfo/utils/routes/routesName.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../model/costumer/allProductModel.dart';
+import '../../model/costumer/productInfoScreen.dart';
 import '../../response/apiResponse.dart';
 import '../../utils/colors.dart';
 import '../../utils/utilsFunction.dart';
@@ -18,6 +19,7 @@ class AddProductViewModel with ChangeNotifier {
   ProductRepo productRepo = ProductRepo();
   AllProductModelClass? allProductModelClass;
   UploadProductModel? uploadProductModel;
+  ProductInfoModel? productInfoModel;
 
   List<XFile>? imageList = [];
   bool loading = false;
@@ -84,8 +86,8 @@ class AddProductViewModel with ChangeNotifier {
       stockQnty,
       allowStockOrders,
       lowStockHolder,
-      File thumbnail,
-      List<XFile> images,
+      // File thumbnail,
+      // List<XFile> images,
       String token,
       BuildContext context) async {
     setLoading(true);
@@ -108,8 +110,8 @@ class AddProductViewModel with ChangeNotifier {
               allowStockOrders,
               lowStockHolder,
               token,
-              thumbnail,
-              images)
+              selectedImage!,
+              imageList!)
           .then((value) async {
         // Navigator.pushNamedAndRemoveUntil(context, RoutesName.bottomNavigationBarScreen, (route) => false);
         if (value!.success == true) {
@@ -135,6 +137,8 @@ class AddProductViewModel with ChangeNotifier {
   }
 
   Future<void> getAllProduct(String id) async {
+    currentPage = 1;
+
     setHomeScreenData(ApiResponse.loading());
     try {
       await sellerProductsRepo
@@ -142,6 +146,7 @@ class AddProductViewModel with ChangeNotifier {
           .then((value) async {
         allProductModelClass = value;
         print(allProductModelClass);
+        products.clear(); // Clear existing products before adding new ones
         products.addAll(allProductModelClass!.products!.toList());
         currentPage++;
         print(
@@ -152,6 +157,38 @@ class AddProductViewModel with ChangeNotifier {
       });
     } catch (e) {
       print("exception:" + e.toString());
+    }
+  }
+
+  Future<void> getProductInfoApi(String id) async {
+    setHomeScreenData(ApiResponse.loading());
+    try {
+      await productRepo.productInfoApi(id).then((value) async {
+        productInfoModel = value;
+        print(productInfoModel);
+        setHomeScreenData(ApiResponse.completed(productInfoModel));
+      }).onError((error, stackTrace) {
+        setHomeScreenData(ApiResponse.error(error.toString()));
+      });
+    } catch (e) {
+      print("exception:" + e.toString());
+    }
+  }
+
+  Future<void> deleteProduct(String id, token, BuildContext context) async {
+    setLoading(true);
+    try {
+      await sellerProductsRepo
+          .deleteProductApi(id, token, context)
+          .then((value) async {
+        setLoading(false);
+      }).onError((error, stackTrace) {
+        print(error.toString());
+        setLoading(false);
+      });
+    } catch (e) {
+      print("exception:" + e.toString());
+      setLoading(false);
     }
   }
 }

@@ -118,22 +118,20 @@ class _SellerAddGalleryScreenState extends State<SellerAddGalleryScreen> {
                               } else {
                                 value.uplaodProductApi(
                                     title.toString(),
-                                    sdk,
+                                    sdk.toString(),
                                     desc,
                                     requiredPrice,
                                     salePrice,
                                     "category",
                                     "brand",
-                                    "12",
+                                    "29",
                                     "tags",
                                     "city",
                                     manageStock,
                                     "stockStatus",
-                                    "45",
+                                    "20",
                                     "allowStockOrders",
                                     "lowStockHolder",
-                                    value.selectedImage!,
-                                    value.imageList!,
                                     token.toString(),
                                     context);
                               }

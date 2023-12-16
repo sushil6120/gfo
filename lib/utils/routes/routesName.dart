@@ -69,6 +69,7 @@ class RoutesName {
   static const String sellerPrivacyPolicyScreen = 'sellerPrivacyPolicyScreen';
     static const String sellerAllProductScreen= 'sellerAllProductScreen';
         static const String sellerProductDetailsScreen = 'sellerProductDetailsScreen';
+        static const String sellerEditProductScreen = 'SellerEditProductScreen';
 
 
 }

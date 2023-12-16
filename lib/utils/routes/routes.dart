@@ -16,6 +16,7 @@ import 'package:gfo/ui/seller/seller_add_gallery_screen.dart';
 import 'package:gfo/ui/customer/faq_screen.dart';
 import 'package:gfo/ui/seller/seller_add_inventory_screen.dart';
 import 'package:gfo/ui/seller/seller_bottomNavigation_bar_screen.dart';
+import 'package:gfo/ui/seller/seller_edit_product_screen.dart';
 import 'package:gfo/ui/seller/seller_home_screen.dart';
 import 'package:gfo/ui/seller/seller_notification.dart';
 import 'package:gfo/ui/seller/seller_order_screen.dart';
@@ -167,7 +168,11 @@ class Routes {
       case RoutesName.sellerAllProductScreen:
         return SlideRoute(page: const SellerAllProductScreen(), x: 1, y: 0);
       case RoutesName.sellerProductDetailsScreen:
-        return SlideRoute(page: const SellerProductDetailsScreen(), x: 1, y: 0);
+      final arguments = settings.arguments as Map<String, dynamic>;
+        return SlideRoute(page:  SellerProductDetailsScreen(arguments: arguments), x: 1, y: 0);
+      case RoutesName.sellerEditProductScreen:
+      final arguments = settings.arguments as Map<String, dynamic>;
+        return SlideRoute(page:  SellerEditProductScreen(arguments: arguments), x: 1, y: 0);
 
       // --------- consultant ------
       case RoutesName.consultantHomeScreen:

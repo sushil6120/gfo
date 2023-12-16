@@ -2,16 +2,20 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:gfo/model/seller/uploadProductModel.dart';
 import 'package:gfo/utils/app_url.dart';
+import 'package:gfo/utils/routes/routesName.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 
 import '../../model/costumer/allProductModel.dart';
+import '../../utils/colors.dart';
+import '../../utils/utilsFunction.dart';
 
 class SellerProductsRepo {
   UploadProductModel? uploadProductModel;
-      AllProductModelClass? allProductModelClass;
+  AllProductModelClass? allProductModelClass;
 
   Future<UploadProductModel?> uploadProductData(
       String title,
@@ -85,16 +89,10 @@ class SellerProductsRepo {
     return uploadProductModel;
   }
 
-
-
-
-  Future<AllProductModelClass?> allProductApi(
-    int page,
-    id
-  ) async {
+  Future<AllProductModelClass?> allProductApi(int page, id) async {
     try {
-      final response = await http.get(
-          Uri.parse(AppUrl.baseUrl + "/api/v1/product?limit=10&page=$page&sellerId=$id"));
+      final response = await http.get(Uri.parse(
+          AppUrl.baseUrl + "/api/v1/product?limit=10&page=$page&sellerId=$id"));
       print(response.statusCode);
       if (response.statusCode == 200 || response.statusCode == 201) {
         if (kDebugMode) {
@@ -112,5 +110,33 @@ class SellerProductsRepo {
       throw (e);
     }
     return allProductModelClass;
+  }
+
+  Future<void> deleteProductApi(String id, token, BuildContext context) async {
+    try {
+      final response = await http.delete(
+        Uri.parse("${AppUrl.sellerUploadProduct}/$id"),
+        headers: {
+          "Content-type": "application/json",
+          "Authorization": "Bearer $token"
+        },
+      );
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        var data = jsonDecode(response.body);
+        // Navigator.pushNamedAndRemoveUntil(
+        //     context, RoutesName.SellerBottomNavBar, (route) => false);
+         Navigator.pushReplacementNamed(context, RoutesName.sellerAllProductScreen);
+        Utils.flushBarErrorMessage(
+            data['message'], context, Icons.error, colorLightWhite, greenColor);
+      } else {
+        var data = jsonDecode(response.body);
+        print("response: " + response.body);
+        print("response: " + response.statusCode.toString());
+        Utils.flushBarErrorMessage(data['message'], context, Icons.error,
+            colorLightWhite, primaryColor);
+      }
+    } catch (e) {
+      print("Exception" + e.toString());
+    }
   }
 }
