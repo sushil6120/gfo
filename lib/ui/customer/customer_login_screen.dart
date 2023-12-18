@@ -186,6 +186,7 @@ class _LoginScreenState extends State<CustomerLoginScreen> {
                   value.loginSendApis(phoneController.text, context);
                   // Navigator.pushNamed(context, RoutesName.loginOtpVerify);
                   /// Default.
+              
                 },
                 backgroundColor: primaryColor,
                 backgroundColor2: primaryColor,

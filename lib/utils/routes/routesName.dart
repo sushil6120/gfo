@@ -1,5 +1,6 @@
 class RoutesName {
   static const String splashScreen = 'SplashScreen';
+  static const String onBoardingScreen = 'OnBoardingScreen';
   static const String splashScreen1= 'splashScreen1';
   static const String loginOtpVerify = 'LoginOtpVerify';
   static const String signUpScreen = 'SignUpScreen';

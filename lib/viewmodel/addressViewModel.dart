@@ -53,10 +53,10 @@ class AddressViewModel with ChangeNotifier {
     }
   }
 
-  Future<void> deleteAddressAPi(String id,token, BuildContext context) async {
+  Future<void> deleteAddressAPi(String id, token, BuildContext context) async {
     setLoading(true);
     try {
-      await addressRepo.deletAddress(id,token, context).then((value) async {
+      await addressRepo.deletAddress(id, token, context).then((value) async {
         // Navigator.pushNamedAndRemoveUntil(context, RoutesName.bottomNavigationBarScreen, (route) => false);
         if (value!.success == true) {
           Navigator.pushReplacementNamed(
@@ -74,11 +74,12 @@ class AddressViewModel with ChangeNotifier {
   }
 
   Future<void> updateAddressAPi(String pinCode, addresss, localty, city, state,
-      id,token, BuildContext context) async {
+      id, token, BuildContext context) async {
     setLoading(true);
     try {
       await addressRepo
-          .updateAddress(pinCode, addresss, localty, city, state, id,token, context)
+          .updateAddress(
+              pinCode, addresss, localty, city, state, id, token, context)
           .then((value) async {
         // Navigator.pushNamedAndRemoveUntil(context, RoutesName.bottomNavigationBarScreen, (route) => false);
         if (value!.success == true) {
