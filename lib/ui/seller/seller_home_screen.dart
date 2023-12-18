@@ -1,3 +1,4 @@
+import 'package:fl_animated_linechart/fl_animated_linechart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -73,43 +74,22 @@ class _SellerHomeScreenState extends State<SellerHomeScreen> {
             ),
           ),
           // Padding(
-          //   padding: const EdgeInsets.symmetric(horizontal: 20),
-          //   child: SizedBox(
-          //     height: 300,
-          //     child: LineChart(
-          //       LineChartData(
-          //         // Your chart data configuration goes here
-          //         gridData: FlGridData(show: false),
-          //         titlesData: FlTitlesData(show: false),
-          //         borderData: FlBorderData(
-          //           show: true,
-          //           border:
-          //               Border.all(color: const Color(0xff37434d), width: 1),
-          //         ),
-          //         minX: 0,
-          //         maxX: 7,
-          //         minY: 0,
-          //         maxY: 6,
-          //         lineBarsData: [
-          //           LineChartBarData(
-          //             spots: [
-          //               FlSpot(0, 3),
-          //               FlSpot(1, 1),
-          //               FlSpot(2, 4),
-          //               FlSpot(3, 2),
-          //               FlSpot(4, 5),
-          //               FlSpot(5, 1),
-          //               FlSpot(6, 4),
-          //             ],
-          //             isCurved: true,
-          //             dotData: FlDotData(show: false),
-          //             belowBarData: BarAreaData(show: false),
-          //           ),
-          //         ],
-          //       ),
+          //   padding: const EdgeInsets.symmetric(horizontal: 0),
+          //   child: AnimatedLineChart(
+          //       lineChart,
+          //       toolTipColor: Colors.white,
+          //       gridColor: Colors.black54,
+          //       textStyle: TextStyle(fontSize: 10, color: Colors.black54),
+          //       showMarkerLines:
+          //           true, // If this value is not set to true, all defines lines will be filled lines and not dashed
+          //       legends: [
+          //         Legend(title: 'Critical', color: Colors.red, showLeadingLine: true),
+          //         Legend(title: 'Warning', color: Colors.yellow, Icon(Icons.report_problem_rounded, size: 17, color: Colors.yellow)),
+          //       ],
+          //       legendsRightLandscapeMode: true,
           //     ),
           //   ),
-          // ),
+          
           SizedBox(
             height: 20,
           ),
@@ -338,4 +318,28 @@ class _SellerHomeScreenState extends State<SellerHomeScreen> {
       ),
     );
   }
+
+  // LineChart lineChart = LineChart.fromDateTimeMaps([
+  //   line1,
+  //   line2,
+  //   line3,
+  //   line4,
+  //   line5
+  // ], [
+  //   Colors.blue,
+  //   Colors.red,
+  //   Colors.yellow,
+  //   Colors.yellow,
+  //   Colors.red
+  // ], [
+  //   'C',
+  //   'C',
+  //   'C',
+  //   'C',
+  //   'C',
+  // ], tapTextFontWeight: FontWeight.w400);
+
+  
+ 
 }
+

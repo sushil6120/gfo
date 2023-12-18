@@ -59,14 +59,21 @@ class AuthViewModel with ChangeNotifier {
         if (value!.success == true) {
           if (value.userType == "user") {
             sharedPreferencesViewModel.saveToken(value.token);
-            Navigator.pushNamed(context, RoutesName.bottomNavigationBarScreen);
+            sharedPreferencesViewModel.saveUserId(value.userId);
+            Navigator.pushNamedAndRemoveUntil(context,
+                RoutesName.bottomNavigationBarScreen, (route) => false);
           } else if (value.userType == "consultant") {
             sharedPreferencesViewModel.saveConsultantToken(value.token);
-            Navigator.pushNamed(
-                context, RoutesName.consultantBottomNavigationBarScreen);
+            sharedPreferencesViewModel.saveUserId(value.userId);
+            Navigator.pushNamedAndRemoveUntil(
+                context,
+                RoutesName.consultantBottomNavigationBarScreen,
+                (route) => false);
           } else if (value.userType == "seller") {
             sharedPreferencesViewModel.saveSellerToken(value.token);
-            Navigator.pushNamed(context, RoutesName.SellerBottomNavBar);
+            sharedPreferencesViewModel.saveUserId(value.userId);
+            Navigator.pushNamedAndRemoveUntil(
+                context, RoutesName.SellerBottomNavBar, (route) => false);
           } else {
             Utils.flushBarErrorMessage("Somthing Went Weong", context,
                 Icons.error, colorLightWhite, primaryColor);

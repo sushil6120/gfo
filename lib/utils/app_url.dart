@@ -10,8 +10,19 @@ class AppUrl {
   static var singleConsultantApis = "$baseUrl/api/v1/auth/consultant/";
   static var applyNocApis = "$baseUrl/api/v1/noc/add";
   static var addAddressApi = "$baseUrl/api/v1/shipping/create";
+  static var allAddressApi = "$baseUrl/api/v1/shipping";
+  static var deletAddressApi = "$baseUrl/api/v1/shipping/";
+  static var updateAddressApi = "$baseUrl/api/v1/shipping/";
+  static var productInfoApi = "$baseUrl/api/v1/product/";
+  static var anotherProductApi = "$baseUrl/api/v1/product?limit=10&sellerId=";
+  static var addToCartApi = "$baseUrl/api/v1/cart/add";
 
 //   !--------consultaant---------!
   static var consultantRegistration = "$baseUrl/api/v1/auth/consultant/details";
   static var sellerRegister = "$baseUrl/api/v1/auth/seller/details";
+  static var consultantGetBookedUser =
+      "$baseUrl/api/v1/booking/consultant/users";
+
+  // -----------Seller ----------------!
+  static var sellerUploadProduct = "$baseUrl/api/v1/product";
 }

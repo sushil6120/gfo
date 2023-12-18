@@ -18,6 +18,12 @@ class CosultantViewModel with ChangeNotifier {
   //   notifyListeners();
   // }
 
+
+  setHomeScreenData(ApiResponse<dynamic> response) {
+    consultantData = response;
+    notifyListeners();
+  }
+
   Future<void> getAllConsultantApi() async {
     try {
       await getConsultantRepo.allConsultantApi().then((value) async {
@@ -30,12 +36,16 @@ class CosultantViewModel with ChangeNotifier {
     }
   }
   Future<void> singleConsultantApis(String id,token) async {
+    setHomeScreenData(ApiResponse.loading());
     try {
       await getConsultantRepo.singleConsultantApi(id, token).then((value) async {
-        print(value!.message);
+        print(value!.data);
         singleConsultantModel = value;
+        setHomeScreenData(ApiResponse.completed(singleConsultantModel));
         notifyListeners();
-      }).onError((error, stackTrace) {});
+      }).onError((error, stackTrace) {
+        setHomeScreenData(ApiResponse.error(error.toString()));
+      });
     } catch (e) {
       print("exception:" + e.toString());
     }

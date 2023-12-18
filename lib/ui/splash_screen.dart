@@ -57,7 +57,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   ? RoutesName.consultantBottomNavigationBarScreen
                   : isSeller == true
                       ? RoutesName.SellerBottomNavBar
-                      : RoutesName.splashScreen,
+                      : RoutesName.onBoardingScreen,
           (route) => false);
     });
   }
@@ -69,10 +69,7 @@ class _SplashScreenState extends State<SplashScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-            child: Text(
-              "GFO",
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
+            child: Image.asset("assets/gfo_logo_1 - Copy.png")
           )
         ],
       ),

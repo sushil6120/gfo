@@ -16,6 +16,7 @@ import 'package:gfo/ui/seller/seller_add_gallery_screen.dart';
 import 'package:gfo/ui/customer/faq_screen.dart';
 import 'package:gfo/ui/seller/seller_add_inventory_screen.dart';
 import 'package:gfo/ui/seller/seller_bottomNavigation_bar_screen.dart';
+import 'package:gfo/ui/seller/seller_edit_product_screen.dart';
 import 'package:gfo/ui/seller/seller_home_screen.dart';
 import 'package:gfo/ui/seller/seller_notification.dart';
 import 'package:gfo/ui/seller/seller_order_screen.dart';
@@ -50,6 +51,7 @@ import '../../ui/customer/order_screen.dart';
 import '../../ui/customer/privacy_policy_screen.dart';
 import '../../ui/customer/review_screen.dart';
 import '../../ui/customer/role_screen.dart';
+import '../../ui/onBoarding_screen.dart';
 import '../../ui/seller/seller_add_inventory_general_screen.dart';
 import '../../ui/seller/seller_profile_screen.dart';
 import '../../ui/splash_screen.dart';
@@ -61,6 +63,8 @@ class Routes {
     switch (settings.name) {
       case RoutesName.splashScreen1:
         return SlideRoute(page: const SplashScreen(), x: 1, y: 0);
+      case RoutesName.onBoardingScreen:
+        return SlideRoute(page: const OnBoardingScreen(), x: 1, y: 0);
       case RoutesName.splashScreen:
         return SlideRoute(page: const CustomerLoginScreen(), x: 1, y: 0);
       case RoutesName.loginOtpVerify:
@@ -76,15 +80,21 @@ class Routes {
       case RoutesName.customerAllProductScreen:
         return SlideRoute(page: const CustomerAllProductScreen(), x: 1, y: 0);
       case RoutesName.customerProductDetailsScreen:
+        final arguments = settings.arguments as Map<String, dynamic>;
         return SlideRoute(
-            page: const CustomerProductDetailsScreen(), x: 1, y: 0);
+            page: CustomerProductDetailsScreen(arguments: arguments),
+            x: 1,
+            y: 0);
       case RoutesName.checkOutScreen:
         return SlideRoute(page: const CheckOutScreen(), x: 1, y: 0);
       case RoutesName.customerAddressScreen:
         return SlideRoute(page: const CustomerAddressScreen(), x: 1, y: 0);
       case RoutesName.customerAddNewAddressScreen:
+        final arguments = settings.arguments as Map<String, dynamic>;
         return SlideRoute(
-            page: const CustomerAddNewAddressScreen(), x: 1, y: 0);
+            page: CustomerAddNewAddressScreen(arguments: arguments),
+            x: 1,
+            y: 0);
       case RoutesName.congrotulationsScreen:
         return SlideRoute(page: const CongrotulationsScreen(), x: 1, y: 0);
       case RoutesName.customeHireConsutantScreen:
@@ -100,27 +110,27 @@ class Routes {
       case RoutesName.chatScreen:
         return SlideRoute(page: ChatScreen(), x: 1, y: 0);
       case RoutesName.customerProfileScreen:
-        return SlideRoute(page: CustomerProfileScreen(), x: 1, y: 0);
+        return SlideRoute(page: const CustomerProfileScreen(), x: 1, y: 0);
       case RoutesName.notificationScreen:
-        return SlideRoute(page: NotificationScreen(), x: 1, y: 0);
+        return SlideRoute(page: const NotificationScreen(), x: 1, y: 0);
       case RoutesName.reviewScreen:
-        return SlideRoute(page: ReviewScreen(), x: 1, y: 0);
+        return SlideRoute(page: const ReviewScreen(), x: 1, y: 0);
       case RoutesName.orderScreen:
-        return SlideRoute(page: OrderScreen(), x: 1, y: 0);
+        return SlideRoute(page: const OrderScreen(), x: 1, y: 0);
       case RoutesName.orderInfoScreen:
-        return SlideRoute(page: OrderInfoScreen(), x: 1, y: 0);
+        return SlideRoute(page: const OrderInfoScreen(), x: 1, y: 0);
       case RoutesName.privacyPolicyScreen:
-        return SlideRoute(page: PrivacyPolicyScreen(), x: 1, y: 0);
+        return SlideRoute(page: const PrivacyPolicyScreen(), x: 1, y: 0);
       case RoutesName.faqScreen:
-        return SlideRoute(page: FaqScreen(), x: 1, y: 0);
+        return SlideRoute(page: const FaqScreen(), x: 1, y: 0);
       case RoutesName.customerSignUpScreen:
-        return SlideRoute(page: CustomerSignUpScreen(), x: 1, y: 0);
+        return SlideRoute(page: const CustomerSignUpScreen(), x: 1, y: 0);
       case RoutesName.SellerSignUpScreen:
-        return SlideRoute(page: SellerSignUp(), x: 1, y: 0);
+        return SlideRoute(page: const SellerSignUp(), x: 1, y: 0);
       case RoutesName.ConsultantSignUpScreen:
-        return SlideRoute(page: ConsultantSignUpScreen(), x: 1, y: 0);
+        return SlideRoute(page: const ConsultantSignUpScreen(), x: 1, y: 0);
       case RoutesName.RoleScreen:
-        return SlideRoute(page: RoleScreen(), x: 1, y: 0);
+        return SlideRoute(page: const RoleScreen(), x: 1, y: 0);
       case RoutesName.SignUpOtpScreen:
         final arguments = settings.arguments as Map<String, dynamic>;
         return SlideRoute(
@@ -137,10 +147,15 @@ class Routes {
       case RoutesName.SellerAddInventoryScreen:
         return SlideRoute(page: const SellerAddInventoryScreen(), x: 1, y: 0);
       case RoutesName.SellerAddInventoryGeneralScreen:
+        final arguments = settings.arguments as Map<String, dynamic>;
         return SlideRoute(
-            page: const SellerAddInventoryGeneralScreen(), x: 1, y: 0);
+            page: SellerAddInventoryGeneralScreen(arguments: arguments),
+            x: 1,
+            y: 0);
       case RoutesName.SellerAddGalleryScreen:
-        return SlideRoute(page: const SellerAddGalleryScreen(), x: 1, y: 0);
+        final arguments = settings.arguments as Map<String, dynamic>;
+        return SlideRoute(
+            page: SellerAddGalleryScreen(arguments: arguments), x: 1, y: 0);
       case RoutesName.SellerWalletScreen:
         return SlideRoute(page: const SellerWalletScreen(), x: 1, y: 0);
       case RoutesName.SellerOrderScreen:
@@ -156,7 +171,11 @@ class Routes {
       case RoutesName.sellerAllProductScreen:
         return SlideRoute(page: const SellerAllProductScreen(), x: 1, y: 0);
       case RoutesName.sellerProductDetailsScreen:
-        return SlideRoute(page: const SellerProductDetailsScreen(), x: 1, y: 0);
+      final arguments = settings.arguments as Map<String, dynamic>;
+        return SlideRoute(page:  SellerProductDetailsScreen(arguments: arguments), x: 1, y: 0);
+      case RoutesName.sellerEditProductScreen:
+      final arguments = settings.arguments as Map<String, dynamic>;
+        return SlideRoute(page:  SellerEditProductScreen(arguments: arguments), x: 1, y: 0);
 
       // --------- consultant ------
       case RoutesName.consultantHomeScreen:

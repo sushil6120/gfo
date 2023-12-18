@@ -142,9 +142,11 @@ class _SellerProfileScreenState extends State<SellerProfileScreen> {
                     sharedPreferencesViewModel
                         .removeSellerToken()
                         .then((value) {
-                      sharedPreferencesViewModel.remove();
-                      Navigator.pushNamedAndRemoveUntil(
-                          context, RoutesName.splashScreen, (route) => false);
+                      sharedPreferencesViewModel.removeToken().then((value) {
+                        sharedPreferencesViewModel.remove();
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, RoutesName.splashScreen, (route) => false);
+                      });
                     });
                   },
                   child: Text('Logout',

@@ -1,7 +1,3 @@
-
-
-
-
 import 'package:gfo/response/status.dart';
 
 class ApiResponse<T> {
