@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:gfo/model/consultant/consultantRegistrationModel.dart';
 import 'package:gfo/model/costumer/otp_verify_model_class.dart';
+import 'package:gfo/model/seller/sellerRegisterModel.dart';
 import 'package:gfo/utils/app_url.dart';
 import 'package:gfo/utils/colors.dart';
 import 'package:gfo/utils/routes/routesName.dart';
@@ -17,6 +18,7 @@ class SignUpRepo {
   OtpVerifyModelClass? otpVerifyModelClass;
   ConsultantSignUpModel? consultantSignUpModel;
   ConsultantRegistrationModel? consultantRegistrationModel;
+  SellerRegisterModel? sellerRegisterModel;
 
   Future<ConsultantSignUpModel?> consultantSignUp(
       String phone, BuildContext context) async {
@@ -128,6 +130,35 @@ class SignUpRepo {
         print(response.statusCode);
       }
       return consultantRegistrationModel;
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  // seller registration
+  Future<SellerRegisterModel?> sellerRegister(
+      dynamic datas, String token, BuildContext context) async {
+    try {
+      final response = await http.put(Uri.parse(AppUrl.consultantRegistration),
+          headers: {
+            "Content-type": "application/json",
+            "Authorization": "Bearer $token"
+          },
+          body: datas);
+      var data = jsonDecode(response.body);
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        var data = jsonDecode(response.body);
+        sellerRegisterModel = SellerRegisterModel.fromJson(data);
+        Navigator.pushNamedAndRemoveUntil(
+            context, RoutesName.splashScreen, (route) => false);
+        Utils.flushBarErrorMessage(sellerRegisterModel!.message.toString(),
+            context, Icons.error, colorLightWhite, greenColor);
+      } else {
+        Utils.snackBar(data['message'], context);
+        print(response.body);
+        print(response.statusCode);
+      }
+      return sellerRegisterModel;
     } catch (e) {
       print(e);
     }

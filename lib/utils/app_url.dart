@@ -11,9 +11,7 @@ class AppUrl {
   static var applyNocApis = "$baseUrl/api/v1/noc/add";
   static var addAddressApi = "$baseUrl/api/v1/shipping/create";
 
-
-
 //   !--------consultaant---------!
   static var consultantRegistration = "$baseUrl/api/v1/auth/consultant/details";
-
+  static var sellerRegister = "$baseUrl/api/v1/auth/seller/details";
 }

@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:gfo/services/sharedPreferencesServices/sharedPreferences.dart';
 import 'package:gfo/ui/globalWidgets/searchTextFormFieldBig.dart';
-
+import 'package:gfo/viewmodel/authviewmodel.dart';
+import 'package:provider/provider.dart';
 import '../../utils/colors.dart';
 import '../../utils/valueConstants.dart';
 import '../globalWidgets/buttonBig.dart';
@@ -15,221 +19,267 @@ class SellerRegistratinScreen extends StatefulWidget {
       _SellerRegistratinScreenState();
 }
 
-class _SellerRegistratinScreenState
-    extends State<SellerRegistratinScreen> {
+TextEditingController businessname = TextEditingController();
+TextEditingController ifsc = TextEditingController();
+TextEditingController address = TextEditingController();
+TextEditingController email = TextEditingController();
+TextEditingController gst = TextEditingController();
+TextEditingController panNo = TextEditingController();
+TextEditingController bankAccName = TextEditingController();
+TextEditingController bankAccNo = TextEditingController();
+TextEditingController reBankAccNo = TextEditingController();
+
+class _SellerRegistratinScreenState extends State<SellerRegistratinScreen> {
+  String? token;
+  SharedPreferencesViewModel sharedPreferencesViewModel =
+      SharedPreferencesViewModel();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.wait([sharedPreferencesViewModel.getSellerSignUpToken()])
+        .then((value) {
+      token = value[0];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        iconTheme: IconThemeData(color: colorDark1),
-        centerTitle: true,
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: Icon(
-                CupertinoIcons.bell,
-                color: colorDark2,
-              )),
-          SizedBox(
-            width: 5,
-          )
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 18, top: verticalSpaceSmall2, bottom: 10),
-              child: Text(
-                "Registration",
-                style: Theme.of(context)
-                    .textTheme
-                    .titleMedium!
-                    .copyWith(fontWeight: FontWeight.w700, fontSize: 28),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 18, right: 18, top: verticalSpaceSmall),
-              child: SearchTextFormFieldBig(
-                height: 55,
-                hintText: "Business Name",
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 18, right: 18, top: verticalSpaceSmall),
-              child: SearchTextFormFieldBig(
-                height: 55,
-                hintText: "contact",
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 18, right: 18, top: verticalSpaceSmall),
-              child: SearchTextFormFieldBig(
-                height: 55,
-                hintText: "Email Id",
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 18, right: 18, top: verticalSpaceSmall),
-              child: SearchTextFormFieldBig(
-                height: 55,
-                hintText: "GST No.",
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 18, right: 18, top: verticalSpaceSmall),
-              child: SearchTextFormFieldBig(
-                height: 55,
-                hintText: "Pan No",
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 18, right: 18, top: verticalSpaceSmall),
-              child: SearchTextFormFieldBig(
-                height: 55,
-                hintText: "Select Business",
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 18, right: 18, top: verticalSpaceSmall),
-              child: SearchTextFormFieldBig(
-                height: 55,
-                hintText: "Location Name",
-              ),
-            ),
-           
-           
-           
-             Padding(
-              padding: const EdgeInsets.only(left: 18, right: 18, top: verticalSpaceSmall),
-              child: Container(
-                decoration: BoxDecoration(color: colorLight3.withOpacity(.1),borderRadius: BorderRadius.circular(5)),
-                child:Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Upload Adhar Card",style: TextStyle(fontSize:12),),
-                      Icon(Icons.upload),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-             Padding(
-              padding: const EdgeInsets.only(left: 18, right: 18, top: verticalSpaceSmall),
-              child: Container(
-                decoration: BoxDecoration(color: colorLight3.withOpacity(.1),borderRadius: BorderRadius.circular(5)),
-                child:Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Upload Pen Card",style: TextStyle(fontSize:12),),
-                      Icon(Icons.upload),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 18, right: 18, top: verticalSpaceSmall),
-              child: Container(
-                decoration: BoxDecoration(color: colorLight3.withOpacity(.1),borderRadius: BorderRadius.circular(5)),
-                child:Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Upload Education Documents",style: TextStyle(fontSize:12),),
-                      Icon(Icons.upload),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-             Padding(
-              padding: const EdgeInsets.only(
-                  left: 18, top: verticalSpaceSmall,),
-              child: Text(
-                "Bank Deatils",
-                style: Theme.of(context)
-                    .textTheme
-                    .titleMedium!
-                    .copyWith(fontWeight: FontWeight.w700, fontSize: 18),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 18, right: 18, top: verticalSpaceSmall2),
-              child: SearchTextFormFieldBig(
-                height: 55,
-                hintText: "Account holder name",
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 18, right: 18, top: verticalSpaceSmall),
-              child: SearchTextFormFieldBig(
-                height: 55,
-                hintText: "Account no.",
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 18, right: 18, top: verticalSpaceSmall),
-              child: SearchTextFormFieldBig(
-                height: 55,
-                hintText: "Re-enter account no.",
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 18, right: 18, top: verticalSpaceSmall),
-              child: SearchTextFormFieldBig(
-                height: 55,
-                hintText: "IFSC Code",
-              ),
-            ),
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          iconTheme: IconThemeData(color: colorDark1),
+          centerTitle: true,
+          actions: [
+            IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  CupertinoIcons.bell,
+                  color: colorDark2,
+                )),
+            SizedBox(
+              width: 5,
+            )
           ],
         ),
-      ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 25),
-        child: ButtonBig(
-          fontSize: 14,
-          onTap: () {
-            if (kDebugMode) {
-              print("working");
-            }
-            // Navigator.pushNamed(context, RoutesName.checkOutScreen);
-          },
-          backgroundColor: primaryColor,
-          backgroundColor2: primaryColor,
-          width: double.infinity,
-          height: 55,
-          text: "Submit",
-          showProgress: false,
-          progressColor: colorLightWhite,
-          progressStrokeWidth: 1.5,
-          radius: 5,
-          textColor: colorLightWhite,
-          letterSpacing: 0,
-          progressPadding: 20,
-          fontWeight: FontWeight.w700,
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 18, top: verticalSpaceSmall2, bottom: 10),
+                child: Text(
+                  "Registration",
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium!
+                      .copyWith(fontWeight: FontWeight.w700, fontSize: 28),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 18, right: 18, top: verticalSpaceSmall),
+                child: SearchTextFormFieldBig(
+                  height: 55,
+                  hintText: "Business Name",
+                  controller: businessname,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 18, right: 18, top: verticalSpaceSmall),
+                child: SearchTextFormFieldBig(
+                  height: 55,
+                  hintText: "Email Id",
+                  controller: email,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 18, right: 18, top: verticalSpaceSmall),
+                child: SearchTextFormFieldBig(
+                  height: 55,
+                  hintText: "GST No.",
+                  controller: gst,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 18, right: 18, top: verticalSpaceSmall),
+                child: SearchTextFormFieldBig(
+                  height: 55,
+                  hintText: "Pan No",
+                  controller: panNo,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 18, right: 18, top: verticalSpaceSmall),
+                child: SearchTextFormFieldBig(
+                  height: 55,
+                  hintText: "Address",
+                  controller: address,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 18, right: 18, top: verticalSpaceSmall),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: colorLight3.withOpacity(.1),
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Upload Adhar Card",
+                          style: TextStyle(fontSize: 12),
+                        ),
+                        Icon(Icons.upload),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 18, right: 18, top: verticalSpaceSmall),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: colorLight3.withOpacity(.1),
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Upload Pen Card",
+                          style: TextStyle(fontSize: 12),
+                        ),
+                        Icon(Icons.upload),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 18, right: 18, top: verticalSpaceSmall),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: colorLight3.withOpacity(.1),
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Upload Education Documents",
+                          style: TextStyle(fontSize: 12),
+                        ),
+                        Icon(Icons.upload),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 18,
+                  top: verticalSpaceSmall,
+                ),
+                child: Text(
+                  "Bank Deatils",
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium!
+                      .copyWith(fontWeight: FontWeight.w700, fontSize: 18),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 18, right: 18, top: verticalSpaceSmall2),
+                child: SearchTextFormFieldBig(
+                  height: 55,
+                  hintText: "Account holder name",
+                  controller: bankAccName,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 18, right: 18, top: verticalSpaceSmall),
+                child: SearchTextFormFieldBig(
+                  height: 55,
+                  hintText: "Account no.",
+                  controller: bankAccNo,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 18, right: 18, top: verticalSpaceSmall),
+                child: SearchTextFormFieldBig(
+                  height: 55,
+                  hintText: "Re-enter account no.",
+                  controller: reBankAccNo,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 18, right: 18, top: verticalSpaceSmall),
+                child: SearchTextFormFieldBig(
+                  height: 55,
+                  hintText: "IFSC Code",
+                  controller: ifsc,
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-    );
+        bottomNavigationBar: Consumer<AuthViewModel>(
+          builder: (context, value, child) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 25),
+              child: ButtonBig(
+                fontSize: 14,
+                onTap: () {
+                  if (kDebugMode) {
+                    print("working");
+                  }
+                  var data = jsonEncode({
+                    "businessName": businessname.text,
+                    "email": email.text,
+                    "address": address.text,
+                    "gstNo": gst.text,
+                    "bankAccName": bankAccName.text,
+                    "AccNo": bankAccNo.text,
+                    "reAccNo": reBankAccNo.text,
+                    "ifcsCode": ifsc.text,
+                    "panCard": panNo.text
+                  });
+                  value.sellerRegisterAPI(data, token.toString(), context);
+                },
+                backgroundColor: primaryColor,
+                backgroundColor2: primaryColor,
+                width: double.infinity,
+                height: 55,
+                text: "Submit",
+                showProgress: false,
+                progressColor: colorLightWhite,
+                progressStrokeWidth: 1.5,
+                radius: 5,
+                textColor: colorLightWhite,
+                letterSpacing: 0,
+                progressPadding: 20,
+                fontWeight: FontWeight.w700,
+              ),
+            );
+          },
+        ));
   }
 }

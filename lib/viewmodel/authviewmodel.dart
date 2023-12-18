@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gfo/model/consultant/consultantRegistrationModel.dart';
+import 'package:gfo/model/seller/sellerRegisterModel.dart';
 // import 'package:gfo/model/login_model_class.dart';
 import 'package:gfo/repository/login_repo.dart';
 import 'package:gfo/repository/singUpRepo.dart';
@@ -15,7 +16,8 @@ class AuthViewModel with ChangeNotifier {
   SignUpRepo signUpRepo = SignUpRepo();
 
   LoginModelClass? loginModelClass;
-  ConsultantRegistrationModel ? consultantRegistrationModel;
+  ConsultantRegistrationModel? consultantRegistrationModel;
+  SellerRegisterModel? sellerRegisterModel;
 
   bool loading = false;
 
@@ -90,8 +92,7 @@ class AuthViewModel with ChangeNotifier {
   Future<void> consultantSignUpApi(String phone, BuildContext context) async {
     setLoading(true);
     try {
-      await signUpRepo.consultantSignUp(phone, context).then((value)  {
-   
+      await signUpRepo.consultantSignUp(phone, context).then((value) {
         setLoading(false);
       });
     } catch (e) {
@@ -179,14 +180,18 @@ class AuthViewModel with ChangeNotifier {
 
   // consultant registration
   Future<void> consultantRegistrationApis(
-     dynamic data ,String token , BuildContext context) async {
+      dynamic data, String token, BuildContext context) async {
     setLoading(true);
     // final SharedPreferencesViewModel sharedPreferencesViewModel =
     //     SharedPreferencesViewModel();
     try {
-      await signUpRepo.consultantRegistration(data, token, context).then((value) async {
-        if (value!.message == "Consultant Personal details filled up successfully") {
-          Navigator.pushNamedAndRemoveUntil(context, RoutesName.splashScreen, (route) => false);
+      await signUpRepo
+          .consultantRegistration(data, token, context)
+          .then((value) async {
+        if (value!.message ==
+            "Consultant Personal details filled up successfully") {
+          Navigator.pushNamedAndRemoveUntil(
+              context, RoutesName.splashScreen, (route) => false);
           Utils.flushBarErrorMessage(value.message.toString(), context,
               Icons.error, colorLightWhite, greenColor);
           setLoading(false);
@@ -195,6 +200,22 @@ class AuthViewModel with ChangeNotifier {
               Icons.error, colorLightWhite, primaryColor);
           setLoading(false);
         }
+      });
+    } catch (e) {
+      print("exception:" + e.toString());
+      setLoading(false);
+    }
+  }
+
+  // seller registration
+  Future<void> sellerRegisterAPI(
+      dynamic data, String token, BuildContext context) async {
+    setLoading(true);
+    // final SharedPreferencesViewModel sharedPreferencesViewModel =
+    //     SharedPreferencesViewModel();
+    try {
+      await signUpRepo.sellerRegister(data, token, context).then((value) async {
+        setLoading(false);
       });
     } catch (e) {
       print("exception:" + e.toString());
