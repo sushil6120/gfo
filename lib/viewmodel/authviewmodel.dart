@@ -187,7 +187,7 @@ class AuthViewModel with ChangeNotifier {
 
   // consultant registration
   Future<void> consultantRegistrationApis(
-      dynamic data, String token, BuildContext context) async {
+      dynamic data, String token,bool isEdit, BuildContext context) async {
     setLoading(true);
     // final SharedPreferencesViewModel sharedPreferencesViewModel =
     //     SharedPreferencesViewModel();
@@ -197,8 +197,13 @@ class AuthViewModel with ChangeNotifier {
           .then((value) async {
         if (value!.message ==
             "Consultant Personal details filled up successfully") {
-          Navigator.pushNamedAndRemoveUntil(
+       if(isEdit == true){
+           Navigator.pushNamedAndRemoveUntil(
+              context, RoutesName.consultantBottomNavigationBarScreen, (route) => false);
+       }else{
+           Navigator.pushNamedAndRemoveUntil(
               context, RoutesName.splashScreen, (route) => false);
+       }
           Utils.flushBarErrorMessage(value.message.toString(), context,
               Icons.error, colorLightWhite, greenColor);
           setLoading(false);
@@ -216,12 +221,12 @@ class AuthViewModel with ChangeNotifier {
 
   // seller registration
   Future<void> sellerRegisterAPI(
-      dynamic data, String token, BuildContext context) async {
+      dynamic data, String token,bool isEdit, BuildContext context) async {
     setLoading(true);
     // final SharedPreferencesViewModel sharedPreferencesViewModel =
     //     SharedPreferencesViewModel();
     try {
-      await signUpRepo.sellerRegister(data, token, context).then((value) async {
+      await signUpRepo.sellerRegister(data, token,isEdit, context).then((value) async {
         setLoading(false);
       });
     } catch (e) {

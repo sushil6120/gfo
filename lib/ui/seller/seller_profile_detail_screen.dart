@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:gfo/model/seller/sellerProfileModel.dart';
 // import 'package:flutter_svg/svg.dart';
 import 'package:gfo/utils/colors.dart';
 import 'package:gfo/utils/routes/routesName.dart';
 
 class SellerProfileDetailScreen extends StatefulWidget {
-  const SellerProfileDetailScreen({super.key});
+    Map<String, dynamic>? arguments;
+   SellerProfileDetailScreen({super.key, this.arguments});
 
   @override
   State<SellerProfileDetailScreen> createState() =>
@@ -12,6 +14,13 @@ class SellerProfileDetailScreen extends StatefulWidget {
 }
 
 class _SellerProfileDetailScreenState extends State<SellerProfileDetailScreen> {
+  Data? profileData;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    profileData = widget.arguments!['profileData'];
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,19 +44,22 @@ class _SellerProfileDetailScreenState extends State<SellerProfileDetailScreen> {
                 child: Image.asset(
                   'assets/images/sellerprofile.png',
                 )),
-            title: Text('Andrea Hirata',
+            title: Text('${profileData!.bankAccName.toString().substring(0,1).toUpperCase()+profileData!.bankAccName!.substring(1)}',
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                     color: Colors.black)),
-            subtitle: Text('9987654321',
+            subtitle: Text('${profileData!.phone.toString()}',
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                     color: colorDark3)),
             trailing: GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, RoutesName.sellerRegistratinScreen);
+                  Navigator.pushNamed(context, RoutesName.sellerRegistratinScreen,arguments: {
+                    "profileData":profileData,
+                    "isEdit":true
+                  });
                 },
               child: Icon(
                 Icons.edit_outlined,
@@ -63,7 +75,7 @@ class _SellerProfileDetailScreenState extends State<SellerProfileDetailScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Name - Andrea Hirata',
+                Text('Name - ${profileData!.bankAccName.toString().substring(0,1).toUpperCase()+profileData!.bankAccName!.substring(1)}',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
@@ -71,7 +83,7 @@ class _SellerProfileDetailScreenState extends State<SellerProfileDetailScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                Text('Contact No. - 98765432112',
+                Text('Contact No. - ${profileData!.phone.toString()}',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
@@ -79,7 +91,7 @@ class _SellerProfileDetailScreenState extends State<SellerProfileDetailScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                Text('E-mail Id - AndreaHirata@gmail.com',
+                Text('E-mail Id - ${profileData!.email.toString()}',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
@@ -103,7 +115,7 @@ class _SellerProfileDetailScreenState extends State<SellerProfileDetailScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                Text('Select Business - Graduation',
+                Text('Select Business - ${profileData!.phone.toString()}',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
@@ -111,7 +123,7 @@ class _SellerProfileDetailScreenState extends State<SellerProfileDetailScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                Text('Location Name - Delhi',
+                Text('Location Name - ${profileData!.address.toString()}',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
@@ -127,7 +139,7 @@ class _SellerProfileDetailScreenState extends State<SellerProfileDetailScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                Text('Account Holder name - Andrea Hirata',
+                Text('Account Holder name - ${profileData!.bankAccName.toString()}',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
@@ -135,7 +147,7 @@ class _SellerProfileDetailScreenState extends State<SellerProfileDetailScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                Text('Account No. - 23*********543',
+                Text('Account No. - ${profileData!.accNo.toString()}',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,

@@ -38,6 +38,7 @@ class ConsultantViewModelHome with ChangeNotifier {
       await consultantRepo.Consultantprofile(token).then((value) async {
         print(value!.message);
         consultantProfileModel = value;
+        print(consultantProfileModel);
         setHomeScreenData(ApiResponse.completed(consultantProfileModel));
         notifyListeners();
       }).onError((error, stackTrace) {

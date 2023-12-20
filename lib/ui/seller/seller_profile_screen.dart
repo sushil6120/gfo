@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:gfo/model/seller/sellerProfileModel.dart';
 import 'package:gfo/services/sharedPreferencesServices/sharedPreferences.dart';
 // import 'package:flutter_svg/svg.dart';
 // import 'package:gfo/ui/seller/seller_profile_detail_screen.dart';
@@ -7,7 +8,8 @@ import 'package:gfo/utils/colors.dart';
 import 'package:gfo/utils/routes/routesName.dart';
 
 class SellerProfileScreen extends StatefulWidget {
-  const SellerProfileScreen({super.key});
+    Map<String, dynamic>? arguments;
+   SellerProfileScreen({super.key, this.arguments});
 
   @override
   State<SellerProfileScreen> createState() => _SellerProfileScreenState();
@@ -16,6 +18,13 @@ class SellerProfileScreen extends StatefulWidget {
 class _SellerProfileScreenState extends State<SellerProfileScreen> {
   SharedPreferencesViewModel sharedPreferencesViewModel =
       SharedPreferencesViewModel();
+      Data? profileData;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    profileData = widget.arguments!['profileData'];
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,13 +47,14 @@ class _SellerProfileScreenState extends State<SellerProfileScreen> {
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                 child: Image.asset(
                   'assets/images/sellerprofile.png',
+                  height: 35,
                 )),
-            title: Text('Andrea Hirata',
+            title: Text(profileData!.bankAccName.toString().substring(0,1).toUpperCase()+profileData!.bankAccName!.substring(1),
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                     color: Colors.black)),
-            subtitle: Text('9987654321',
+            subtitle: Text(profileData!.phone.toString(),
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
@@ -64,7 +74,9 @@ class _SellerProfileScreenState extends State<SellerProfileScreen> {
                       print("working");
                     }
                     Navigator.pushNamed(
-                        context, RoutesName.SellerProfileDetailScreen);
+                        context, RoutesName.SellerProfileDetailScreen,arguments: {
+                          "profileData":profileData
+                        });
                   },
                   child: Text('Profile',
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(

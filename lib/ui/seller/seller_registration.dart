@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:gfo/model/seller/sellerProfileModel.dart';
 import 'package:gfo/services/sharedPreferencesServices/sharedPreferences.dart';
 import 'package:gfo/ui/globalWidgets/searchTextFormFieldBig.dart';
 import 'package:gfo/viewmodel/authviewmodel.dart';
@@ -12,7 +13,8 @@ import '../../utils/valueConstants.dart';
 import '../globalWidgets/buttonBig.dart';
 
 class SellerRegistratinScreen extends StatefulWidget {
-  const SellerRegistratinScreen({super.key});
+  Map<String, dynamic>? arguments;
+  SellerRegistratinScreen({super.key, this.arguments});
 
   @override
   State<SellerRegistratinScreen> createState() =>
@@ -33,13 +35,27 @@ class _SellerRegistratinScreenState extends State<SellerRegistratinScreen> {
   String? token;
   SharedPreferencesViewModel sharedPreferencesViewModel =
       SharedPreferencesViewModel();
+  Data? profileData;
+  bool isEdit = false;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    profileData = widget.arguments!['profileData'];
+    isEdit = widget.arguments!['isEdit'];
+
     Future.wait([sharedPreferencesViewModel.getSellerSignUpToken()])
         .then((value) {
       token = value[0];
+      if (isEdit == true) {
+        businessname.text = profileData!.bankAccName.toString();
+        ifsc.text = profileData!.ifcsCode.toString();
+        address.text = profileData!.address.toString();
+        email.text = profileData!.email.toString();
+        bankAccName.text = profileData!.bankAccName.toString();
+        bankAccNo.text = profileData!.accNo.toString();
+        reBankAccNo.text = profileData!.accNo.toString();
+      }
     });
   }
 
@@ -52,15 +68,8 @@ class _SellerRegistratinScreenState extends State<SellerRegistratinScreen> {
           iconTheme: IconThemeData(color: colorDark1),
           centerTitle: true,
           actions: [
-            IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  CupertinoIcons.bell,
-                  color: colorDark2,
-                )),
-            SizedBox(
-              width: 5,
-            )
+      
+        
           ],
         ),
         body: SingleChildScrollView(
@@ -71,7 +80,7 @@ class _SellerRegistratinScreenState extends State<SellerRegistratinScreen> {
                 padding: const EdgeInsets.only(
                     left: 18, top: verticalSpaceSmall2, bottom: 10),
                 child: Text(
-                  "Registration",
+                  isEdit == true? "Edit Profile":"Registration",
                   style: Theme.of(context)
                       .textTheme
                       .titleMedium!
@@ -262,7 +271,7 @@ class _SellerRegistratinScreenState extends State<SellerRegistratinScreen> {
                     "ifcsCode": ifsc.text,
                     "panCard": panNo.text
                   });
-                  value.sellerRegisterAPI(data, token.toString(), context);
+                  value.sellerRegisterAPI(data, token.toString(), isEdit!, context);
                 },
                 backgroundColor: primaryColor,
                 backgroundColor2: primaryColor,

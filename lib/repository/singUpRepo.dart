@@ -137,7 +137,7 @@ class SignUpRepo {
 
   // seller registration
   Future<SellerRegisterModel?> sellerRegister(
-      dynamic datas, String token, BuildContext context) async {
+      dynamic datas, String token,bool isEdit, BuildContext context) async {
     try {
       final response = await http.put(Uri.parse(AppUrl.consultantRegistration),
           headers: {
@@ -149,8 +149,13 @@ class SignUpRepo {
       if (response.statusCode == 200 || response.statusCode == 201) {
         var data = jsonDecode(response.body);
         sellerRegisterModel = SellerRegisterModel.fromJson(data);
-        Navigator.pushNamedAndRemoveUntil(
+       if(isEdit == true){
+ Navigator.pushNamedAndRemoveUntil(
+            context, RoutesName.SellerBottomNavBar, (route) => false);
+       }else{
+         Navigator.pushNamedAndRemoveUntil(
             context, RoutesName.splashScreen, (route) => false);
+       }
         Utils.flushBarErrorMessage(sellerRegisterModel!.message.toString(),
             context, Icons.error, colorLightWhite, greenColor);
       } else {

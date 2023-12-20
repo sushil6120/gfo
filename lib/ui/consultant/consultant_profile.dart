@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:gfo/model/consultant/consultantProfileModel.dart';
 import 'package:gfo/services/sharedPreferencesServices/sharedPreferences.dart';
 // import 'package:flutter_svg/svg.dart';
 // import 'package:gfo/ui/seller/seller_profile_detail_screen.dart';
@@ -7,7 +8,8 @@ import 'package:gfo/utils/colors.dart';
 import 'package:gfo/utils/routes/routesName.dart';
 
 class ConsultantProfileScreen extends StatefulWidget {
-  const ConsultantProfileScreen({super.key});
+  Map<String, dynamic>? arguments;
+  ConsultantProfileScreen({super.key, this.arguments});
 
   @override
   State<ConsultantProfileScreen> createState() =>
@@ -17,6 +19,14 @@ class ConsultantProfileScreen extends StatefulWidget {
 class _ConsultantProfileScreenState extends State<ConsultantProfileScreen> {
   SharedPreferencesViewModel sharedPreferencesViewModel =
       SharedPreferencesViewModel();
+Data? profileData;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    profileData = widget.arguments!['profileData'];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,12 +50,12 @@ class _ConsultantProfileScreenState extends State<ConsultantProfileScreen> {
                 child: Image.asset(
                   'assets/images/sellerprofile.png',
                 )),
-            title: Text('Andrea Hirata',
+            title: Text(profileData!.name.toString().substring(0,1).toUpperCase()+profileData!.name!.substring(1),
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                     color: Colors.black)),
-            subtitle: Text('9987654321',
+            subtitle: Text(profileData!.phone.toString(),
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
@@ -65,7 +75,9 @@ class _ConsultantProfileScreenState extends State<ConsultantProfileScreen> {
                       print("working");
                     }
                     Navigator.pushNamed(
-                        context, RoutesName.consultantProfileDetailScreen);
+                        context, RoutesName.consultantProfileDetailScreen,arguments: {
+                          "profileData":profileData
+                        });
                   },
                   child: Text('Profile',
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(

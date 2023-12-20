@@ -141,9 +141,21 @@ class Routes {
       case RoutesName.SellerHomeScreen:
         return SlideRoute(page: const SellerHomeScreen(), x: 1, y: 0);
       case RoutesName.SellerProfileScreen:
-        return SlideRoute(page: const SellerProfileScreen(), x: 1, y: 0);
+        final arguments = settings.arguments as Map<String, dynamic>;
+        return SlideRoute(
+            page: SellerProfileScreen(
+              arguments: arguments,
+            ),
+            x: 1,
+            y: 0);
       case RoutesName.SellerProfileDetailScreen:
-        return SlideRoute(page: const SellerProfileDetailScreen(), x: 1, y: 0);
+        final arguments = settings.arguments as Map<String, dynamic>;
+        return SlideRoute(
+            page: SellerProfileDetailScreen(
+              arguments: arguments,
+            ),
+            x: 1,
+            y: 0);
       case RoutesName.SellerAddInventoryScreen:
         return SlideRoute(page: const SellerAddInventoryScreen(), x: 1, y: 0);
       case RoutesName.SellerAddInventoryGeneralScreen:
@@ -163,7 +175,8 @@ class Routes {
       case RoutesName.SellerBottomNavBar:
         return SlideRoute(page: const SellerBottomNavBar(), x: 1, y: 0);
       case RoutesName.sellerRegistratinScreen:
-        return SlideRoute(page: const SellerRegistratinScreen(), x: 1, y: 0);
+        final arguments = settings.arguments as Map<String, dynamic>;
+        return SlideRoute(page:  SellerRegistratinScreen(arguments: arguments,), x: 1, y: 0);
       case RoutesName.sellerNotificationScreen:
         return SlideRoute(page: const SellerNotificationScreen(), x: 1, y: 0);
       case RoutesName.sellerPrivacyPolicyScreen:
@@ -171,11 +184,13 @@ class Routes {
       case RoutesName.sellerAllProductScreen:
         return SlideRoute(page: const SellerAllProductScreen(), x: 1, y: 0);
       case RoutesName.sellerProductDetailsScreen:
-      final arguments = settings.arguments as Map<String, dynamic>;
-        return SlideRoute(page:  SellerProductDetailsScreen(arguments: arguments), x: 1, y: 0);
+        final arguments = settings.arguments as Map<String, dynamic>;
+        return SlideRoute(
+            page: SellerProductDetailsScreen(arguments: arguments), x: 1, y: 0);
       case RoutesName.sellerEditProductScreen:
-      final arguments = settings.arguments as Map<String, dynamic>;
-        return SlideRoute(page:  SellerEditProductScreen(arguments: arguments), x: 1, y: 0);
+        final arguments = settings.arguments as Map<String, dynamic>;
+        return SlideRoute(
+            page: SellerEditProductScreen(arguments: arguments), x: 1, y: 0);
 
       // --------- consultant ------
       case RoutesName.consultantHomeScreen:
@@ -184,13 +199,25 @@ class Routes {
         return SlideRoute(
             page: const ConsultantBottomNavigationBarScreen(), x: 1, y: 0);
       case RoutesName.consultantProfileScreen:
-        return SlideRoute(page: const ConsultantProfileScreen(), x: 1, y: 0);
+        final arguments = settings.arguments as Map<String, dynamic>;
+        return SlideRoute(
+            page: ConsultantProfileScreen(
+              arguments: arguments,
+            ),
+            x: 1,
+            y: 0);
       case RoutesName.consultantProfileDetailScreen:
+        final arguments = settings.arguments as Map<String, dynamic>;
         return SlideRoute(
-            page: const ConsultantProfileDetailScreen(), x: 1, y: 0);
+            page: ConsultantProfileDetailScreen(
+              arguments: arguments,
+            ),
+            x: 1,
+            y: 0);
       case RoutesName.consultantRegistratinScreen:
+        final arguments = settings.arguments as Map<String, dynamic>;
         return SlideRoute(
-            page: const ConsultantRegistratinScreen(), x: 1, y: 0);
+            page:  ConsultantRegistratinScreen(arguments: arguments,), x: 1, y: 0);
       case RoutesName.consultantChatListScreen:
         return SlideRoute(page: const ConsultantChatListScreen(), x: 1, y: 0);
       case RoutesName.consultantWalletScreen:

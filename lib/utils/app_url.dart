@@ -27,4 +27,5 @@ class AppUrl {
 
   // -----------Seller ----------------!
   static var sellerUploadProduct = "$baseUrl/api/v1/product";
+  static var sellerProfileApi = "$baseUrl/api/v1/auth/seller";
 }

@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:gfo/model/consultant/consultantProfileModel.dart';
 // import 'package:flutter_svg/svg.dart';
 // import 'package:gfo/ui/consultant/Consultant_registration.dart';
 import 'package:gfo/utils/colors.dart';
 import 'package:gfo/utils/routes/routesName.dart';
 
 class ConsultantProfileDetailScreen extends StatefulWidget {
-  const ConsultantProfileDetailScreen({super.key});
+  Map<String, dynamic>? arguments;
+  ConsultantProfileDetailScreen({super.key, this.arguments});
 
   @override
   State<ConsultantProfileDetailScreen> createState() =>
       _ConsultantProfileDetailScreenState();
 }
 
-class _ConsultantProfileDetailScreenState extends State<ConsultantProfileDetailScreen> {
+class _ConsultantProfileDetailScreenState
+    extends State<ConsultantProfileDetailScreen> {
+  Data? profileData;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    profileData = widget.arguments!['profileData'];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,19 +47,23 @@ class _ConsultantProfileDetailScreenState extends State<ConsultantProfileDetailS
                 child: Image.asset(
                   'assets/images/sellerprofile.png',
                 )),
-            title: Text('Andrea Hirata',
+            title: Text(
+                profileData!.name.toString().substring(0, 1).toUpperCase() +
+                    profileData!.name!.substring(1),
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                     color: Colors.black)),
-            subtitle: Text('9987654321',
+            subtitle: Text(profileData!.phone.toString(),
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                     color: colorDark3)),
             trailing: GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context,RoutesName.consultantRegistratinScreen);
+                Navigator.pushNamed(
+                    context, RoutesName.consultantRegistratinScreen,
+                    arguments: {"profileData": profileData, "isEdit": true});
               },
               child: Icon(
                 Icons.edit_outlined,
@@ -64,7 +79,8 @@ class _ConsultantProfileDetailScreenState extends State<ConsultantProfileDetailS
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Name - Andrea Hirata',
+                Text(
+                    'Name - ${profileData!.name.toString().substring(0, 1).toUpperCase() + profileData!.name!.substring(1)}',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
@@ -72,7 +88,7 @@ class _ConsultantProfileDetailScreenState extends State<ConsultantProfileDetailS
                 SizedBox(
                   height: 20,
                 ),
-                Text('Contact No. - 98765432112',
+                Text('Contact No. - ${profileData!.phone.toString()}',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
@@ -80,7 +96,7 @@ class _ConsultantProfileDetailScreenState extends State<ConsultantProfileDetailS
                 SizedBox(
                   height: 20,
                 ),
-                Text('E-mail Id - AndreaHirata@gmail.com',
+                Text('E-mail Id - ${profileData!.email.toString()}',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
@@ -88,7 +104,7 @@ class _ConsultantProfileDetailScreenState extends State<ConsultantProfileDetailS
                 SizedBox(
                   height: 20,
                 ),
-                Text('Adhar No- 1234 4321 2211 2244',
+                Text('Adhar No- ${profileData!.aadhaarNumber.toString()}',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
@@ -96,7 +112,7 @@ class _ConsultantProfileDetailScreenState extends State<ConsultantProfileDetailS
                 SizedBox(
                   height: 20,
                 ),
-                Text('PAN No. - 12345AZE23',
+                Text('PAN No. - ${profileData!.panNumber.toString()}',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
@@ -104,7 +120,7 @@ class _ConsultantProfileDetailScreenState extends State<ConsultantProfileDetailS
                 SizedBox(
                   height: 20,
                 ),
-                Text('Education - Graduation',
+                Text('Education - ${profileData!.education.toString()}',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
@@ -112,7 +128,8 @@ class _ConsultantProfileDetailScreenState extends State<ConsultantProfileDetailS
                 SizedBox(
                   height: 20,
                 ),
-                Text('Current or Ex-designation - UI UX designer',
+                Text(
+                    'Current or Ex-designation - ${profileData!.designation.toString()}',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
@@ -128,7 +145,8 @@ class _ConsultantProfileDetailScreenState extends State<ConsultantProfileDetailS
                 SizedBox(
                   height: 20,
                 ),
-                Text('Account Holder name - Andrea Hirata',
+                Text(
+                    'Account Holder name - ${profileData!.bankAccName.toString()}',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
@@ -136,7 +154,7 @@ class _ConsultantProfileDetailScreenState extends State<ConsultantProfileDetailS
                 SizedBox(
                   height: 20,
                 ),
-                Text('Account No. - 23*********543',
+                Text('Account No. - ${profileData!.accNo.toString()}',
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,

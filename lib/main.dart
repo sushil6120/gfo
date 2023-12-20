@@ -13,6 +13,7 @@ import 'utils/scrollBehavior.dart';
 import 'viewmodel/consultantViewmodel.dart';
 import 'viewmodel/homeViewModel.dart';
 import 'viewmodel/indesViewModel.dart';
+import 'viewmodel/seller/sellerHomeViewModel.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => HomeViewModel()),
         ChangeNotifierProvider(create: (_) => HomeViewModel()),
         ChangeNotifierProvider(create: (_) => AddProductViewModel()),
+        ChangeNotifierProvider(create: (_) => SellerHomeViewModel()),
       ],
       child: Builder(
         builder: (BuildContext context) {
