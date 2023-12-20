@@ -83,7 +83,10 @@ class _ConsultantHomeScreenState extends State<ConsultantHomeScreen> {
               case Status.ERROR:
                 return Text(value.consultantData.message.toString());
               case Status.COMPLETED:
-                return SingleChildScrollView(
+                if(value.consultantGetBokedUserModel == null || value.consultantProfileModel == null){
+                  return Center(child: Text("data null"));
+                }else{
+                   return SingleChildScrollView(
                     child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -93,7 +96,7 @@ class _ConsultantHomeScreenState extends State<ConsultantHomeScreen> {
                           left: 18,
                           right: verticalSpaceLarge),
                       child: Text(
-                        "Hi, Amit kushwaha",
+                        "Hi, ${value.consultantProfileModel!.data!.name.toString()}",
                         style: Theme.of(context)
                             .textTheme
                             .titleMedium!
@@ -452,6 +455,7 @@ class _ConsultantHomeScreenState extends State<ConsultantHomeScreen> {
                     )
                   ],
                 ));
+                }
               default:
             }
             return Container();
