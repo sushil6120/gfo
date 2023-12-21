@@ -225,7 +225,8 @@ class Routes {
       case RoutesName.consultantChatMassageScreen:
         return SlideRoute(page: ConsultantChatMassageScreen(), x: 1, y: 0);
       case RoutesName.consultantUserInfoScreen:
-        return SlideRoute(page: const ConsultantUserInfoScreen(), x: 1, y: 0);
+              final arguments = settings.arguments as Map<String, dynamic>;
+        return SlideRoute(page:  ConsultantUserInfoScreen(arguments: arguments), x: 1, y: 0);
       case RoutesName.consultantNotificationScreen:
         return SlideRoute(
             page: const ConsultantNotificationScreen(), x: 1, y: 0);

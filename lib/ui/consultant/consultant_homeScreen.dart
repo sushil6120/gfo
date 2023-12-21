@@ -358,7 +358,9 @@ class _ConsultantHomeScreenState extends State<ConsultantHomeScreen> {
                           return GestureDetector(
                             onTap: () {
                               Navigator.pushNamed(
-                                  context, RoutesName.consultantUserInfoScreen);
+                                  context, RoutesName.consultantUserInfoScreen,arguments:{
+                                    "id":item[index].sId.toString()
+                                  });
                             },
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
