@@ -73,6 +73,29 @@ class AddressViewModel with ChangeNotifier {
     }
   }
 
+  Future<void> defaultAddressApi(String id, token, BuildContext context) async {
+    setLoading(true);
+    try {
+      await addressRepo
+          .defualtAdrresApi(id, token, context)
+          .then((value) async {
+        // Navigator.pushNamedAndRemoveUntil(context, RoutesName.bottomNavigationBarScreen, (route) => false);
+        if (value!.success == true) {
+          print(value);
+          Navigator.pushReplacementNamed(
+              context, RoutesName.customerAddressScreen);
+          Utils.flushBarErrorMessage(value.message.toString(), context,
+              Icons.error, colorLightWhite, greenColor);
+        }
+
+        setLoading(false);
+      });
+    } catch (e) {
+      print("exception:" + e.toString());
+      setLoading(false);
+    }
+  }
+
   Future<void> updateAddressAPi(String pinCode, addresss, localty, city, state,
       id, token, BuildContext context) async {
     setLoading(true);

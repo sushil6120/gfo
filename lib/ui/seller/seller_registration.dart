@@ -44,9 +44,9 @@ class _SellerRegistratinScreenState extends State<SellerRegistratinScreen> {
     profileData = widget.arguments!['profileData'];
     isEdit = widget.arguments!['isEdit'];
 
-    Future.wait([sharedPreferencesViewModel.getSellerSignUpToken()])
+    Future.wait([sharedPreferencesViewModel.getSellerSignUpToken(), sharedPreferencesViewModel.getSellerToken()])
         .then((value) {
-      token = value[0];
+      token = isEdit? value[1]: value[0];
       if (isEdit == true) {
         businessname.text = profileData!.bankAccName.toString();
         ifsc.text = profileData!.ifcsCode.toString();

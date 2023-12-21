@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:gfo/model/costumer/addAddressModel.dart';
+import 'package:gfo/model/costumer/defualtAddressModel.dart' as defaultAddress;
 import 'package:gfo/model/costumer/deleteAddressModel.dart' as deleteModel;
 import 'package:http/http.dart' as http;
 
@@ -13,6 +14,7 @@ class AddressRepo {
   AddAddressModel? addAddressModel;
   Address? address;
   deleteModel.DeleteAddressApi? deleteAddressApi;
+  defaultAddress.DefaultAddressModel? defaultAddressModel;
 
   Future<AddAddressModel?> addAddressApi(String pincode, address, locality,
       city, state, token, BuildContext context) async {
@@ -45,11 +47,14 @@ class AddressRepo {
   }
 
   Future<deleteModel.DeleteAddressApi?> deletAddress(
-      String id,token, BuildContext context) async {
+      String id, token, BuildContext context) async {
     try {
       final response = await http.delete(
         Uri.parse(AppUrl.deletAddressApi + id),
-        headers: {"Content-type": "application/json","Authorization": "Bearer $token"},
+        headers: {
+          "Content-type": "application/json",
+          "Authorization": "Bearer $token"
+        },
       );
       var data = jsonDecode(response.body);
       if (response.statusCode == 200 || response.statusCode == 201) {
@@ -66,8 +71,34 @@ class AddressRepo {
     return deleteAddressApi;
   }
 
+  Future<defaultAddress.DefaultAddressModel?> defualtAdrresApi(
+      String id, token, BuildContext context) async {
+    try {
+      final response = await http.patch(
+        Uri.parse(AppUrl.defualtAddressApi + id),
+        headers: {
+          "Content-type": "application/json",
+          "Authorization": "Bearer $token"
+        },
+      );
+      var data = jsonDecode(response.body);
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        var data = jsonDecode(response.body);
+        print(data);
+        defaultAddressModel = defaultAddress.DefaultAddressModel.fromJson(data);
+      } else {
+        Utils.snackBar(data['message'], context);
+        print(response..body);
+      }
+      return defaultAddressModel;
+    } catch (e) {
+      print(e);
+    }
+    return defaultAddressModel;
+  }
+
   Future<deleteModel.DeleteAddressApi?> updateAddress(String pinCode, addresss,
-      localty, city, state, id,token, BuildContext context) async {
+      localty, city, state, id, token, BuildContext context) async {
     try {
       final response = await http.put(
         Uri.parse(AppUrl.updateAddressApi + id),
@@ -78,7 +109,10 @@ class AddressRepo {
           "city": city,
           "state": state
         }),
-        headers: {"Content-type": "application/json","Authorization": "Bearer $token"},
+        headers: {
+          "Content-type": "application/json",
+          "Authorization": "Bearer $token"
+        },
       );
       var data = jsonDecode(response.body);
       if (response.statusCode == 200 || response.statusCode == 201) {

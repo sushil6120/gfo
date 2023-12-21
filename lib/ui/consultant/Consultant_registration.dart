@@ -52,9 +52,13 @@ class _ConsultantRegistratinScreenState
     super.initState();
     profileData = widget.arguments!['profileData'];
     isEdit = widget.arguments!['isEdit'];
-    Future.wait([sharedPreferencesViewModel.getConsultantSignUpToken()])
-        .then((value) {
-      token = value[0];
+    Future.wait([
+      sharedPreferencesViewModel.getConsultantSignUpToken(),
+      sharedPreferencesViewModel.getConsultantToken()
+    ]).then((value) {
+      token = isEdit ? value[1]: value[0];
+    
+
       if (isEdit == true) {
         fullName.text = profileData!.name.toString();
         ifsc.text = profileData!.ifcsCode.toString();
@@ -103,7 +107,7 @@ class _ConsultantRegistratinScreenState
                 padding: const EdgeInsets.only(
                     left: 18, top: verticalSpaceSmall2, bottom: 10),
                 child: Text(
-                 isEdit ? "Edit Profile": "Registration",
+                  isEdit ? "Edit Profile" : "Registration",
                   style: Theme.of(context)
                       .textTheme
                       .titleMedium!
@@ -351,7 +355,7 @@ class _ConsultantRegistratinScreenState
                     "panCard": penNum.text
                   });
                   value.consultantRegistrationApis(
-                      data, token.toString(),isEdit, context);
+                      data, token.toString(), isEdit, context);
                 },
                 backgroundColor: greenColor.withOpacity(.6),
                 backgroundColor2: greenColor.withOpacity(.6),

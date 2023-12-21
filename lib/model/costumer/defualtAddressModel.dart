@@ -1,33 +1,29 @@
-class Address {
+class DefaultAddressModel {
   bool? success;
   String? message;
-  List<Addresses>? addresses;
+  Address? address;
 
-  Address({this.success, this.message, this.addresses});
+  DefaultAddressModel({this.success, this.message, this.address});
 
-  Address.fromJson(Map<String, dynamic> json) {
+  DefaultAddressModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     message = json['message'];
-    if (json['addresses'] != null) {
-      addresses = <Addresses>[];
-      json['addresses'].forEach((v) {
-        addresses!.add(new Addresses.fromJson(v));
-      });
-    }
+    address =
+        json['address'] != null ? new Address.fromJson(json['address']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['success'] = this.success;
     data['message'] = this.message;
-    if (this.addresses != null) {
-      data['addresses'] = this.addresses!.map((v) => v.toJson()).toList();
+    if (this.address != null) {
+      data['address'] = this.address!.toJson();
     }
     return data;
   }
 }
 
-class Addresses {
+class Address {
   String? sId;
   String? user;
   String? pinCode;
@@ -40,7 +36,7 @@ class Addresses {
   String? updatedAt;
   int? iV;
 
-  Addresses(
+  Address(
       {this.sId,
       this.user,
       this.pinCode,
@@ -53,7 +49,7 @@ class Addresses {
       this.updatedAt,
       this.iV});
 
-  Addresses.fromJson(Map<String, dynamic> json) {
+  Address.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
     user = json['user'];
     pinCode = json['pinCode'];

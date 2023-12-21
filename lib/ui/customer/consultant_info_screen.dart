@@ -27,17 +27,24 @@ class ConsultantInfoScreen extends StatefulWidget {
 class _ConsultantInfoScreenState extends State<ConsultantInfoScreen> {
   SharedPreferencesViewModel sharedPreferencesViewModel =
       SharedPreferencesViewModel();
+  String? date, month, year;
   String? id;
   String? token;
+  String? userId;
   void initState() {
     // TODO: implement initState
     super.initState();
     id = widget.arguments!['id'];
     final consultantData =
         Provider.of<CosultantViewModel>(context, listen: false);
-    Future.wait([sharedPreferencesViewModel.getToken()]).then((value) {
+    Future.wait([
+      sharedPreferencesViewModel.getToken(),
+      sharedPreferencesViewModel.getUserId()
+    ]).then((value) {
       print(value);
       token = value[0];
+      userId = value[1];
+      print(value[1]);
 
       consultantData.singleConsultantApis(id.toString(), token);
     });
@@ -197,72 +204,121 @@ class _ConsultantInfoScreenState extends State<ConsultantInfoScreen> {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 0, vertical: 25),
-                    child: ButtonBig(
-                      fontSize: 14,
-                      onTap: () async {
-                        if (kDebugMode) {
-                          print("working");
-                        }
-                        DateTime? dateTime = await showOmniDateTimePicker(
-                          theme: ThemeData.light(),
-                          context: context,
-                          initialDate: DateTime.now(),
-                          firstDate: DateTime(1600)
-                              .subtract(const Duration(days: 3652)),
-                          lastDate: DateTime.now().add(
-                            const Duration(days: 3652),
-                          ),
-                          is24HourMode: false,
-                          isShowSeconds: false,
-                          minutesInterval: 1,
-                          secondsInterval: 1,
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(16)),
-                          constraints: const BoxConstraints(
-                            maxWidth: 350,
-                            maxHeight: 650,
-                          ),
-                          transitionBuilder: (context, anim1, anim2, child) {
-                            return FadeTransition(
-                              opacity: anim1.drive(
-                                Tween(
-                                  begin: 0,
-                                  end: 1,
+                  date == null ||
+                          month == null ||
+                          year == null ||
+                          date!.isEmpty ||
+                          year!.isEmpty ||
+                          month!.isEmpty
+                      ? Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 0, vertical: 25),
+                          child: ButtonBig(
+                            fontSize: 14,
+                            onTap: () async {
+                              if (kDebugMode) {
+                                print("working");
+                              }
+                              DateTime? dateTime = await showOmniDateTimePicker(
+                                theme: ThemeData.light(),
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(1600)
+                                    .subtract(const Duration(days: 3652)),
+                                lastDate: DateTime.now().add(
+                                  const Duration(days: 3652),
                                 ),
-                              ),
-                              child: child,
-                            );
-                          },
-                          transitionDuration: const Duration(milliseconds: 200),
-                          barrierDismissible: true,
-                          selectableDayPredicate: (dateTime) {
-                            // Disable 25th Feb 2023
-                            if (dateTime == DateTime(2023, 2, 25)) {
-                              return false;
-                            } else {
-                              return true;
-                            }
-                          },
-                        );
-                      },
-                      backgroundColor: greenColor.withOpacity(.6),
-                      backgroundColor2: greenColor.withOpacity(.6),
-                      width: context.deviceWidth * .7,
-                      height: 55,
-                      text: "Make an Appointment",
-                      showProgress: false,
-                      progressColor: colorLightWhite,
-                      progressStrokeWidth: 1.5,
-                      radius: 10,
-                      textColor: colorLightWhite,
-                      letterSpacing: 0,
-                      progressPadding: 20,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
+                                is24HourMode: false,
+                                isShowSeconds: false,
+                                minutesInterval: 1,
+                                secondsInterval: 1,
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(16)),
+                                constraints: const BoxConstraints(
+                                  maxWidth: 350,
+                                  maxHeight: 650,
+                                ),
+                                transitionBuilder:
+                                    (context, anim1, anim2, child) {
+                                  return FadeTransition(
+                                    opacity: anim1.drive(
+                                      Tween(
+                                        begin: 0,
+                                        end: 1,
+                                      ),
+                                    ),
+                                    child: child,
+                                  );
+                                },
+                                transitionDuration:
+                                    const Duration(milliseconds: 200),
+                                barrierDismissible: true,
+                                selectableDayPredicate: (dateTime) {
+                                  // Disable 25th Feb 2023
+                                  if (dateTime == DateTime(2023, 2, 25)) {
+                                    print(dateTime);
+                                    return false;
+                                  } else {
+                                    return true;
+                                  }
+                                },
+                              );
+                              if (dateTime != null) {
+                                setState(() {
+                                  date = dateTime.day.toString();
+                                  month = dateTime.month.toString();
+                                  year = dateTime.year.toString();
+                                });
+                              }
+                            },
+                            backgroundColor: greenColor.withOpacity(.6),
+                            backgroundColor2: greenColor.withOpacity(.6),
+                            width: context.deviceWidth * .7,
+                            height: 55,
+                            text: "Make an Appointment",
+                            showProgress: false,
+                            progressColor: colorLightWhite,
+                            progressStrokeWidth: 1.5,
+                            radius: 10,
+                            textColor: colorLightWhite,
+                            letterSpacing: 0,
+                            progressPadding: 20,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        )
+                      : Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 0, vertical: 25),
+                          child: ButtonBig(
+                            fontSize: 14,
+                            onTap: () async {
+                              if (kDebugMode) {
+                                print("working");
+                              }
+                              value.createBookingApi(
+                                  userId.toString(),
+                                  id,
+                                  "$year-$month-$date",
+                                  value.singleConsultantModel!.data!
+                                      .consultantFee,
+                                  token,
+                                  context);
+                            },
+                            backgroundColor: greenColor.withOpacity(.6),
+                            backgroundColor2: greenColor.withOpacity(.6),
+                            width: context.deviceWidth * .7,
+                            height: 55,
+                            text: "Book Consultant",
+                            showProgress: value.loading,
+                            progressColor: colorLightWhite,
+                            progressStrokeWidth: 1.5,
+                            radius: 10,
+                            textColor: colorLightWhite,
+                            letterSpacing: 0,
+                            progressPadding: 20,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
                 ],
               ),
             );

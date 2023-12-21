@@ -16,6 +16,8 @@ class AppUrl {
   static var productInfoApi = "$baseUrl/api/v1/product/";
   static var anotherProductApi = "$baseUrl/api/v1/product?limit=10&sellerId=";
   static var addToCartApi = "$baseUrl/api/v1/cart/add";
+  static var createConsultantBooking = "$baseUrl/api/v1/booking/consultant";
+  static var defualtAddressApi = "$baseUrl/api/v1/shipping/";
 
 //   !--------consultaant---------!
   static var consultantRegistration = "$baseUrl/api/v1/auth/consultant/details";

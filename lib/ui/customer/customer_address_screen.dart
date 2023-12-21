@@ -23,7 +23,7 @@ class _CustomerAddressScreenState extends State<CustomerAddressScreen> {
   SharedPreferencesViewModel sharedPreferencesViewModel =
       SharedPreferencesViewModel();
 
-      String ? token;
+  String? token;
 
   @override
   void initState() {
@@ -93,116 +93,150 @@ class _CustomerAddressScreenState extends State<CustomerAddressScreen> {
                                     var items = value
                                         .address!.addresses!.reversed
                                         .toList();
-                                    return Container(
-                                      width: context.deviceWidth,
-                                      margin: const EdgeInsets.only(
-                                          left: 18, right: 18, top: 10),
-                                      decoration: BoxDecoration(
-                                          color: colorLight2.withOpacity(.5),
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 18, right: 18, bottom: 2),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    const Icon(Icons
-                                                        .location_on_outlined),
-                                                    const SizedBox(
-                                                      width: 10,
-                                                    ),
-                                                    Text(
-                                                      "Home",
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .titleMedium!
-                                                          .copyWith(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              fontSize: 14),
-                                                    ),
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    IconButton(
-                                                      onPressed: () {
-                                                        Navigator.pushNamed(
-                                                            context,
-                                                            RoutesName
-                                                                .customerAddNewAddressScreen,
-                                                            arguments: {
-                                                              "pinCode":
-                                                                  items[index]
-                                                                      .pinCode,
-                                                              "address":
-                                                                  items[index]
-                                                                      .address,
-                                                              "locality":
-                                                                  items[index]
-                                                                      .locality,
-                                                              "city":
-                                                                  items[index]
-                                                                      .city,
-                                                              "state":
-                                                                  items[index]
-                                                                      .state,
-                                                                      "id":items[index].sId,
-                                                              "isEdit": true
-                                                            });
-                                                      },
-                                                      icon: const Icon(
-                                                        Icons.edit,
-                                                        size: 18,
+                                    return GestureDetector(
+                                      onTap: () {
+                                        value.defaultAddressApi(items[index].sId.toString(), token, context);
+                                      },
+                                      child: Container(
+                                        width: context.deviceWidth,
+                                        margin: const EdgeInsets.only(
+                                            left: 18, right: 18, top: 10),
+                                        decoration: BoxDecoration(
+                                            color: colorLight2.withOpacity(.5),
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 18, right: 18, bottom: 2),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      const Icon(Icons
+                                                          .location_on_outlined),
+                                                      const SizedBox(
+                                                        width: 10,
                                                       ),
-                                                    ),
-                                                    IconButton(
-                                                      onPressed: () {
-                                                        value.deleteAddressAPi(
-                                                            items[index]
-                                                                .sId
-                                                                .toString(),
-                                                                token.toString(),
-                                                            context);
-                                                      },
-                                                      icon: const Icon(
-                                                        Icons.delete_outline,
-                                                        size: 18,
+                                                      Text(
+                                                        "Home",
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .titleMedium!
+                                                            .copyWith(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                fontSize: 14),
                                                       ),
-                                                    ),
-                                                  ],
-                                                )
-                                              ],
+                                                      SizedBox(
+                                                        width:
+                                                            verticalSpaceMedium,
+                                                      ),
+                                                    items[index].isDefault == true ?  Container(
+                                                        padding:
+                                                            EdgeInsets.symmetric(
+                                                                horizontal: 10,
+                                                                vertical: 2),
+                                                        decoration: BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(5),
+                                                            color: greenColor),
+                                                        child: Center(
+                                                          child: Text(
+                                                            "Default",
+                                                            style: Theme.of(
+                                                                    context)
+                                                                .textTheme
+                                                                .titleMedium!
+                                                                .copyWith(
+                                                                    color:
+                                                                        colorLightWhite,
+                                                                    fontSize: 12),
+                                                          ),
+                                                        ),
+                                                      ):SizedBox()
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      IconButton(
+                                                        onPressed: () {
+                                                          Navigator.pushNamed(
+                                                              context,
+                                                              RoutesName
+                                                                  .customerAddNewAddressScreen,
+                                                              arguments: {
+                                                                "pinCode":
+                                                                    items[index]
+                                                                        .pinCode,
+                                                                "address":
+                                                                    items[index]
+                                                                        .address,
+                                                                "locality":
+                                                                    items[index]
+                                                                        .locality,
+                                                                "city":
+                                                                    items[index]
+                                                                        .city,
+                                                                "state":
+                                                                    items[index]
+                                                                        .state,
+                                                                "id": items[index]
+                                                                    .sId,
+                                                                "isEdit": true
+                                                              });
+                                                        },
+                                                        icon: const Icon(
+                                                          Icons.edit,
+                                                          size: 18,
+                                                        ),
+                                                      ),
+                                                      IconButton(
+                                                        onPressed: () {
+                                                          value.deleteAddressAPi(
+                                                              items[index]
+                                                                  .sId
+                                                                  .toString(),
+                                                              token.toString(),
+                                                              context);
+                                                        },
+                                                        icon: const Icon(
+                                                          Icons.delete_outline,
+                                                          size: 18,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
                                             ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 18,
-                                                right: 30,
-                                                bottom: 18),
-                                            child: Text(
-                                              "${items[index].city} ${items[index].state} ${items[index].pinCode} ${items[index].address} ${items[index].locality}",
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .titleMedium!
-                                                  .copyWith(
-                                                      color: colorDark3,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      fontSize: 12),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 18,
+                                                  right: 30,
+                                                  bottom: 18),
+                                              child: Text(
+                                                "${items[index].city} ${items[index].state} ${items[index].pinCode} ${items[index].address} ${items[index].locality}",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleMedium!
+                                                    .copyWith(
+                                                        color: colorDark3,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        fontSize: 12),
+                                              ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     );
                                   },
