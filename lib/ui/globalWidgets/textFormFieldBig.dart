@@ -24,8 +24,9 @@ class TextFormFieldBig extends StatelessWidget {
   final String? labelText;
   final bool? enabled;
   final List<TextInputFormatter>? formaterss;
+  void Function(String)? onChanged;
 
-  const TextFormFieldBig(
+   TextFormFieldBig(
       {super.key,
       required this.hintText,
       required this.height,
@@ -42,13 +43,16 @@ class TextFormFieldBig extends StatelessWidget {
       this.enabled,
       this.formaterss,
       required this.maxlines,
-      this.labelText});
+      this.labelText,
+      this.onChanged
+      });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 55,
       child: TextFormField(
+        onChanged:onChanged,
         inputFormatters: formaterss,
         onTap: onTap,
         readOnly: readOnly ?? false,

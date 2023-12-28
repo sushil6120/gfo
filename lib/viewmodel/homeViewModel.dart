@@ -24,6 +24,7 @@ class HomeViewModel with ChangeNotifier {
   Future<void> getAllProduct() async {
     setHomeScreenData(ApiResponse.loading());
     try {
+      currentPage = 1;
       await productRepo.allProductApi(currentPage).then((value) async {
         allProductModelClass = value;
         print(allProductModelClass);

@@ -43,13 +43,14 @@ class _HistoryMessagesScreenState extends State<HistoryMessagesScreen> {
       ),
       body: Column(
         children: [
-          const Padding(
+           Padding(
             padding: EdgeInsets.only(
                 left: 18,
                 right: 18,
                 top: verticalSpaceSmall2,
                 bottom: verticalSpaceMedium),
             child: TextFormFieldBig(
+
               prefixIcon: Icon(
                 CupertinoIcons.search,
                 color: colorLight3,

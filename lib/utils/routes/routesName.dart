@@ -34,6 +34,8 @@ class RoutesName {
   static const String SellerSignUpScreen = 'SellerSignUpScreen';
   static const String RoleScreen = 'RolleScreen';
   static const String SignUpOtpScreen = 'SignUpOtpVerify';
+  static const String customerSearchScreen = 'CustomerSearchScreen';
+  static const String customerSearchResult = 'CustomerSearchResult';
 
   // ------ consultant--------
   static const String consultantBottomNavigationBarScreen =

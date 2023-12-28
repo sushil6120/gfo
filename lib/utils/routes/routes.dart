@@ -43,6 +43,8 @@ import '../../ui/customer/customer_hire_consultant_screen.dart';
 import '../../ui/customer/customer_home_Screen.dart';
 import '../../ui/customer/customer_login_screen.dart';
 import '../../ui/customer/customer_profile_screen.dart';
+import '../../ui/customer/customer_searchResult.dart';
+import '../../ui/customer/customer_search_screen.dart';
 import '../../ui/customer/login_otp_screen.dart';
 import '../../ui/customer/congratulations_screen.dart';
 import '../../ui/customer/notification_screen.dart';
@@ -131,6 +133,11 @@ class Routes {
         return SlideRoute(page: const ConsultantSignUpScreen(), x: 1, y: 0);
       case RoutesName.RoleScreen:
         return SlideRoute(page: const RoleScreen(), x: 1, y: 0);
+      case RoutesName.customerSearchScreen:
+        return SlideRoute(page: CustomerSearchScreen(), x: 1, y: 0);
+      case RoutesName.customerSearchResult:
+       final arguments = settings.arguments as Map<String, dynamic>;
+        return SlideRoute(page: CustomerSearchResult(arguments: arguments), x: 1, y: 0);
       case RoutesName.SignUpOtpScreen:
         final arguments = settings.arguments as Map<String, dynamic>;
         return SlideRoute(

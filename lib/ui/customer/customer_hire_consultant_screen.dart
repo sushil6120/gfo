@@ -94,7 +94,7 @@ class _CustomeHireConsutantScreenState
                     .copyWith(fontSize: 24, fontWeight: FontWeight.w700),
               ),
             ),
-            const Padding(
+             Padding(
               padding: EdgeInsets.only(
                   left: 18,
                   right: 18,

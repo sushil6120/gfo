@@ -9,6 +9,7 @@ import "package:gfo/utils/routes/routesName.dart";
 import "package:gfo/widgets/products_widget.dart";
 import "../../utils/valueConstants.dart";
 import "../globalWidgets/buttonBig.dart";
+
 class CustomerHomeScreen extends StatefulWidget {
   const CustomerHomeScreen({super.key});
 
@@ -20,18 +21,21 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(preferredSize: Size.fromHeight(80), child: Container(
-        color: Theme.of(context).scaffoldBackgroundColor,
-        padding: EdgeInsets.only(top: 25),
-        height: 100,
-        child:  Padding(
+      appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(80),
+          child: Container(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            padding: const EdgeInsets.only(top: 25),
+            height: 100,
+            child: Padding(
               padding: const EdgeInsets.only(left: 18, right: 18, top: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, RoutesName.customerProfileScreen);
+                      Navigator.pushNamed(
+                          context, RoutesName.customerProfileScreen);
                     },
                     child: const CircleAvatar(
                       radius: 18,
@@ -41,18 +45,17 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                   ),
                   Image.asset("assets/logo.png"),
                   GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, RoutesName.notificationScreen);
-                    },
-                    child: const Icon(CupertinoIcons.bell))
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, RoutesName.notificationScreen);
+                      },
+                      child: const Icon(CupertinoIcons.bell))
                 ],
               ),
             ),
-      )
-      ),
+          )),
       body: SingleChildScrollView(
         child: Column(
-   
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
@@ -65,8 +68,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                 style: Theme.of(context)
                     .textTheme
                     .titleMedium!
-                    .copyWith(
-                        fontSize: 16, fontWeight: FontWeight.w400),
+                    .copyWith(fontSize: 16, fontWeight: FontWeight.w400),
               ),
             ),
             Padding(
@@ -79,27 +81,31 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                 style: Theme.of(context)
                     .textTheme
                     .titleMedium!
-                    .copyWith(
-                        fontSize: 24, fontWeight: FontWeight.w700),
+                    .copyWith(fontSize: 24, fontWeight: FontWeight.w700),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(
+            Padding(
+              padding: const EdgeInsets.only(
                   left: 18, right: 18, top: verticalSpaceMedium),
-              child: TextFormFieldBig(
-                prefixIcon: Icon(
-                  CupertinoIcons.search,
-                  color: colorLight3,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, RoutesName.customerSearchScreen);
+                },
+                child:  TextFormFieldBig(
+                  enabled: false,
+                  prefixIcon: Icon(
+                    CupertinoIcons.search,
+                    color: colorLight3,
+                  ),
+                  hintText: "Search",
+                  height: 50,
+                  maxlines: 1,
+                  obscureText: false,
                 ),
-                hintText: "Search headphone",
-                height: 50,
-                maxlines: 1,
-                obscureText: false,
               ),
             ),
             Container(
               width: context.deviceWidth,
-           
               decoration: const BoxDecoration(
                   color: searchColor,
                   borderRadius: BorderRadius.only(
@@ -117,29 +123,27 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                       shrinkWrap: true,
                       itemCount: 5,
                       scrollDirection: Axis.horizontal,
-                      physics: ScrollPhysics(),
+                      physics: const ScrollPhysics(),
                       itemBuilder: (context, index) {
                         return Column(
                           children: [
                             Container(
                               width: context.deviceWidth * .82,
                               height: context.deviceHeight * .13,
-                              margin: EdgeInsets.only(left: 18),
+                              margin: const EdgeInsets.only(left: 18),
                               decoration: BoxDecoration(
                                   color: colorLightWhite,
-                                  borderRadius:
-                                      BorderRadius.circular(5),
+                                  borderRadius: BorderRadius.circular(5),
                                   boxShadow: [
                                     BoxShadow(
                                         blurRadius: 4,
-                                        color:
-                                            colorDark3.withOpacity(.2),
+                                        color: colorDark3.withOpacity(.2),
                                         spreadRadius: 0,
                                         offset: const Offset(0, 0))
                                   ]),
                               child: Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 0, right: 18),
+                                padding:
+                                    const EdgeInsets.only(left: 0, right: 18),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -149,12 +153,10 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Padding(
-                                          padding: const EdgeInsets
-                                              .only(
+                                          padding: const EdgeInsets.only(
                                               top: verticalSpaceMedium,
                                               left: 18,
-                                              right:
-                                                  verticalSpaceLarge),
+                                              right: verticalSpaceLarge),
                                           child: Text(
                                             "Apply For NOC",
                                             style: Theme.of(context)
@@ -163,17 +165,14 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                                                 .copyWith(
                                                     fontSize: 16,
                                                     fontWeight:
-                                                        FontWeight
-                                                            .w700),
+                                                        FontWeight.w700),
                                           ),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets
-                                              .only(
+                                          padding: const EdgeInsets.only(
                                               top: verticalSpaceSmall,
                                               left: 18,
-                                              right:
-                                                  verticalSpaceLarge),
+                                              right: verticalSpaceLarge),
                                           child: Text(
                                             "Apply now ->",
                                             style: Theme.of(context)
@@ -181,8 +180,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                                                 .titleMedium!
                                                 .copyWith(
                                                     fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.w700,
+                                                    fontWeight: FontWeight.w700,
                                                     color: greenColor),
                                           ),
                                         ),
@@ -211,7 +209,8 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                               if (kDebugMode) {
                                 print("working");
                               }
-                              Navigator.pushNamed(context, RoutesName.applyNocScreen);
+                              Navigator.pushNamed(
+                                  context, RoutesName.applyNocScreen);
                             },
                             backgroundColor: primaryColor,
                             backgroundColor2: primaryColor,
@@ -228,7 +227,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                             fontWeight: FontWeight.w700,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Flexible(
@@ -239,7 +238,8 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                               if (kDebugMode) {
                                 print("working");
                               }
-                              Navigator.pushNamed(context, RoutesName.customeHireConsutantScreen);
+                              Navigator.pushNamed(context,
+                                  RoutesName.customeHireConsutantScreen);
                             },
                             backgroundColor: primaryColor,
                             backgroundColor2: primaryColor,
@@ -271,12 +271,12 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                               .textTheme
                               .titleMedium!
                               .copyWith(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400),
+                                  fontSize: 16, fontWeight: FontWeight.w400),
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, RoutesName.customerAllProductScreen);
+                            Navigator.pushNamed(
+                                context, RoutesName.customerAllProductScreen);
                           },
                           child: Text(
                             "See All",
@@ -298,11 +298,12 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                       shrinkWrap: true,
                       itemCount: 5,
                       scrollDirection: Axis.horizontal,
-                      physics: ScrollPhysics(),
+                      physics: const ScrollPhysics(),
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, RoutesName.customerProductDetailsScreen);
+                            Navigator.pushNamed(context,
+                                RoutesName.customerProductDetailsScreen);
                           },
                           child: ProductsWidgets(
                             img:
@@ -314,7 +315,9 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                       },
                     ),
                   ),
-                  SizedBox(height: context.deviceHeight*.1,)
+                  SizedBox(
+                    height: context.deviceHeight * .1,
+                  )
                 ],
               ),
             ),

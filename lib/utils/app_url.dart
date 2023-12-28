@@ -18,6 +18,7 @@ class AppUrl {
   static var addToCartApi = "$baseUrl/api/v1/cart/add";
   static var createConsultantBooking = "$baseUrl/api/v1/booking/consultant";
   static var defualtAddressApi = "$baseUrl/api/v1/shipping/";
+  static var customerSearchApi = "$baseUrl/api/v1/product?title=";
 
 //   !--------consultaant---------!
   static var consultantRegistration = "$baseUrl/api/v1/auth/consultant/details";
