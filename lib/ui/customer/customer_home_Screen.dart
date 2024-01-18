@@ -1,11 +1,13 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
+import "package:gfo/ui/customer/customer_profile_screen.dart";
 // import "package:flutter_svg/svg.dart";
 import "package:gfo/ui/globalWidgets/textFormFieldBig.dart";
 import "package:gfo/utils/colors.dart";
 import "package:gfo/utils/responsive.dart";
 import "package:gfo/utils/routes/routesName.dart";
+import "package:gfo/utils/utilsFunction.dart";
 import "package:gfo/widgets/products_widget.dart";
 import "../../utils/valueConstants.dart";
 import "../globalWidgets/buttonBig.dart";
@@ -18,9 +20,15 @@ class CustomerHomeScreen extends StatefulWidget {
 }
 
 class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
+  GlobalKey <ScaffoldState>key = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: key,
+    
+      drawer: Drawer(
+        child: CustomerProfileScreen(),
+      ),
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(80),
           child: Container(
@@ -34,8 +42,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(
-                          context, RoutesName.customerProfileScreen);
+                      key.currentState!.openDrawer();
                     },
                     child: const CircleAvatar(
                       radius: 18,

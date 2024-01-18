@@ -114,7 +114,7 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen>
                   "assets/Vector.svg",
                   color: selectedIndex == 1 ? primaryColor : colorLight3,
                 ),
-                label: 'Cart',
+                label: 'Products',
               ),
               BottomNavigationBarItem(
           icon: SvgPicture.asset(

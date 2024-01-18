@@ -79,66 +79,131 @@ Data? profileData;
                           "profileData":profileData
                         });
                   },
-                  child: Text('Profile',
+                  child:Row(children: [
+                     Icon(
+                            Icons.person_outlined,
+                            size: 20,
+                          ),
+                          SizedBox(width:10,),
+                   Text('Profile',
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
                           color: Colors.black)),
+                  ],)
+                   
                 ),
                 SizedBox(
                   height: 20,
                 ),
-                Text('Wallet',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black)),
-                SizedBox(
-                  height: 20,
-                ),
-                Text('My Promo Code',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black)),
-                SizedBox(
-                  height: 20,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(
-                        context, RoutesName.consultantCoustomerReview);
-                  },
-                  child: Text('Customer Review',
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black)),
+                Row(
+                  children: [
+                     Icon(
+                            Icons.wallet_outlined,
+                            size: 20,
+                          ),
+                          SizedBox(width:10,),
+                   
+                    Text('Wallet',
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black)),
+                  ],
                 ),
                 SizedBox(
                   height: 20,
                 ),
-                Text('Benefit',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black)),
+                Row(
+                  children: [
+                     Icon(
+                            Icons.card_giftcard_outlined,
+                            size: 20,
+                          ),
+                          SizedBox(width:10,),
+                  
+                    Text('My Promo Code',
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black)),
+                  ],
+                ),
                 SizedBox(
                   height: 20,
                 ),
-                Text('Terms & Conditions',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black)),
+                Row(
+                  children: [
+                      Icon(
+                            Icons.reviews_outlined,
+                            size: 20,
+                          ),
+                          SizedBox(width:10,),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, RoutesName.consultantCoustomerReview);
+                      },
+                    
+                      child: Text('Customer Review',
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black)),
+                    ),
+                  ],
+                ),
                 SizedBox(
                   height: 20,
                 ),
-                Text('Support',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black)),
+                Row(
+                  children: [
+                      Icon(
+                            Icons.offline_pin_outlined,
+                            size: 20,
+                          ),
+                          SizedBox(width:10,),
+                    Text('Benefit',
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black)),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                      Icon(
+                            Icons.privacy_tip_outlined,
+                            size: 20,
+                          ),
+                          SizedBox(width:10,),
+                    Text('Terms & Conditions',
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black)),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                      Icon(
+                            Icons.headset_mic_outlined,
+                            size: 20,
+                          ),
+                          SizedBox(width:10,),
+                    Text('Support',
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black)),
+                  ],
+                ),
                 SizedBox(
                   height: 20,
                 ),
@@ -152,11 +217,21 @@ Data? profileData;
                           context, RoutesName.splashScreen, (route) => false);
                     });
                   },
-                  child: Text('Logout',
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black)),
+                  child: Row(
+                    children: [
+                        Icon(
+                            Icons.logout_rounded,
+                            size: 20,
+                            color: primaryColor,
+                          ),
+                          SizedBox(width:10,),
+                      Text('Logout',
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: primaryColor)),
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: 20,

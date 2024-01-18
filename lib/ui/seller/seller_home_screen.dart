@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gfo/response/status.dart';
+import 'package:gfo/ui/seller/seller_profile_screen.dart';
 import 'package:gfo/utils/colors.dart';
 import 'package:gfo/utils/routes/routesName.dart';
 import 'package:gfo/viewmodel/seller/sellerHomeViewModel.dart';
@@ -36,9 +37,21 @@ class _SellerHomeScreenState extends State<SellerHomeScreen> {
     });
   }
 
+  GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        key: key,
+        drawer: Drawer(
+          child: Consumer<SellerHomeViewModel>(
+            builder: (context, value, child) {
+              return SellerProfileScreen(
+                arguments: {"profileData": value.sellerProfileModel!.data},
+              );
+            },
+          ),
+        ),
         appBar: AppBar(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           centerTitle: true,
@@ -48,17 +61,15 @@ class _SellerHomeScreenState extends State<SellerHomeScreen> {
             builder: (context, value, child) {
               return GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(
-                      context, RoutesName.SellerProfileScreen, arguments: {
-                    "profileData": value.sellerProfileModel!.data
-                  });
+                  key.currentState!.openDrawer();
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: const CircleAvatar(
-                    radius:16,
+                    radius: 16,
                     backgroundImage: NetworkImage(
-                        "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg", ),
+                      "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg",
+                    ),
                   ),
                 ),
               );

@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gfo/model/consultant/consultantgetbookeduser.dart';
 import 'package:gfo/response/status.dart';
 import 'package:gfo/services/sharedPreferencesServices/sharedPreferences.dart';
+import 'package:gfo/ui/consultant/consultant_profile.dart';
 import 'package:gfo/utils/colors.dart';
 import 'package:gfo/utils/responsive.dart';
 import 'package:gfo/utils/routes/routesName.dart';
@@ -23,6 +24,7 @@ class ConsultantHomeScreen extends StatefulWidget {
 }
 
 class _ConsultantHomeScreenState extends State<ConsultantHomeScreen> {
+  GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
   SharedPreferencesViewModel sharedPreferencesViewModel =
       SharedPreferencesViewModel();
   String? token;
@@ -43,6 +45,16 @@ class _ConsultantHomeScreenState extends State<ConsultantHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        key: key,
+        drawer: Drawer(
+          child: Consumer<ConsultantViewModelHome>(
+            builder: (context, value, child) {
+              return ConsultantProfileScreen(
+                arguments: {"profileData": value.consultantProfileModel!.data},
+              );
+            },
+          ),
+        ),
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(80),
             child: Container(
@@ -54,23 +66,15 @@ class _ConsultantHomeScreenState extends State<ConsultantHomeScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Consumer<ConsultantViewModelHome>(
-                      builder: (context, value, child) {
-                        return GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(
-                                context, RoutesName.consultantProfileScreen,
-                                arguments: {
-                                  "profileData": value.consultantProfileModel!.data
-                                });
-                          },
-                          child: const CircleAvatar(
-                            radius: 18,
-                            backgroundImage: NetworkImage(
-                                "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"),
-                          ),
-                        );
+                    GestureDetector(
+                      onTap: () {
+                        key.currentState!.openDrawer();
                       },
+                      child: const CircleAvatar(
+                        radius: 18,
+                        backgroundImage: NetworkImage(
+                            "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"),
+                      ),
                     ),
                     Image.asset("assets/logo.png"),
                     GestureDetector(
@@ -358,8 +362,9 @@ class _ConsultantHomeScreenState extends State<ConsultantHomeScreen> {
                           return GestureDetector(
                             onTap: () {
                               Navigator.pushNamed(
-                                  context, RoutesName.consultantUserInfoScreen,arguments:{
-                                    "id":item[index].sId.toString()
+                                  context, RoutesName.consultantUserInfoScreen,
+                                  arguments: {
+                                    "id": item[index].sId.toString()
                                   });
                             },
                             child: Row(

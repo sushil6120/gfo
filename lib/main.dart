@@ -10,6 +10,7 @@ import 'services/themeServices/themeManager.dart';
 import 'utils/routes/routes.dart';
 import 'utils/routes/routesName.dart';
 import 'utils/scrollBehavior.dart';
+import 'viewmodel/cartViewModel.dart';
 import 'viewmodel/consultantViewmodel.dart';
 import 'viewmodel/homeViewModel.dart';
 import 'viewmodel/indesViewModel.dart';
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => AddProductViewModel()),
         ChangeNotifierProvider(create: (_) => SellerHomeViewModel()),
         ChangeNotifierProvider(create: (_) => SearchViewModel()),
+        ChangeNotifierProvider(create: (_) => CartViewModel()),
       ],
       child: Builder(
         builder: (BuildContext context) {

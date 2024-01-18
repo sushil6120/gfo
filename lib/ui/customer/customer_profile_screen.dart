@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gfo/services/sharedPreferencesServices/sharedPreferences.dart';
@@ -38,17 +39,11 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
           Container(
             width: context.deviceWidth,
             margin: EdgeInsets.only(
-                left: 9, right: 9, top: 9, bottom: verticalSpaceSmall),
+                left: 0, right: 9, top: 9, bottom: verticalSpaceSmall),
             decoration: BoxDecoration(
                 color: colorLightWhite,
                 borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                      color: colorLight2,
-                      blurRadius: 4,
-                      spreadRadius: 0,
-                      offset: Offset(0, 2))
-                ]),
+                ),
             child: ListTile(
               leading: CircleAvatar(
                   backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -67,9 +62,7 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
                       color: colorDark3)),
             ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
+          
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18),
             child: Column(
@@ -86,29 +79,29 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
                             context, RoutesName.SellerProfileDetailScreen);
                       },
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
+                                                    Icon(
+                            Icons.person_outlined,
+                            size: 20,
+                          ),
+                          SizedBox(width:10,),
                           Text('Profile',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium!
                                   .copyWith(
                                       fontSize: 14,
-                                      fontWeight: FontWeight.w400,
+                                      fontWeight: FontWeight.w500,
                                       color: colorDark1)),
-                          Icon(
-                            Icons.arrow_forward_ios_outlined,
-                            size: 12,
-                          )
+
                         ],
                       ),
                     ),
                     SizedBox(
                       height: 5,
                     ),
-                    Divider(
-                      color: colorLight2,
-                    )
+                   
                   ],
                 ),
                 const SizedBox(
@@ -121,29 +114,29 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
                         Navigator.pushNamed(context, RoutesName.orderScreen);
                       },
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
+                           Icon(
+                            CupertinoIcons.cube_box,
+                            size: 20,
+                          ),
+                          SizedBox(width: 10,),
                           Text('Order',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium!
                                   .copyWith(
                                       fontSize: 14,
-                                      fontWeight: FontWeight.w400,
+                                      fontWeight: FontWeight.w500,
                                       color: colorDark1)),
-                          Icon(
-                            Icons.arrow_forward_ios_outlined,
-                            size: 12,
-                          )
+                         
                         ],
                       ),
                     ),
                     SizedBox(
                       height: 5,
                     ),
-                    Divider(
-                      color: colorLight2,
-                    )
+                   
                   ],
                 ),
                 const SizedBox(
@@ -156,29 +149,29 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
                         Navigator.pushNamed(context, RoutesName.reviewScreen);
                       },
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
+                            Icon(
+                            Icons.reviews_outlined,
+                            size: 20,
+                          ),
+                          SizedBox(width: 10),
                           Text('Review',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium!
                                   .copyWith(
                                       fontSize: 14,
-                                      fontWeight: FontWeight.w400,
+                                      fontWeight: FontWeight.w500,
                                       color: colorDark1)),
-                          Icon(
-                            Icons.arrow_forward_ios_outlined,
-                            size: 12,
-                          )
+                        
                         ],
                       ),
                     ),
                     SizedBox(
                       height: 5,
                     ),
-                    Divider(
-                      color: colorLight2,
-                    )
+                   
                   ],
                 ),
                 const SizedBox(
@@ -192,29 +185,29 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
                             context, RoutesName.privacyPolicyScreen);
                       },
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
+                           Icon(
+                            Icons.privacy_tip_outlined,
+                            size: 20,
+                          ),
+                          SizedBox(width: 10,),
                           Text('Privacy Policy ',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium!
                                   .copyWith(
                                       fontSize: 14,
-                                      fontWeight: FontWeight.w400,
+                                      fontWeight: FontWeight.w500,
                                       color: colorDark1)),
-                          Icon(
-                            Icons.arrow_forward_ios_outlined,
-                            size: 12,
-                          )
+                         
                         ],
                       ),
                     ),
                     SizedBox(
                       height: 5,
                     ),
-                    Divider(
-                      color: colorLight2,
-                    )
+                   
                   ],
                 ),
                 const SizedBox(
@@ -227,29 +220,29 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
                         Navigator.pushNamed(context, RoutesName.faqScreen);
                       },
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
+                           Icon(
+                            CupertinoIcons.question_circle,
+                            size: 20,
+                          ),
+                          SizedBox(width: 10,),
                           Text('Faq',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium!
                                   .copyWith(
                                       fontSize: 14,
-                                      fontWeight: FontWeight.w400,
+                                      fontWeight: FontWeight.w500,
                                       color: colorDark1)),
-                          Icon(
-                            Icons.arrow_forward_ios_outlined,
-                            size: 12,
-                          )
+                         
                         ],
                       ),
                     ),
                     SizedBox(
                       height: 5,
                     ),
-                    Divider(
-                      color: colorLight2,
-                    )
+                   
                   ],
                 ),
                 const SizedBox(
@@ -258,28 +251,28 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
                 Column(
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
+                         Icon(
+                          Icons.headset_mic_outlined,
+                          size: 20,
+                        ),
+                        SizedBox(width: 10),
                         Text('Support ',
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyMedium!
                                 .copyWith(
                                     fontSize: 14,
-                                    fontWeight: FontWeight.w400,
+                                    fontWeight: FontWeight.w500,
                                     color: colorDark1)),
-                        Icon(
-                          Icons.arrow_forward_ios_outlined,
-                          size: 12,
-                        )
+                       
                       ],
                     ),
                     SizedBox(
                       height: 5,
                     ),
-                    Divider(
-                      color: colorLight2,
-                    )
+                   
                   ],
                 ),
                 const SizedBox(
@@ -292,11 +285,21 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
                           context, RoutesName.splashScreen, (route) => false);
                     });
                   },
-                  child: Text('Logout',
+                  child:Row(
+                    children: [
+                       Icon(
+                          Icons.logout_outlined,
+                          size: 20,
+                          color: primaryColor,
+                        ),
+                        SizedBox(width: 10),
+                       Text('Logout',
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           fontSize: 14,
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.w500,
                           color: primaryColor)),
+                    ],
+                  )
                 ),
               ],
             ),

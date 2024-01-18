@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gfo/response/status.dart';
 import 'package:gfo/services/sharedPreferencesServices/sharedPreferences.dart';
 import 'package:gfo/utils/responsive.dart';
+import 'package:gfo/viewmodel/cartViewModel.dart';
 import 'package:gfo/viewmodel/homeViewModel.dart';
 import 'package:gfo/widgets/circular_progress.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +15,7 @@ import '../../utils/valueConstants.dart';
 import '../../widgets/products_details_widget.dart';
 import '../../widgets/products_review_widget.dart';
 import '../../widgets/products_widget.dart';
+import '../globalWidgets/buttonBig.dart';
 
 class CustomerProductDetailsScreen extends StatefulWidget {
   Map<String, dynamic>? arguments;
@@ -27,6 +30,7 @@ class _CustomerProductDetailsScreenState
     extends State<CustomerProductDetailsScreen> {
   String? productId;
   String? sellerId;
+  String? token;
   int selectedIndex = 0;
 
   SharedPreferencesViewModel sharedPreferencesViewModel =
@@ -46,6 +50,7 @@ class _CustomerProductDetailsScreenState
 
     Future.wait([sharedPreferencesViewModel.getToken()]).then((value) {
       print(value[0]);
+      token = value[0];
 
       productData.getProductInfoApi(productId.toString());
       productData.getAnotherProductApi(sellerId.toString());
@@ -319,7 +324,35 @@ class _CustomerProductDetailsScreenState
             }
             return Container();
           },
-        )
-        );
+        ),
+        bottomNavigationBar: Consumer<CartViewModel>(
+          builder: (context, value, child) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 25),
+              child: ButtonBig(
+                fontSize: 14,
+                onTap: () {
+                  if (kDebugMode) {
+                    print("working");
+                  }
+                  value.addTocartApi(productId.toString(), 1, token, context);
+                },
+                backgroundColor: primaryColor,
+                backgroundColor2: primaryColor,
+                width: double.infinity,
+                height: 55,
+                text: "Add To Cart",
+                showProgress: value.loading,
+                progressColor: colorLightWhite,
+                progressStrokeWidth: 1.5,
+                radius: 5,
+                textColor: colorLightWhite,
+                letterSpacing: 0,
+                progressPadding: 20,
+                fontWeight: FontWeight.w700,
+              ),
+            );
+          },
+        ));
   }
 }
