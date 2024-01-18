@@ -76,7 +76,7 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
                           print("working");
                         }
                         Navigator.pushNamed(
-                            context, RoutesName.SellerProfileDetailScreen);
+                            context, RoutesName.customerHomeScreen);
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,

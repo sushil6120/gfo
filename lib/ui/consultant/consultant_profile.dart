@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gfo/model/consultant/consultantProfileModel.dart';
@@ -19,7 +20,7 @@ class ConsultantProfileScreen extends StatefulWidget {
 class _ConsultantProfileScreenState extends State<ConsultantProfileScreen> {
   SharedPreferencesViewModel sharedPreferencesViewModel =
       SharedPreferencesViewModel();
-Data? profileData;
+  Data? profileData;
   @override
   void initState() {
     // TODO: implement initState
@@ -50,7 +51,9 @@ Data? profileData;
                 child: Image.asset(
                   'assets/images/sellerprofile.png',
                 )),
-            title: Text(profileData!.name.toString().substring(0,1).toUpperCase()+profileData!.name!.substring(1),
+            title: Text(
+                profileData!.name.toString().substring(0, 1).toUpperCase() +
+                    profileData!.name!.substring(1),
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
@@ -70,40 +73,45 @@ Data? profileData;
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 GestureDetector(
-                  onTap: () {
-                    if (kDebugMode) {
-                      print("working");
-                    }
-                    Navigator.pushNamed(
-                        context, RoutesName.consultantProfileDetailScreen,arguments: {
-                          "profileData":profileData
-                        });
-                  },
-                  child:Row(children: [
-                     Icon(
-                            Icons.person_outlined,
-                            size: 20,
-                          ),
-                          SizedBox(width:10,),
-                   Text('Profile',
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black)),
-                  ],)
-                   
-                ),
+                    onTap: () {
+                      if (kDebugMode) {
+                        print("working");
+                      }
+                      Navigator.pushNamed(
+                          context, RoutesName.consultantProfileDetailScreen,
+                          arguments: {"profileData": profileData});
+                    },
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.person_outlined,
+                          size: 20,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text('Profile',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.black)),
+                      ],
+                    )),
                 SizedBox(
                   height: 20,
                 ),
                 Row(
                   children: [
-                     Icon(
-                            Icons.wallet_outlined,
-                            size: 20,
-                          ),
-                          SizedBox(width:10,),
-                   
+                    Icon(
+                      Icons.wallet_outlined,
+                      size: 20,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Text('Wallet',
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             fontSize: 14,
@@ -116,12 +124,13 @@ Data? profileData;
                 ),
                 Row(
                   children: [
-                     Icon(
-                            Icons.card_giftcard_outlined,
-                            size: 20,
-                          ),
-                          SizedBox(width:10,),
-                  
+                    Icon(
+                      Icons.card_giftcard_outlined,
+                      size: 20,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Text('My Promo Code',
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             fontSize: 14,
@@ -134,22 +143,26 @@ Data? profileData;
                 ),
                 Row(
                   children: [
-                      Icon(
-                            Icons.reviews_outlined,
-                            size: 20,
-                          ),
-                          SizedBox(width:10,),
+                    Icon(
+                      Icons.reviews_outlined,
+                      size: 20,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
                     GestureDetector(
                       onTap: () {
                         Navigator.pushNamed(
                             context, RoutesName.consultantCoustomerReview);
                       },
-                    
                       child: Text('Customer Review',
-                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black)),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .copyWith(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.black)),
                     ),
                   ],
                 ),
@@ -158,11 +171,13 @@ Data? profileData;
                 ),
                 Row(
                   children: [
-                      Icon(
-                            Icons.offline_pin_outlined,
-                            size: 20,
-                          ),
-                          SizedBox(width:10,),
+                    Icon(
+                      Icons.offline_pin_outlined,
+                      size: 20,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Text('Benefit',
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             fontSize: 14,
@@ -175,11 +190,13 @@ Data? profileData;
                 ),
                 Row(
                   children: [
-                      Icon(
-                            Icons.privacy_tip_outlined,
-                            size: 20,
-                          ),
-                          SizedBox(width:10,),
+                    Icon(
+                      CupertinoIcons.exclamationmark_circle,
+                      size: 20,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Text('Terms & Conditions',
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             fontSize: 14,
@@ -192,11 +209,13 @@ Data? profileData;
                 ),
                 Row(
                   children: [
-                      Icon(
-                            Icons.headset_mic_outlined,
-                            size: 20,
-                          ),
-                          SizedBox(width:10,),
+                    Icon(
+                      Icons.headset_mic_outlined,
+                      size: 20,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Text('Support',
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             fontSize: 14,
@@ -219,17 +238,22 @@ Data? profileData;
                   },
                   child: Row(
                     children: [
-                        Icon(
-                            Icons.logout_rounded,
-                            size: 20,
-                            color: primaryColor,
-                          ),
-                          SizedBox(width:10,),
+                      Icon(
+                        Icons.logout_rounded,
+                        size: 20,
+                        color: primaryColor,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
                       Text('Logout',
-                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                              color: primaryColor)),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .copyWith(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: primaryColor)),
                     ],
                   ),
                 ),

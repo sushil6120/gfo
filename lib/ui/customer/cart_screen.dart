@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gfo/response/status.dart';
 import 'package:gfo/utils/colors.dart';
+import 'package:gfo/utils/demoData.dart';
 import 'package:gfo/utils/responsive.dart';
 import 'package:gfo/viewmodel/cartViewModel.dart';
 import 'package:gfo/widgets/circular_progress.dart';
@@ -89,9 +90,9 @@ class _CartScreenState extends State<CartScreen> {
                           ListView.builder(
                             shrinkWrap: true,
                             physics: ScrollPhysics(),
-                            itemCount: value.getCartModel!.cartData!.length,
+                            itemCount: value.getCartModel!.products!.length,
                             itemBuilder: (context, index) {
-                              var items = value.getCartModel!.cartData!.reversed.toList();
+                              var items = value.getCartModel!.products!.reversed.toList();
                               return Row(
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
@@ -105,8 +106,8 @@ class _CartScreenState extends State<CartScreen> {
                                         color: colorLight2,
                                         image: DecorationImage(
                                             fit: BoxFit.cover,
-                                            image: NetworkImage(
-                                                "https://sharksindia.com/images/products/Ext/e01.jpg"))),
+                                            image: NetworkImage(items[index].productData!.images![0].toString()
+                                                ))),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(bottom: 0),
@@ -125,7 +126,7 @@ class _CartScreenState extends State<CartScreen> {
                                           child: SizedBox(
                                             width: context.deviceWidth * .5,
                                             child: Text(
-                                              "TMA-2 Comfort Wireless ",
+                                              items[index].productData!.title.toString(),
                                               maxLines: 2,
                                               overflow: TextOverflow.ellipsis,
                                               style: Theme.of(context)
@@ -145,7 +146,7 @@ class _CartScreenState extends State<CartScreen> {
                                             right: verticalSpaceLarge,
                                           ),
                                           child: Text(
-                                            "USD 270 ",
+                                            "₹ ${items[index].productData!.salePrice.toString()}",
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .titleMedium!
@@ -188,7 +189,7 @@ class _CartScreenState extends State<CartScreen> {
                                                         .symmetric(
                                                         horizontal: 20),
                                                     child: Text(
-                                                      items[index].products![0].quantity.toString(),
+                                                      items[index].quantity.toString(),
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .titleMedium!
@@ -256,7 +257,7 @@ class _CartScreenState extends State<CartScreen> {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Text(
-                              "USD 295",
+                              "₹ ${value.getCartModel!.totalPrice.toString()}",
                               style: Theme.of(context)
                                   .textTheme
                                   .titleMedium!
